@@ -1,0 +1,3 @@
+<div ng-controller="room" ng-mouseup="release()" ng-mousemove="move($event)">
+	<div ng-repeat="table in tables" class="room__table" style="top:{{table.y}}px;left:{{table.x}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)"></div>
+</div>

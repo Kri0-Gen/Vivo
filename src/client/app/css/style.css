@@ -24,7 +24,7 @@ body{
    padding: 0 20px;
 }
 
-/*-----------------Rooms---------------------*/
+/*-----------------Auth---------------------*/
 
 .auth__btnWrapper{
    margin-bottom: 20px;
@@ -53,4 +53,13 @@ body{
    border: 1px solid #333333;
    float: left;
 
+}
+
+/*------------------Room---------------------*/
+
+.room__table{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: red;	
 }
