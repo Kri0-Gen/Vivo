@@ -112,7 +112,8 @@ define('controller/auth', ['controller/main'], function(controllers){
          }
       ];
       $scope.selectUser = function(id){
-         $scope.selectedUser = id;
+		 window.localStorage['userID'] = id;
+         window.location.hash = '/rooms'
       };
    }]);
    return 'auth';

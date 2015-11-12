@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
+var models = require('./model/index.js');
 
+models(app);
 
 app.use(express.static('./client'));
-
 
 var server = app.listen(4000, function () {
    var host = server.address().address;
