@@ -1,0 +1,56 @@
+html{
+   height: 100%;
+}
+body{
+   background: url(bg.png) repeat center;
+   height: 100%;
+   position: relative;
+}
+
+.mainView{
+   position: absolute;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+}
+
+/*-----------------Common---------------------*/
+
+.header{
+   height:40px;
+   background: #C3C3C3;
+   font-size: 25px;
+   padding: 0 20px;
+}
+
+/*-----------------Rooms---------------------*/
+
+.auth__btnWrapper{
+   margin-bottom: 20px;
+}
+
+.auth__Scroller{
+   position: absolute;
+   left: 15%;
+   right: 15%;
+   top: 10%;
+   bottom: 20%;
+   overflow: auto;
+}
+
+.auth__adminBtn{
+   float: right;
+   margin: 0 40px 0 0;
+}
+
+/*-----------------Rooms---------------------*/
+
+.rooms__roomBlock{
+   width: 450px;
+   height: 140px;
+   background: #4C4C4C;
+   border: 1px solid #333333;
+   float: left;
+
+}

@@ -1,0 +1,16 @@
+<div ng-controller="auth">
+
+   <div class="auth__Scroller">
+      <div ng-repeat="user in users" class="auth__btnWrapper">
+         <button type="button" class="btn btn-lg btn-default btn-block" ng-click="selectUser(user.id);">
+            {{user.name}}
+         </button>
+      </div>
+   </div>
+
+   <footer>
+      <button type="button" class="btn btn-default auth__adminBtn" ng-click="selectedUser = 0" style="float: right;">
+         Админ
+      </button>
+   </footer>
+</div>

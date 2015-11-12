@@ -1,0 +1,23 @@
+Starting on node version v0.10.14 at Thu Nov 12 2015 17:27:50 GMT+0300 (RTZ 2 (зима))
+Cloud file not found.
+Error read file. Path ../storage.json: { [Error: ENOENT, open 'C:\Users\ba.silantev\AppData\Roaming\GenieServer\storage.json']
+  errno: 34,
+  code: 'ENOENT',
+  path: 'C:\\Users\\ba.silantev\\AppData\\Roaming\\GenieServer\\storage.json' }
+[!!!] Process elastic exited with code 0
+**** BL Платформа.Версия
+{"id":2,"jsonrpc":"2.0","method":"Платформа.Версия","params":{},"protocol":3}
+response 502
+Starting on node version v0.10.14 at Thu Nov 12 2015 17:27:59 GMT+0300 (RTZ 2 (зима))
+Cloud file not found.
+Error read file. Path ../storage.json: { [Error: ENOENT, open 'C:\Users\ba.silantev\AppData\Roaming\GenieServer\storage.json']
+  errno: 34,
+  code: 'ENOENT',
+  path: 'C:\\Users\\ba.silantev\\AppData\\Roaming\\GenieServer\\storage.json' }
+**** BL Платформа.Версия
+{"id":2,"jsonrpc":"2.0","method":"Платформа.Версия","params":{},"protocol":3}
+response 502
+[!!!] Process elastic exited with code 0
+**** BL Платформа.Версия
+{"id":2,"jsonrpc":"2.0","method":"Платформа.Версия","params":{},"protocol":3}
+response 502
