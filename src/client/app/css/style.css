@@ -56,10 +56,51 @@ body{
 }
 
 /*------------------Room---------------------*/
+.room__table {
+   transform-origin: 0 0;
+}
 
-.room__table{
+.room__table_square {
 	position: absolute;
 	width: 100px;
 	height: 100px;
 	background: red;	
+}
+
+.room__table_circle {
+   position: absolute;
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   background: green;
+}
+
+.room__table_bar {
+   position: absolute;
+   width: 200px;
+   height: 100px;
+   background: yellow;
+}
+
+.room__table_bar_up {
+   position: absolute;
+   width: 100px;
+   height: 200px;
+   background: white;
+}
+
+.room__chair {
+   transform-origin: 0 0;
+   position: absolute;
+   width: 75px;
+   height: 10px;
+   background: brown;
+}
+
+.room_background {
+   background: gray;
+}
+
+.new_table_div {
+   visibility: hidden;
 }

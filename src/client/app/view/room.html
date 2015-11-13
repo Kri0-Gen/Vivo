@@ -1,3 +1,16 @@
 <div ng-controller="room" ng-mouseup="release()" ng-mousemove="move($event)">
-	<div ng-repeat="table in tables" class="room__table" style="top:{{table.y}}px;left:{{table.x}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)"></div>
+
+	<div class="room_background" style="top:0px;width:{{scene.width*scale}}px;height:{{scene.height*scale}}px;">
+		<div ng-repeat="table in tables" class="{{table.type}}" style="transform: scale({{scale}}) rotate({{table.angle}}deg);top:{{table.y*scale}}px;left:{{table.x*scale}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)">
+			<div ng-repeat="chair in table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{chair.y}}px;left:{{chair.x}}px"></div>
+		</div>
+	</div>
+
+	<div class="new_table_div">
+
+	</div>
+
+	<button ng-click="zoom_plus()">zoom_plus</button>
+	<button ng-click="zoom_minus()">zoom_minus</button>
+	<button ng-click="create_table()">create table</button>
 </div>
