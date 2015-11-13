@@ -63,3 +63,47 @@ body{
 	height: 100px;
 	background: red;	
 }
+
+/*---------------Dishes-----------*/
+
+.dishes__dish {
+   color: #fff;
+   padding: 2px;
+   border: 1px solid #fff;
+}
+
+
+
+/* Orders */
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 80px;
+   height: 40px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+   background-color: #0ce3ac;
+}
+.order-category2 {/*салаты*/
+   background-color: #aaffff;
+}
+.order-category3 {/*горячее*/
+   background-color: #985f0d;
+}
+.order-category4 {/*гарниры*/
+   background-color: #ac2925;
+}
+.order-category5 {/*напитки*/
+   background-color: #c7254e;
+}
