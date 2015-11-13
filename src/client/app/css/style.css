@@ -63,3 +63,11 @@ body{
 	height: 100px;
 	background: red;	
 }
+
+/*---------------Dishes-----------*/
+
+.dishes__dish {
+   color: #fff;
+   padding: 2px;
+   border: 1px solid #fff;
+}

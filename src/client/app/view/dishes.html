@@ -1,0 +1,20 @@
+<div ng-controller="dishes">
+    <header class="header">
+        Список блюд
+    </header>
+    <div>
+        <div class="dishes__dish" ng-repeat="dish in dishes">
+            <span> {{dish.Name}}</span>
+            <span> {{dish.Price}}</span>
+            <span> {{dish.Group}}</span>
+
+        </div>
+        <div id="dish__form">
+            <div><label>Название</labal><input type="text" id="dish__name" name="Название"></label></div>
+            <div><label>Цена </labal><input type="number" id="dish__price" name="Стоймость"></label></div>
+            <div><label>Категория </labal><input type="text" id="dish__group" name="Категория"></label></div>
+        </div>
+        <button ng-click="addDish()">Добавить</button>
+    </div>
+</div>
+
