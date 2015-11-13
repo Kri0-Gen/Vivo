@@ -3,11 +3,13 @@
       Зал - Столик
    </header>
    <div class="order-dishes">
-      <div ng-repeat="category in categories" class="order-categoryBlock">
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category{{category.Id}}" ng-click="selectCategory(category.Id);">
          {{category.Name}}
       </div>
-      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock">
-         {{dish.Name + '/' + dish.Cost}}
+      <br />
+      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock order-category{{currentCat}}">
+         <div class="order-dishName">{{dish.Name}}</div>
+         <div class="order-dishCost">{{dish.Cost}}</div>
       </div>
    </div>
    <div class="order-orderDishes">
