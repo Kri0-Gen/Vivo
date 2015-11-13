@@ -1,4 +1,4 @@
-define(['app','angular_router', 'controller/auth','controller/rooms','controller/room'], function (app) {
+define(['app','angular_router', 'controller/auth','controller/rooms','controller/room', 'controller/waiters', 'controller/roomsadmin'], function (app) {
    'use strict';
    return app.config(['$routeProvider', function ($routeProvider) {
 
@@ -12,6 +12,14 @@ define(['app','angular_router', 'controller/auth','controller/rooms','controller
       
       $routeProvider.when('/room/:id', {
          templateUrl: 'app/view/room.html'
+      });
+
+      $routeProvider.when('/waiters', {
+         templateUrl: 'app/view/waiters.html'
+      });
+
+      $routeProvider.when('/roomsadmin', {
+         templateUrl: 'app/view/roomsadmin.html'
       });
 
       $routeProvider.otherwise({
