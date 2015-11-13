@@ -1,0 +1,16 @@
+<div ng-controller="order">
+   <header class="header">
+      Зал - Столик
+   </header>
+   <div class="order-dishes">
+      <div ng-repeat="category in categories" class="order-categoryBlock">
+         {{category.Name}}
+      </div>
+      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock">
+         {{dish.Name + '/' + dish.Cost}}
+      </div>
+   </div>
+   <div class="order-orderDishes">
+
+   </div>
+</div>
