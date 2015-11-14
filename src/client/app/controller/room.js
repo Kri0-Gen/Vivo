@@ -6,19 +6,19 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
 
       var PARAMS = [];
       var TABLE_TYPE = [
-         {class: "room__table room__table_circle", width: 50, height: 49, chairs: [
+         {class: "table circle", width: 50, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 13, y: 0, transform: "rotate(180deg)"},
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
             {scale_width: 1.0, scale_height: 0.5, x: -8, y: -3, transform: "rotate(90deg)"}
          ]},
-         {class: "room__table room__table_square", width: 49, height: 49, chairs: [
+         {class: "table cub", width: 49, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 13, y: 0, transform: "rotate(180deg)"},
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
             {scale_width: 1.0, scale_height: 0.5, x: -8, y: -3, transform: "rotate(90deg)"}
          ]},
-         {class: "room__table room__table_bar", width: 83, height: 49, chairs: [
+         {class: "table rectangle", width: 83, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 10, y: -6},
             {scale_width: 0.0, scale_height: 0.0, x: 45, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 10, y: 0, transform: "rotate(180deg)"},
@@ -29,6 +29,8 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
       ];
 
       //tableSrv.save({tables: [{Id: 1, X: 10, Y: 10, Type: 1, Chairs: 3, RoomId: $routeParams.id, Angle: 0}]});
+      $scope.captured = -1;
+      $scope.rotating_table = null;
 
       function get_table_by_data(data) {
          return {dbID: data.Id, id: ++$scope.table_counter, x: data.X, y: data.Y,
@@ -79,7 +81,13 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.captured = -1;
          $scope.rotating_table = null;
          $scope.TABLE_TYPE = TABLE_TYPE;
+         $scope.roomId = $routeParams.id;
+
+         $scope.user_name = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+         $scope.isAdmin = window.localStorage['userId'] == 0;
+
          $scope.admin_display = ($routeParams.admin == 1 ? "" : "display: none");
+         $scope.not_admin_display = ($routeParams.admin == 1 || !$scope.isAdmin ? "display: none" : "");
       });
 
       function set_class_type(tables) {
@@ -235,10 +243,10 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
                   $scope.new_table.id = i;
          }
 
-         $(".new_table_div").first().css("visibility", "visible");
-         add_or_remove_attribute($("#create_table_button"), "disabled", !fCreate);
-         add_or_remove_attribute($("#update_table_button"), "disabled", !fUpdate);
-         add_or_remove_attribute($("#remove_table_button"), "disabled", !fRemove);
+         $("#new_table_window").first().css("visibility", "visible");
+         add_or_remove_attribute($("#create_table_button"), "hidden", !fCreate);
+         add_or_remove_attribute($("#update_table_button"), "hidden", !fUpdate);
+         add_or_remove_attribute($("#remove_table_button"), "hidden", !fRemove);
       }
 
       $scope.create_new_table = function() {
@@ -246,7 +254,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
 
          $scope.tables.push($scope.new_table);
          //$scope.new_table = null;
-         $scope.close_table();
+         $scope.close_table(null, true);
          send_data();
       }
 
@@ -255,9 +263,9 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.create_new_table();
       }
 
-      $scope.remove_table = function() {
-         $scope.tables.splice($scope.new_table.item_id, 1);
-         $scope.close_table();
+      $scope.remove_table = function(table) {
+         $scope.tables.splice(table.item_id, 1);
+         $scope.close_table(null, true);
          send_data();
       }
 
@@ -267,8 +275,9 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          set_table_chairs_by_id($scope.new_table, $scope.new_table.id);
       }
 
-      $scope.close_table = function() {
-         $(".new_table_div").first().css("visibility", "hidden");
+      $scope.close_table = function(e, flag) {
+         if (!flag && e.target != $("#new_table_window").get(0)) return;
+         $("#new_table_window").first().css("visibility", "hidden");
       }
 
       $scope.rotating_begin = function(table) {
@@ -285,5 +294,6 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
             window.location.hash = '/order/' + table.order_id + '?roomId=' + $routeParams.id;
          }
       }
+
    }]);
 });

@@ -1,49 +1,52 @@
-<div ng-controller="room" ng-mouseup="release()" ng-mousemove="move($event)">
+<div class="main" ng-controller="room" ng-mouseup="release()" ng-mousemove="move($event)">
 
-	<div>
-	<button ng-click="zoom_plus()">zoom_plus</button>
-	<button ng-click="zoom_minus()">zoom_minus</button>
-	<button ng-click="open_create_table_window(null, true, false, false)" style="{{admin_display}}">create table</button>
-	</div>
+   <div class="header">
+      <div class="wrapper_header">
+         <h3 class="title_header">Зал {{roomId}}</h3>
+         <div class="id_people">{{user_name}}</div>
+         <!--a href="#" class="btn_edit">Отменить</a!-->
+         <a href="{{window.location.hash = '/#/room/' + roomId + '?admin=1'}}" class="btn_edit" style="{{not_admin_display}}">Редактировать</a>
+         <a href="{{window.location.hash = '/#/room/' + roomId}}" class="btn_edit" style="{{admin_display}}">Готово</a>
+         <a href="" ng-click="open_create_table_window(null, true, false, false)" class="btn_edit" style="{{admin_display}}">+ столик</a>
 
-	<div>
-	<div id="room_background" class="room_background" style="top:0px;width:{{scene.width*scale}}px;height:{{scene.height*scale}}px;">
+         <a href="" ng-click="zoom_plus()" class="btn_edit" style="{{admin_display}}">Увеличить</a>
+         <a href="" ng-click="zoom_minus()" class="btn_edit" style="{{admin_display}}">Уменьшить</a>
+      </div>
+   </div>
+
+	<div id="room_background" class="tables edit" style="top:0px;width:{{scene.width*scale}}px;height:{{scene.height*scale}}px;">
 		<div ng-repeat="table in tables" class="room__table" style="transform:scale({{scale}});top:{{table.y*scale}}px;left:{{table.x*scale}}px;width:{{table.width}}px;height:{{table.height}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)">
 			<div ng-click="on_table_click(table)" class="{{table.type}}" style="transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
 				<div ng-repeat="chair in table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{table.height*chair.scale_height+chair.y}}px;left:{{table.width*chair.scale_width+chair.x}}px"></div>
-            <button ng-click="open_create_table_window(table, false, true, true)" style="{{admin_display}}">edit</button>
-				<button style="position: absolute; left: 100%; top: 100%; {{admin_display}}" ng-mousedown="rotating_begin(table)">r</button>
+            <div class="table_edit" ng-click="open_create_table_window(table, false, true, true)" style="transform-origin: center center; left: {{table.width*0.5}}px; top: {{table.height*0.5}}px;{{admin_display}}"><i class="fa fa-pencil-square-o"></i></div>
+            <div class="table_rotate" ng-mousedown="rotating_begin(table)" style="top: {{table.height+7}}px; left: {{table.width+7}}px; {{admin_display}}"><i class="fa fa-undo"></i></div>
 			</div>
 		</div>
-	</div>
 	</div>
 
-	<div class="new_table_div">
-		<div>
-			<div style="height:200px">
-				<div class="{{new_table.type}}" style="left: 50%; top: 50%;
-				     transform: translate(-50%, -50%) rotate({{new_table.angle}}deg);width:{{new_table.width}}px;height:{{new_table.height}}px">
-					<div ng-repeat="chair in new_table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{new_table.height*chair.scale_height+chair.y}}px;left:{{new_table.width*chair.scale_width+chair.x}}px"></div>
-				</div>
-			</div>
-			<div>
-				<button ng-click="new_table_prev_button()">left</button>
-				<button ng-click="new_table_next_button()">right</button>
-			</div>
-		</div>
-		<div>
-			<label>Chairs count</label>
-			<select ng-model="ChairsSelector" ng-change="update_chairs_selector()"
-					ng-options="i for i in range(0, TABLE_TYPE[new_table.id].chairs.length)"
-					>
-				<!--option ng-repeat="i in range(0, TABLE_TYPE[new_table.id].chairs.length)" value="{{i}}" selected="true">{{i}}</option!-->
-			</select>
-		</div>
-		<button id="create_table_button" ng-click="create_new_table()">Create</button>
-		<button id="update_table_button" ng-click="update_table()">Update</button>
-		<button id="remove_table_button" ng-click="remove_table()">Remove</button>
-		<button id="close_table_button" ng-click="close_table()">Close</button>
-	</div>
-
+   <div ng-click="close_table($event)" id="new_table_window" class="wrapper_edit_table" style="visibility: hidden">
+      <div class="form_edit_table">
+         <div class="form_edit_table_left">
+            <div class="img_table">
+               <div class="{{new_table.type}}" style="position: relative; transform-origin: center center; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate({{new_table.angle}}deg);width:{{new_table.width}}px;height:{{new_table.height}}px">
+      				<div ng-repeat="chair in new_table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{new_table.height*chair.scale_height+chair.y}}px;left:{{new_table.width*chair.scale_width+chair.x}}px"></div>
+      			</div>
+            </div>
+            <div class="pagination_edit">
+               <div class="btn_left" ng-click="new_table_prev_button()"><</div>
+               <div class="btn_right" ng-click="new_table_next_button()">></div>
+            </div>
+         </div>
+         <div class="form_edit_table_right">
+            <div class="settings">
+               <h2>Количество мест</h2>
+               <select ng-model="ChairsSelector" ng-change="update_chairs_selector()" ng-options="i for i in range(0, TABLE_TYPE[new_table.id].chairs.length)"/>     				<!--option ng-repeat="i in range(0, TABLE_TYPE[new_table.id].chairs.length)" value="{{i}}" selected="true">{{i}}</option!-->
+      			<div id="create_table_button" ng-click="create_new_table()" class="btn_done">Применить</div>
+               <div id="update_table_button" ng-click="update_table()" class="btn_table_update">Изменить</div>
+               <div id="remove_table_button" ng-click="remove_table(new_table)" class="btn_table_remove">Удалить</div>
+            </div>
+         </div>
+      </div>
+   </div>
 
 </div>
