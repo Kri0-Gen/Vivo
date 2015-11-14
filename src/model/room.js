@@ -57,10 +57,16 @@ var bind = function(app){
        }
 
    })
+   .post('/rooms/delete',function(req,res){
+       req.body.Id = parseInt(req.body.Id || '0', 10);
+       var roomId = req.body.Id;
+        db.collection('rooms').remove({Id: parseInt(roomId, 10)});
+        db.collection('tables').remove({RoomId: parseInt(12, 10)});
+   })
+
    .get('/rooms/list', function(req, res){
 
        db.collection('rooms').find().toArray().then(function(data){
-
            res.json(data);
        });
 
