@@ -28,14 +28,12 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
          $scope.Id = '';
       };
       $scope.delWaiters = function (id){
+          var promise;
+          waitersSrv.deleted({Id:id}).$promise.then(function(){
+              $scope.waiters = waitersSrv.query();
+          });
 
-         var promise;
-         promise = waitersSrv.deleted({Id:id});
-         promise.$promise.then(function(){
-            $scope.waiters = waitersSrv.query().$promise.then(function(){
-               $scope.waiters = waitersSrv.query();
-            });
-         });
+
       };
    }]);
 });
