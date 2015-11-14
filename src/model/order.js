@@ -29,7 +29,7 @@ var orderSchem=mongoose.Schema({
    }
 });
 
-module.exports = function(){
+module.exports = function(app){
    app.post('/order/new', function(req, res){
       var order = db.model('orders', orderSchem);
       var create = function(id, data){
