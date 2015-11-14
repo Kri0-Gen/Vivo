@@ -123,7 +123,16 @@ module.exports = function(app){
                dishArr.push(ord.Order[i].Dish);
             }
          }
-         res.json(dishArr);
+         dishes.find({Id: {$in : dishArr}}, function(err, fullDish){
+            var dMap = {};
+            for (var i = 0; i < fullDish.length; i++){
+               dMap[fullDish[i].Id] = fullDish[i];
+            }
+            res.json(ord.Order.map(function(item){
+               item.DishInfo = dMap[item.Dish];
+               return item;
+            }));
+         });
       });
    });
 };
