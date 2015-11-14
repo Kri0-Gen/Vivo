@@ -3,7 +3,7 @@
 	<div>
 	<button ng-click="zoom_plus()">zoom_plus</button>
 	<button ng-click="zoom_minus()">zoom_minus</button>
-	<button ng-click="open_create_table_window(null, true, false, false)">create table</button>
+	<button ng-click="open_create_table_window(null, true, false, false)" style="{{admin_display}}">create table</button>
 	</div>
 
 	<div>
@@ -11,8 +11,8 @@
 		<div ng-repeat="table in tables" class="room__table" style="transform:scale({{scale}});top:{{table.y*scale}}px;left:{{table.x*scale}}px;width:{{table.width}}px;height:{{table.height}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)">
 			<div ng-click="on_table_click(table)" class="{{table.type}}" style="transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
 				<div ng-repeat="chair in table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{table.height*chair.scale_height+chair.y}}px;left:{{table.width*chair.scale_width+chair.x}}px"></div>
-				<button ng-click="open_create_table_window(table, false, true, true)">edit</button>
-				<button style="position: absolute; left: 100%; top: 100%" ng-mousedown="rotating_begin(table)">r</button>
+            <button ng-click="open_create_table_window(table, false, true, true)" style="{{admin_display}}">edit</button>
+				<button style="position: absolute; left: 100%; top: 100%; {{admin_display}}" ng-mousedown="rotating_begin(table)">r</button>
 			</div>
 		</div>
 	</div>
