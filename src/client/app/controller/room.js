@@ -86,7 +86,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.roomId = $routeParams.id;
 
          $scope.user_name = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
-         $scope.isAdmin = window.localStorage['userId'] == 0;
+         $scope.isAdmin = window.localStorage['userID'] == 0;
 
          $scope.admin_display = ($routeParams.admin == 1 ? "" : "display: none");
          $scope.not_admin_display = ($routeParams.admin == 1 || !$scope.isAdmin ? "display: none" : "");
