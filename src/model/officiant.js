@@ -16,6 +16,7 @@ module.exports = function(app){
       });
    });
    app.post('/officiants/store', function(req, res){
+      req.body.Id = parseInt(req.body.Id || '0', 10);
       if (!req.body.Id){
          // insert new one
          db.getNextSequence('officiantid', function(id){
@@ -29,7 +30,7 @@ module.exports = function(app){
       }
       else {
          db.collection('officiants').findOneAndUpdate(
-            { Id: parseInt(req.body.Id, 10) },
+            { Id: req.body.Id },
             {
                $set: {
                   'FirstName': req.body.FirstName,
