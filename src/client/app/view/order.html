@@ -1,5 +1,3 @@
-
-<div ng-controller="order" class="main">
     <div class="header">
         <div class="wrapper_header">
             <h3 class="title_header">Зал 1 - Столик 1</h3>
@@ -7,6 +5,7 @@
         </div>
     </div>
     <div class="content-order">
+        <div ng-controller="order">
    <div class=" order-dishes">
       <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category{{category.Id}}" ng-click="selectCategory(category.Id);">
          {{category.Name}}
@@ -44,5 +43,7 @@
         </div>
        </div>
    </div>
+
+        </div>
     </div>
 </div>
