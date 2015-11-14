@@ -279,10 +279,10 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          if ($scope.admin_display == "") return;
          if (table.order_id == -1) {
             orderSrv.newOrder({Table: table.dbID, Officiant: window.localStorage['userID']}).$promise.then(function(data){
-                window.location.hash = '/order/' + data['0'];
+                window.location.hash = '/order/' + data.Id + '?roomId=' + $routeParams.id;
             });
          } else {
-            window.location.hash = '/order/' + table.order_id;
+            window.location.hash = '/order/' + table.order_id + '?roomId=' + $routeParams.id;
          }
       }
    }]);

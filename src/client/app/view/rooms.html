@@ -1,10 +1,24 @@
 <div ng-controller="rooms">
-   <header class="header">
-      Список залов
-   </header>
-   <div>
-      <div class="rooms__roomBlock" ng-repeat="room in rooms">
-         {{room.name}}
+   <div class="header">
+      <div class="wrapper_header">
+         <h3 class="title_header">Залы</h3>
+         <div class="add_hall">+ Зал</div>
+         <div class="id_people">{{fio}}</div>
+      </div>
+   </div>
+   <div class="rooms">
+      <div class="pos_room" ng-repeat="room in rooms" ng-click="onClick(room)">
+         <div class="content_rooms">
+            <h3>{{room.Name}}</h3>
+            <p class="places">
+               39 мест
+            </p>
+            <p><font>Столы:</font>3/11</p>
+            <p><font>Сумма:</font>15900 руб.</p>
+         </div>
+         <div class="logo_room">
+            <img src="/app/images/room.jpg">
+         </div>
       </div>
    </div>
 </div>

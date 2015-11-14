@@ -65,9 +65,14 @@ var bind = function(app){
    })
 
    .get('/rooms/list', function(req, res){
-
        db.collection('rooms').find().toArray().then(function(data){
-           res.json(data);
+          db.collection('tables').find().toArray().then(function(tables){
+             db.collection('orders').find({Status: 'Open'}).toArray().then(function(orders){
+
+                   res.json(data);
+
+             });
+          });
        });
 
    });

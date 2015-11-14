@@ -24,7 +24,6 @@ body{
 }
 .header{
     width:100%;
-    height: 51px;
 }
 
 thead th {
@@ -595,6 +594,25 @@ select{
 	height:55px;
 	float:left;
 }
+
+.btn_admin{
+    float: left;
+    width: 48%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+    text-decoration: none;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
+}
 }
 
 /*Tablets*/
@@ -781,7 +799,7 @@ select{
    font-weight: 800;
    width: 95px;
 }
-.order-DishBlock{
+.order-dishBlock{
 	height:40px;
 }
 .order-dishCost {
@@ -865,6 +883,25 @@ select{
 	font-size: 20px;
 	height:55px;
 	float:left;
+}
+
+.btn_admin{
+    float: left;
+    width: 98%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+    text-decoration: none;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
 }
 }
 
@@ -1050,7 +1087,7 @@ select{
    font-weight: 800;
    width: 95px;
 }
-.order-DishBlock{
+.order-dishBlock{
 	height:40px;
 }
 .order-dishCost {
@@ -1149,6 +1186,25 @@ select{
 	font-size: 20px;
 	height:55px;
 	float:left;
+}
+
+.btn_admin{
+    float: left;
+    width: 98%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+    text-decoration: none;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
 }
 }
 
@@ -1322,16 +1378,8 @@ select{
    height: 255px;
    background: gainsboro;
 }
-/*-----------------Rooms---------------------*/
 
-.rooms__roomBlock{
-   width: 450px;
-   height: 140px;
-   background: #4C4C4C;
-   border: 1px solid #333333;
-   float: left;
 
-}
 
 /*------------------Room---------------------*/
 .room__table {
