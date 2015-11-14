@@ -50,7 +50,7 @@ var tableSchem=mongoose.Schema({
 var bind = function(app){
     app.post('/tables/store', function(req, res) {
         //for?
-
+        db.collection('tables').drop();
         for(var i=0;i<req.body.tables.length;i++)
             {
                 req.body.tables[i].Id = parseInt(req.body.tables[i].Id || '0', 10);
@@ -61,7 +61,7 @@ var bind = function(app){
                     tablePostedElem.save();
                 };
                 if (tableId) {
-                    db.collection('tables').remove({Id: parseInt(tableId, 10)});
+                    //db.collection('tables').remove({Id: parseInt(tableId, 10)});
                     create(req.body.tables[i]);
                 }
                 else {
