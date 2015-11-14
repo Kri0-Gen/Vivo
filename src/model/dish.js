@@ -51,8 +51,8 @@ var bind = function(app){
                 })
             }
 
-        })
-        .get('/dishes/list', function(req, res){
+
+        }).get('/dishes/list', function(req, res){
              db.collection('dishes').find().toArray().then(function(dishes){
                 res.json(dishes);
              })
