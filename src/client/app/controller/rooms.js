@@ -5,6 +5,7 @@ define('controller/rooms', ['controller/main', 'service/rooms'], function(contro
        //$scope.filename = rooms.photo;
       $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
       $scope.onClick = function(room){
+         window.localStorage['roomName'] = room['Name'];
          window.location.hash = '/room/' + room.Id;
       }
    }]);
