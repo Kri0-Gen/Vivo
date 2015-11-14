@@ -2,6 +2,7 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
    controllers.controller('roomsadmin', ['$scope',provider, function ($scope, roomsadminSrv) {
       $scope.roomsadmin = roomsadminSrv.query();
       $scope.formHidden = true;
+       $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
        $scope.isAdmin=window.localStorage['userID']=='0';
       $scope.addNew = function(){
          $scope.formHidden = false;

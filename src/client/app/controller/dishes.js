@@ -4,8 +4,8 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
         $scope.form = {};
         $scope.dishes = dishesSrv.query();
         $scope.sortField = 'Name';
-        $scope.fio = 'Name';
         $scope.isAdmin=window.localStorage['userID']=='0';
+        $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
 
         $scope.getDishById = function(id){
             for(var i = 0; i < $scope.dishes.length; i++){
