@@ -1,5 +1,6 @@
 define('controller/dishes', ['controller/main', 'service/dishes'], function(controllers, provider){
     controllers.controller('dishes', ['$scope',provider, function ($scope, dishesSrv) {
+        $scope.appendMode = false;
         $scope.dishes = [{
             Id: 0,
             Name: 'Борщ',
@@ -19,13 +20,13 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
             Group: 2
         }];
 
-        $scope.addDish = function(){
-            var
-                name = $('#dish__name').val(),
-                price = $('#dish__price').val(),
-                group =  $('#dish__group').val();
+        $scope.add = function(){
+            alert('Отправляем: ' + $scope.form.name + ' ' + $scope.form.price + ' ' + $scope.form.group);
+            $scope.appendMode = false;
+        };
 
-            alert('Отправляем: ' + name + ' ' + price + ' ' + group);
-        }
+        $scope.setAppendMode = function(f){
+            $scope.appendMode = f;
+        };
     }]);
 });
