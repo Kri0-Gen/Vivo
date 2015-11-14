@@ -80,7 +80,15 @@ var bind = function(app){
                    ordersByTable[item.RoomId] = ordersByTable[item.RoomId] || [];
                    ordersByTable[item.RoomId].push(item);
                 });
-                res.json(data);
+                rooms.map(function(room){
+                   var totalPlace = 0;
+                   if (tablesByRoom[room['Id']]){
+                      tablesByRoom[room['Id']].each(function(table){
+                        totalPlace += parseInt(table.Chairs, 10);
+                      });
+                   }
+                });
+                res.json(rooms);
              });
           });
        });
