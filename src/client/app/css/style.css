@@ -585,7 +585,7 @@ select{
     margin-top: 35px;
 }
 .order-orderDishesScroll{	
-	height: 60%;
+	height: 588px;
 	overflow-y: auto;
 }
 .toKitchen,
@@ -1026,98 +1026,6 @@ select{
 		float: left;
 		margin-top: 100px;
 	}
-}
-
-/*-----------------Rooms---------------------*/
-
-.rooms__roomBlock{
-   width: 450px;
-   height: 140px;
-   background: #4C4C4C;
-   border: 1px solid #333333;
-   float: left;
-
-}
-
-/*------------------Room---------------------*/
-.room__table {
-   position: absolute;
-   transform-origin: 0 0;
-}
-
-.room__table_square {
-   background: url(edittable_u70.png) center;
-   background-size: 49px 49px;
-}
-
-/*-------------admin---------------*/
-
-/*.adminPanel a{
-    text-align: center;
-    color: white;
-    font-size: 23px;
-    padding: 41px;
-}*/
-
-/*.adminPanel__container {
-    margin: 64px 8px;
-}*/
-
-/*---------------Dishes-----------*/
-
-.dishes_tableContainer {
-    margin: 4px;
-}
-.dishes__table {
-    font-size: 14px;
-    border-collapse: collapse;
-    text-align: center;
-    color:black;
-    margin-bottom: 8px;
-    width: 100%;
-}
-
-.dishes__table-head {
-    background: #EED8AE;
-    opacity: 0.8;
-}
-
-.dishes__table-body {
-    background: #FFE7BA;
-    opacity: 0.89;
-}
-
-.dishes__th {
-    padding: 10px 20px;
-}
-
-.dishes__th, .dishes__td {
-    border-style: solid;
-    border-width: 0 1px 1px 0;
-    border-color: #ffffff;
-}
-
-.dishes__form label {
-    color: #fff;
-}
-.dishes__form {
-    width: 297px;
-   
-}
-
-.dishes__table-body button {
-    width: 24px;
-}
-
-.dishes__edit-button {
-    background: #00CD00;
-    color :#363636;
-}
-
-.dishes__delete-button {
-    background: #EE6363;
-    color :#363636;
-}
 
 
 /* Orders */
@@ -1414,3 +1322,96 @@ select{
    height: 255px;
    background: gainsboro;
 }
+/*-----------------Rooms---------------------*/
+
+.rooms__roomBlock{
+   width: 450px;
+   height: 140px;
+   background: #4C4C4C;
+   border: 1px solid #333333;
+   float: left;
+
+}
+
+/*------------------Room---------------------*/
+.room__table {
+   position: absolute;
+   transform-origin: 0 0;
+}
+
+.room__table_square {
+   background: url(edittable_u70.png) center;
+   background-size: 49px 49px;
+}
+
+/*-------------admin---------------*/
+
+/*.adminPanel a{
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    padding: 41px;
+}*/
+
+/*.adminPanel__container {
+    margin: 64px 8px;
+}*/
+
+/*---------------Dishes-----------*/
+
+.dishes_tableContainer {
+    margin: 4px;
+}
+.dishes__table {
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    color:black;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.dishes__table-head {
+    background: #EED8AE;
+    opacity: 0.8;
+}
+
+.dishes__table-body {
+    background: #FFE7BA;
+    opacity: 0.89;
+}
+
+.dishes__th {
+    padding: 10px 20px;
+}
+
+.dishes__th, .dishes__td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: #ffffff;
+}
+
+.dishes__form label {
+    color: #fff;
+}
+.dishes__form {
+    width: 297px;
+   
+}
+
+.dishes__table-body button {
+    width: 24px;
+}
+
+.dishes__edit-button {
+    background: #00CD00;
+    color :#363636;
+}
+
+.dishes__delete-button {
+    background: #EE6363;
+    color :#363636;
+}
+
+
+
