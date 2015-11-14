@@ -18,23 +18,67 @@ define('controller/reports', ['controller/main', 'service/waiters', 'service/roo
          }
       });
 
+      var BLResult = {
+         //Дни, по которым строится отчет
+         dates: ['1.10', '2.10', '3.10', '4.10', '5.10', '6.10', '7.10', '8.10', '9.10', '10.10', '11.10', '12.10'],
+          //Информация о официантах
+         data: [{
+            //имя официанта
+            name: 'Вова Г.',
+             //Ежедневная выручка ( порядок соответствует BLResult.dates )
+            data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+            //Количество заказов ( порядок соответствует BLResult.dates )
+            orderCounter: [12, 12, 13, 14, 56, 12, 12, 13, 14, 56, 11, 10]
+         }]
+      };
+
+      var getUniqInfoDataByName = function(name){
+         for(var i = 0; i < BLResult.data.length; i++){
+            if(BLResult.data[i].name === name){
+               return {
+                  chart: {
+                     type: 'column'
+                  },
+
+                  title: {
+                     text: 'Отчет по официанту "' + name + '"'
+                  },
+
+                  xAxis: {
+                     categories: BLResult.dates
+                  },
+
+                  yAxis: {
+                     allowDecimals: false,
+                     min: 0
+                  },
+
+                  series: [{
+                     name: 'Выручка',
+                     data: BLResult.data[i].data
+                  }, {
+                     name: 'Кол-во заказов',
+                     data: BLResult.data[i].orderCounter
+                  }]
+               }
+            }
+         }
+      };
+
       $scope.playReport = function() {
          $('#container').highcharts({
             chart: {
                type: 'line'
             },
             title: {
-               text: 'Monthly Average Temperature'
-            },
-            subtitle: {
-               text: 'Source: WorldClimate.com'
+               text: 'Отчет по выручке официантов'
             },
             xAxis: {
-               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+               categories: BLResult.dates
             },
             yAxis: {
                title: {
-                  text: 'Temperature (°C)'
+                  text: 'Выручка'
                }
             },
             plotOptions: {
@@ -42,16 +86,18 @@ define('controller/reports', ['controller/main', 'service/waiters', 'service/roo
                   dataLabels: {
                      enabled: true
                   },
-                  enableMouseTracking: false
+                  enableMouseTracking: true
+               },
+
+               series: {
+                  events: {
+                     click: function (e) {
+                        $('#container').highcharts(getUniqInfoDataByName(e.currentTarget.name));
+                     }
+                  }
                }
             },
-            series: [{
-               name: 'Tokyo',
-               data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }, {
-               name: 'London',
-               data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-            }]
+            series: BLResult.data
          });
       };
    }]);
