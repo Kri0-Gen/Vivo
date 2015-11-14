@@ -28,6 +28,16 @@ db.collection('counters').insert({
     seq: 250
 });
 
+db.collection('counters').insert({
+   _id: "orderid",
+   seq: 1
+});
+
+db.collection('counters').insert({
+   _id: "dishorderid",
+   seq: 1
+});
+
 module.exports = function(app){
    var filelist = fs.readdirSync(__dirname);
    for (var i = 0; i < filelist.length; i++){
