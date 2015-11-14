@@ -3,7 +3,7 @@
       Список залов
    </header>
    <div>
-      <div class="rooms__roomBlock" ng-repeat="room in rooms">
+      <div class="rooms__roomBlock" ng-repeat="room in rooms" ng-click="onClick(room)">
          {{room.name}}
       </div>
    </div>
