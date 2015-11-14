@@ -24,7 +24,7 @@ var dishSchem=mongoose.Schema({
         required:true
     },
     Category:{
-        type:Number, //ID категории  что-то вроде db.collection('categories')./.../.Id
+        type:Number,
         unique:false,
         required:true
     } //свзяь
