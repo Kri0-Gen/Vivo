@@ -31,6 +31,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
       //tableSrv.save({tables: [{Id: 1, X: 10, Y: 10, Type: 1, Chairs: 3, RoomId: $routeParams.id, Angle: 0}]});
       $scope.captured = -1;
       $scope.rotating_table = null;
+       $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
 
       function get_table_by_data(data) {
          return {dbID: data.Id, id: ++$scope.table_counter, x: data.X, y: data.Y,

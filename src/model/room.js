@@ -67,12 +67,28 @@ var bind = function(app){
    })
 
    .get('/rooms/list', function(req, res){
-       db.collection('rooms').find().toArray().then(function(data){
+       db.collection('rooms').find().toArray().then(function(rooms){
           db.collection('tables').find().toArray().then(function(tables){
+             var tablesByRoom = {};
+             tables.each(function(item){
+                tablesByRoom[item.RoomId] = tablesByRoom[item.RoomId] || [];
+                tablesByRoom[item.RoomId].push(item);
+             });
              db.collection('orders').find({Status: 'Open'}).toArray().then(function(orders){
-
-                   res.json(data);
-
+                var ordersByTable = {};
+                orders.each(function(item){
+                   ordersByTable[item.RoomId] = ordersByTable[item.RoomId] || [];
+                   ordersByTable[item.RoomId].push(item);
+                });
+                rooms.map(function(room){
+                   var totalPlace = 0;
+                   if (tablesByRoom[room['Id']]){
+                      tablesByRoom[room['Id']].each(function(table){
+                        totalPlace += parseInt(table.Chairs, 10);
+                      });
+                   }
+                });
+                res.json(rooms);
              });
           });
        });

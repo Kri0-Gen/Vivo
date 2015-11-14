@@ -4,8 +4,7 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
       $scope.formHidden = true;
       $scope.addNew = function(){
          $scope.formHidden = false;
-         $scope.FirstName = '';
-         $scope.LastName = '';
+          $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
          $scope.Id=0;
       };
       $scope.onSubmit = function(){
