@@ -14,7 +14,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
             {scale_width: 1.0, scale_height: 0.5, x: -8, y: -3, transform: "rotate(90deg)"}
          ]},
-         {class: "room__table room__table_square", width: 49, height: 49, chairs: [ 
+         {class: "room__table room__table_square", width: 49, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 13, y: 0, transform: "rotate(180deg)"},
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
@@ -106,11 +106,11 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             y *= $scope.scale;
 
             var offsetX = -$("#room_background").offset().left;
-            var offsetY = -$("#room_background").offset().top;
+            var offsetY = 0;//-$("#room_background").offset().top;
             var nx = e.pageX + offsetX;
             var ny = e.pageY + offsetY;
 
-            var add_angle = -Math.atan2($scope.rotating_table.width*$scope, $scope.rotating_table.height);
+            var add_angle = -Math.atan2($scope.rotating_table.width, $scope.rotating_table.height);
             var angle = add_angle + Math.atan2(nx-x, ny-y);
             angle = angle / Math.PI * 180;
             $scope.rotating_table.angle = -angle;
