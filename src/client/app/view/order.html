@@ -1,11 +1,12 @@
+<div ng-controller="order">
     <div class="header">
         <div class="wrapper_header">
             <h3 class="title_header">Зал 1 - Столик 1</h3>
-            <div class="id_people">ФИО Сотрудника</div>
+            <div class="id_people">{{userFirstName}} {{userLastName}}</div>
         </div>
     </div>
     <div class="content-order">
-        <div ng-controller="order">
+        <div>
    <div class=" order-dishes">
       <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category{{category.Id}}" ng-click="selectCategory(category.Id);">
          {{category.Name}}
@@ -18,18 +19,18 @@
    </div>
    <div class="order-orderDishes">
        <div class="order-orderDishesScroll">
-       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category{{dish.Category}}" ng-click="SelectDishInOrder($index);">
-           <div class="order-dishState">
-                <div class="order-DishStateInOrder" ng-if="dish.State===1">На кухне </div>
-                <div class="order-DishStateInOrder" ng-if="dish.State===2">Выдан </div>
+           <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category{{dish.DishInfo.Category}}" ng-click="SelectDishInOrder($index);">
+               <div class="order-dishState">
+                    <div class="order-DishStateInOrder" ng-if="dish.Status===1">На кухне </div>
+                    <div class="order-DishStateInOrder" ng-if="dish.Status===2">Выдан </div>
+               </div>
+               <div class="order-orderDishName">
+                    <div class="order-DishNameInOrder">{{dish.DishInfo.Name}} </div>
+               </div>
+               <div class="order-orderDishCost">
+                    <div class="order-DishCostInOrder">{{dish.DishInfo.Cost}}-</div>
+               </div>
            </div>
-           <div class="order-orderDishName">
-                <div class="order-DishNameInOrder">{{dish.Name}} </div>
-           </div>
-           <div class="order-orderDishCost">
-                <div class="order-DishCostInOrder">{{dish.Cost}}-</div>
-           </div>
-       </div>
        </div>
        <div class="SummCost">
            Итого: {{SummCost}}

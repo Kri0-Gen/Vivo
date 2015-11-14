@@ -1,26 +1,26 @@
 <div class="main" ng-controller="auth">
-    <div class="header">
-        <div class="logo">
-            <img src="app/images/avatars.jpg">
-        </div>
-    </div>
-    <div class="auth_people_block">
-        <h2 class="auth_title_people">
+   <div class="header">
+      <div class="logo">
+         <img src="app/images/avatars.jpg">
+      </div>
+   </div>
+    <div class="people_block">
+        <h2 class="title_people">
             Сотрудники:
         </h2>
-        <div class="auth_people">
+        <div class="people">
             <div ng-repeat="waiter in waiters">
-                <div class="auth_pos_people" ng-click="selectUser(user.id);">
+                <div class="pos_people" ng-click="selectUser(waiter);">
                     {{waiter.FirstName + ' ' + waiter.LastName}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="auth_footer">
-        <div class="auth_admin" ng-click="selectedUser = 0">
+    <div class="footer">
+        <div class="admin" ng-click="selectUser(0);">
             Я - администратор
         </div>
-        <div class="auth_copyrights">
+        <div class="copyrights">
             (с) Студенты
         </div>
     </div>

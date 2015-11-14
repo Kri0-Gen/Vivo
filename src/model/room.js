@@ -62,12 +62,19 @@ var bind = function(app){
        var roomId = req.body.Id;
         db.collection('rooms').remove({Id: parseInt(roomId, 10)});
         db.collection('tables').remove({RoomId: parseInt(12, 10)});
+           res.end('OK');
+
    })
 
    .get('/rooms/list', function(req, res){
-
        db.collection('rooms').find().toArray().then(function(data){
-           res.json(data);
+          db.collection('tables').find().toArray().then(function(tables){
+             db.collection('orders').find({Status: 'Open'}).toArray().then(function(orders){
+
+                   res.json(data);
+
+             });
+          });
        });
 
    });

@@ -62,18 +62,17 @@ module.exports = function(app){
       var order = db.model('orders', orderSchem);
       var create = function(data){
          var ordePostedElem = new order(data);
-         ordePostedElem.save(function(){
-            console.log(arguments);
+         ordePostedElem.save(function(err, zzz){
+            res.json({Id:data.Id});
          });
       };
       db.getNextSequence('orderid', function(id){
          create({
             Id: id,
             Status: 'Open',
-            Table: req.body['Table'],
-            Officiant: req.body['Officiant']
+            Table: parseInt(req.body['Table'], 10),
+            Officiant: parseInt(req.body['Officiant'], 10)
          });
-         res.send(''+id);
       });
    });
 

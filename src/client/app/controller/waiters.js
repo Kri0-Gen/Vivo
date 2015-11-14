@@ -27,11 +27,13 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
          $scope.LastName = '';
          $scope.Id = '';
       };
-      $scope.delWaiters = function(waiter) {
-         if (confirm('Вы точно хотите удалить официанта?'))
-            waitersSrv.delete({Id:waiter.Id}).$promise.then(function(){
-               $scope.waiters = waitersSrv.query();
-            });
-      }
+      $scope.delWaiters = function (id){
+          var promise;
+          waitersSrv.deleted({Id:id}).$promise.then(function(){
+              $scope.waiters = waitersSrv.query();
+          });
+
+
+      };
    }]);
 });

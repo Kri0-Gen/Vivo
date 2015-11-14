@@ -1,3 +1,9 @@
-<div class="main" ng-controller="reports">
-    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class="main reports" ng-controller="reports">
+   <div class="reports__filter">
+      <input type="date" ng-model="firstData"/>
+      <input type="date" ng-model="lastData"/>
+      <div ng-click="playReport()" class="reports__button"><span>Построить отчет</span></div>
+   </div>
+
+   <div id="container" style="min-width: 310px; height: 800px; margin: 48px auto"></div>
 </div>
