@@ -6,6 +6,7 @@ define('service/order',['service/main'], function(services){
          getCategories: {method:'GET', params:{ param1: 'dish_cats', param2: 'list' }, isArray:true},
          getDishes: {method:'GET', params:{ param1: 'dishes', param2: 'listByCat' }, isArray:false},
          newOrder: {method: 'POST', params: {param1: 'order', param2: 'new'}}
+         closeOrder: {method: 'POST', params: {param1: 'order', param2:''}}
       });
    }]);
    return providerName;
