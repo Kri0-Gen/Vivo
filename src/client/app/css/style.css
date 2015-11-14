@@ -1,20 +1,7 @@
-/*-----------------Common---------------------*/
-
-html{
-   height: 100%;
-}
-
-.mainView{
-   position: absolute;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-}
-
+/*all screens*/
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: 'Open Sans', sans-serif;
 }
 body{
@@ -23,6 +10,12 @@ body{
     background: url(../images/background.JPG) center 0 no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+.left{
+	margin-left: 200px !important;
+}
+.left2{
+	margin-left: 400px !important;
 }
 .main{
     width:100%;
@@ -75,19 +68,271 @@ thead th {
     width: 160px;
     height: 160px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 .logo img{
     width: 160px;
     height: 160px;
 }
+.wrapper_header{
+	float: left;
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 55px;
+	position: fixed;
+	z-index: 10;
+}
+.order-DishesInOrder{
+	cursor:pointer;
+}
 
-/*-----------------Auth---------------------*/
+/*popup*/
+
+.wrapper_edit_table{
+	background: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	position: fixed;
+}
+.form_edit_table{
+	background: #c7c7c7;
+	width: 700px;
+	height: 400px;
+	margin: 200px auto;
+}
+.form_edit_table_right{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+.form_edit_table_left{
+	border-right: 1px solid #ddd;
+	float: left;
+	width: 49%;
+	height: 100%;
+}
+.img_table{
+	float: left;
+	width: 100%;
+	height: 300px;
+}
+.img_table img{
+	width: 50px;
+	height: 50px;
+	margin: 150px auto 0 auto;
+	display: block;
+}
+.btn_left,
+.btn_right{
+	float: left;
+	width: 50%;
+	height: 50px;
+	text-align: center;
+	font-size: 35px;
+	cursor: pointer;
+}
+.btn_left:hover,
+.btn_right:hover{
+	background: rgba(210, 210, 210, 0.7);
+}
+.settings{
+	width: 315px;
+	float: left;
+	height: 300px;
+	padding: 100px 20px 0 20px;
+	text-align: center;
+}
+.settings select{
+	width: 220px;
+	margin: 20px auto;
+	float: none;
+}
+.btn_done{
+    text-align: center;
+    cursor: pointer;
+    background: #B3CB81;
+    width: 200px;
+    margin: 125px auto 0 auto;
+    padding: 17px 20px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 13px;
+    box-shadow: 0 0 20px;
+}
+.btn_done:hover{
+    box-shadow: 0 0 20px #000;	
+}
+.form > form{
+	width: 200px;
+	height: 200px;
+	margin: 0px auto;
+}
+.form{
+	background: #c7c7c7;
+	width: 250px;
+	height: 330px;
+	margin: 200px auto;
+	padding-top: 30px;
+}
+input,
+select{
+	width: 100%;
+	float: left;
+	height: 30px;
+	font-weight: 300;
+	font-style: italic;
+	padding: 5px;
+}
+.form .btn{
+	float: left;
+	height: 30px;
+	border: 0px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	margin-top: 20px;
+	padding: 5px 7px;
+	cursor: pointer;
+}
+.form .btn + button{
+	margin-left: 3px;
+}
+.done{
+	background: #B3CB81;
+}
+.close{
+	background: #F26700;
+}
+/*room*/
+
+.btn_edit{
+	float: right;
+	margin: 15px 20px 0px 0px;
+	color: #F26700;
+}
+.tables{
+	position: relative;
+	background: #5392B1;
+	width: 1000px;
+	height: 750px;
+	margin: 55px auto 0 auto;
+}
+.table.circle{
+	position: absolute;
+	background: url(../images/table_circle.png) no-repeat;
+	width: 50px;
+	height: 50px;
+	margin: 6px;
+}
+.table.rectangle{
+	position: absolute;
+	background: url(../images/table_rectangle.png) no-repeat;
+	background-size: 80px 50px;
+	width: 80px;
+	height: 50px;
+	margin: 6px;
+}
+.table.cub{
+	position: absolute;
+	background: url(../images/table_rectangle.png) no-repeat;
+	background-size: 50px 50px;
+	width: 50px;
+	height: 50px;
+	margin: 6px;
+}
+.cheir_left{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+	transform:rotate(270deg);
+    margin: 27px 0px 0px -28px;
+}
+.cheir_top{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+    margin: -39px 0px 0px -6px;
+}
+.cheir_top_2{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+    margin: -7px 0px 0px -30px;
+}
+.cheir_top_3{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+    margin: -7px 0px 0px 4px;
+}
+.cheir_right{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;	
+	transform:rotate(90deg);
+    margin: -20px 0px 0px 28px;
+}
+.cheir_right_2{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;	
+	transform:rotate(90deg);
+    margin: -20px 0px 0px 58px;
+}
+.cheir_bottom{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+	transform:rotate(180deg);
+    margin: 17px 0px 0px 6px;
+}
+.cheir_bottom_2{
+	float: left;
+	background: url(../images/cheir.png);
+	width: 50px;
+	height: 6px;
+	transform:rotate(180deg);
+    margin: -6px 0px 0px 40px;
+}
+.inp_edit{
+	float: left;
+	width: 150px;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 300;
+	padding: 5px;
+	margin: 7px 0px 0px 20px;
+}
+.table_edit,
+.table_rotate,
+.table_del{
+	display: none;
+	cursor:pointer;
+	color: #fff;
+}
+.tables.edit .table:hover .table_edit,
+.tables.edit .table:hover .table_rotate,
+.tables.edit .table:hover .table_del {
+    display: block;
+    float: right;
+    margin-right: 2px;
+}
 
 /*Desktop*/
 
 @media (min-width: 992px){
-    .auth_people_block {
+	
+	/*auth*/
+	
+    .people_block{
         width: 960px;
         height: 300px;
         margin: 20px auto 0px auto;
@@ -95,20 +340,20 @@ thead th {
         overflow: hidden;
         padding-bottom: 10px;
     }
-    .auth_people {
+    .people{
         float: left;
         overflow-y: auto;
         width: 960px;
         height: 240px;
     }
-    .auth_title_people {
+    .title_people{
         text-align: center;
         padding: 15px 0px;
         color: #fff;
         float: left;
         width: 98%;
     }
-    .auth_pos_people {
+    .pos_people{
         float: left;
         width: 98%;
         height: 30px;
@@ -121,16 +366,16 @@ thead th {
         margin: 10px 5px;
         cursor:pointer;
     }
-    .auth_pos_people:hover{
+    .pos_people:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_footer {
+    .footer{
         width: 100%;
         height: 50px;
     }
-    .auth_admin {
+    .admin{
         border-radius: 10px;
         width: 250px;
         height: 40px;
@@ -143,22 +388,222 @@ thead th {
         text-align:center;
         cursor: pointer;
     }
-    .auth_admin:hover{
+    .admin:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_copyrights {
+    .copyrights{
         float: right;
         margin: 55px 30px 0px 0px;
         color: #fff;
     }
+	
+	/*rooms*/
+	
+	.title_header{
+		float: left;
+		margin: 15px;
+		color: #fff;
+		text-transform: uppercase;
+	}
+	.id_people{
+		float: right;
+		margin: 15px 40px 0px 0px;
+		color: #B3CB81;
+	}
+	.add_hall{
+        background:#F26700;
+		width: 150px;
+		height: 33px;
+		float: left;
+		text-transform: uppercase;
+		border-radius: 10px;
+		box-shadow: 0px 0px 7px rgba(255, 237, 136, 0.7);
+		text-align: center;
+		padding-top: 13px;
+		color: #fff;
+		font-weight: bold;
+		margin: 4px 0px 0px 20px;
+		cursor: pointer;
+	}
+	.add_hall:hover{		
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+	}
+	.rooms{
+		width: 1080px;
+		overflow: hidden;
+		padding-top: 80px;
+		margin: 0 auto;
+		padding-left: 2px;
+	}
+	.pos_room{
+		max-width: 496px;
+		float: left;
+		max-height: 200px;
+		border: 2px solid #000;
+		background: rgba(220, 225, 228, 0.8);
+		border-radius: 7px;
+		margin: 0px 20px 20px 0px;
+		cursor: pointer;
+	}
+	.pos_room:hover{		
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.7);
+	}
+	.content_rooms{
+		width: 260px;
+		float: left;
+		height: 111px;
+		box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.6);
+		padding: 10px;
+	}
+	.content_rooms h3{
+		margin-bottom: 5px;
+	}
+	.places{
+		margin: 5px 0px;
+	}
+	.content_rooms font{
+		margin-right: 5px;
+		font-weight: bold;
+	}
+	.logo_room{
+		width: 196px;
+		max-height: 200px;
+		overflow: hidden;
+		border-radius: 0px 5px 5px 0px;		
+	}
+	.logo_room img{
+		width: 100%;
+		height: auto;
+	}
+	
+	/*Order*/
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
+.order-dishes{
+    float: left;
+    width: 80%;
+}
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 95px;
+   height: 30px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+   cursor: pointer;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+   font-weight: 800;
+   width: 95px;
+}
+.order-dishBlock{
+	height:40px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
+}
+.order-category2 {/*салаты*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
+}
+.order-category3 {/*горячее*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
+}
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
+}
+.order-category5 {/*напитки*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
+}
+.order-orderDishes{
+    float:right;
+    margin-bottom: 5px;
+    width: 140px;
+}
+.order-DishesInOrder {
+    /*background-color: darkgreen;*/
+    width: 110px;
+    height: 53px;
+    margin-bottom: 5px;
+}
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
+.order-DishStateInOrder{
+    -webkit-transform:rotate(270deg);
+    font-size: 8pt;
+    height: 10px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishNameInOrder{
+    margin-top: 15px;
+    float: left;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishCostInOrder {
+    font-size: 9pt;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+.order-orderDishesScroll{	
+	height: 60%;
+	overflow-y: auto;
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
 }
 
 /*Tablets*/
 
 @media(min-width: 768px) and (max-width: 991px){
-    .auth_people_block {
+	
+	/*auth*/
+	
+    .people_block{
         width: 768px;
         height: 300px;
         margin: 10px auto 0px auto;
@@ -166,20 +611,20 @@ thead th {
         overflow: hidden;
         padding-bottom: 10px;
     }
-    .auth_people {
+    .people{
         float: left;
         overflow-y: auto;
         width: 768px;
         height: 240px;
     }
-    .auth_title_people {
+    .title_people{
         text-align: center;
         padding: 15px 0px;
         color: #fff;
         float: left;
         width: 98%;
     }
-    .auth_pos_people {
+    .pos_people{
         float: left;
         width: 48%;
         height: 50px;
@@ -192,16 +637,16 @@ thead th {
         margin: 10px 5px;
         cursor:pointer;
     }
-    .auth_pos_people:hover{
+    .pos_people:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_footer {
+    .footer{
         width: 100%;
         height: 50px;
     }
-    .auth_admin {
+    .admin{
         border-radius: 10px;
         width: 250px;
         height: 40px;
@@ -214,40 +659,240 @@ thead th {
         text-align:center;
         cursor: pointer;
     }
-    .auth_admin:hover{
+    .admin:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_copyrights {
+    .copyrights{
         float: right;
         margin: 55px 30px 0px 0px;
         color: #fff;
     }
+	
+	/*rooms*/
+	
+	.title_header{
+		float: left;
+		margin: 15px;
+		color: #fff;
+		text-transform: uppercase;
+	}
+	.id_people{
+		float: right;
+		margin: 15px 40px 0px 0px;
+		color: #B3CB81;
+	}
+	.add_hall{
+        background:#F26700;
+		width: 150px;
+		height: 33px;
+		float: left;
+		text-transform: uppercase;
+		border-radius: 10px;
+		box-shadow: 0px 0px 7px rgba(255, 237, 136, 0.7);
+		text-align: center;
+		padding-top: 13px;
+		color: #fff;
+		font-weight: bold;
+		margin: 4px 0px 0px 20px;
+		cursor: pointer;
+	}
+	.add_hall:hover{		
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+	}
+	.rooms{
+		width: 100%;
+		overflow: hidden;
+		padding-top: 80px;
+		margin: 0 auto;
+		padding-left: 2px;
+	}
+	.pos_room{
+		width: 46%;
+		float: left;
+		max-height: 200px;
+		border: 2px solid #000;
+		background: rgba(220, 225, 228, 0.8);
+		border-radius: 7px;
+		margin: 0px 1% 20px 1%;
+		cursor: pointer;
+	}
+	.pos_room:hover{		
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.7);
+	}
+	.content_rooms{
+		width: 50%;
+		float: left;
+		max-height: 180px;
+		padding: 10px;
+		font-size: 14px;
+	}
+	.content_rooms h3{
+		margin-bottom: 3px;
+	}
+	.places{
+		margin: 2px 0px;
+	}
+	.content_rooms font{
+		margin-right: 5px;
+		font-weight: bold;
+	}
+	.logo_room{
+		max-height: 200px;
+		overflow: hidden;
+		border-radius: 0px 5px 5px 0px;		
+	}
+	.logo_room img{
+		width: 100%;
+		height: auto;
+	}
+	/*Order*/
+	
+	
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
+.order-dishes{
+    float: left;
+    width: 80%;
+}
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 95px;
+   height: 30px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+   cursor: pointer;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+   font-weight: 800;
+   width: 95px;
+}
+.order-DishBlock{
+	height:40px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
+}
+.order-category2 {/*салаты*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
+}
+.order-category3 {/*горячее*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
+}
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
+}
+.order-category5 {/*напитки*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
+}
+.order-orderDishes{
+    float:right;
+    margin-bottom: 5px;
+    width: 140px;
+}
+.order-DishesInOrder {
+    /*background-color: darkgreen;*/
+    width: 110px;
+    height: 53px;
+    margin-bottom: 5px;
+}
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
+.order-DishStateInOrder{
+    -webkit-transform:rotate(270deg);
+    font-size: 8pt;
+    height: 10px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishNameInOrder{
+    margin-top: 15px;
+    float: left;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishCostInOrder {
+    font-size: 9pt;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+.order-orderDishesScroll{	
+	height: 60%;
+	overflow-y: auto;
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
 }
 
 /*Phones*/
 
-@media(max-width: 767px){
-    .auth_people_block {
+@media (max-width: 767px){
+	
+	/*auth*/
+	
+    .people_block{
         width: 100%;
         overflow: hidden;
         margin: 10px auto 0px auto;
         background: rgba(0, 0, 0, 0.7);
         padding-bottom: 10px;
     }
-    .auth_people {
+    .people{
         float: left;
         width: 100%;
     }
-    .auth_title_people {
+    .title_people{
         text-align: center;
         padding: 15px 0px;
         color: #fff;
         float: left;
         width: 98%;
     }
-    .auth_pos_people {
+    .pos_people{
         float: left;
         width: 48%;
         height: 40px;
@@ -260,16 +905,16 @@ thead th {
         margin: 10px 5px;
         cursor:pointer;
     }
-    .auth_pos_people:hover{
+    .pos_people:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_footer {
+    .footer{
         width: 100%;
         height: 50px;
     }
-    .auth_admin {
+    .admin{
         border-radius: 10px;
         width: 250px;
         height: 40px;
@@ -282,16 +927,105 @@ thead th {
         text-align:center;
         cursor: pointer;
     }
-    .auth_admin:hover{
+    .admin:hover{
         background: #B3CB81;
         color: #fff;
         transition: ease 0.3s;
     }
-    .auth_copyrights {
+    .copyrights{
         float: right;
         margin: 55px 30px 0px 0px;
         color: #fff;
     }
+	
+	/*rooms*/
+	
+	.title_header{
+		float: left;
+		margin: 15px;
+		color: #fff;
+		text-transform: uppercase;
+	}
+	.id_people{
+		float: right;
+		margin: 15px 40px 0px 0px;
+		color: #B3CB81;
+	}
+	.add_hall{
+        background:#F26700;
+		width: 150px;
+		height: 33px;
+		float: left;
+		text-transform: uppercase;
+		border-radius: 10px;
+		box-shadow: 0px 0px 7px rgba(255, 237, 136, 0.7);
+		text-align: center;
+		padding-top: 13px;
+		color: #fff;
+		font-weight: bold;
+		margin: 4px 0px 0px 20px;
+		cursor: pointer;
+	}
+	.add_hall:hover{		
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+	}
+	.rooms{
+		width: 100%;
+		overflow: hidden;
+		padding-top: 80px;
+		margin: 0 auto;
+		padding-left: 2px;
+	}
+	.pos_room{
+		width: 96%;
+		float: left;
+		height: 200px;
+		border: 2px solid #000;
+		background: rgba(220, 225, 228, 0.8);
+		border-radius: 7px;
+		margin: 0px 1% 20px 1%;
+		cursor: pointer;
+	}
+	.pos_room:hover{		
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.7);
+	}
+	.content_rooms{
+		width: 50%;
+		float: left;
+		height: 160px;
+		box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.6);
+		padding: 20px;
+	}
+	.content_rooms h3{
+		margin-bottom: 5px;
+	}
+	.places{
+		margin: 5px 0px;
+	}
+	.content_rooms font{
+		margin-right: 5px;
+		font-weight: bold;
+	}
+	.logo_room{
+		height: 100%;
+		overflow: hidden;
+		border-radius: 0px 5px 5px 0px;		
+	}
+	.logo_room img{
+		width: 100%;
+		height: 200px;
+	}
+	/*Order*/
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
 }
 
 /*-----------------Rooms---------------------*/
@@ -306,12 +1040,14 @@ thead th {
 }
 
 /*------------------Room---------------------*/
+.room__table {
+   position: absolute;
+   transform-origin: 0 0;
+}
 
-.room__table{
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	background: red;	
+.room__table_square {
+   background: url(edittable_u70.png) center;
+   background-size: 49px 49px;
 }
 
 /*-------------admin---------------*/
@@ -387,14 +1123,15 @@ thead th {
 /* Orders */
 .order-dishes{
     float: left;
-    width: calc(100% - 120px);
+    width: 98%;
 }
 .order-categoryBlock, .order-dishBlock {
    display: inline-block;
-   width: 85px;
-   height: 40px;
+   width: 95px;
+   height: 30px;
    margin: 2px 4px;
    padding: 2px 4px;
+   cursor: pointer;
 }
 .order-dishName {
    text-align: center;
@@ -402,7 +1139,11 @@ thead th {
 .order-categoryName {
    text-align: center;
    padding-top:10px;
-   font-weight: bold;
+   font-weight: 800;
+   width: 95px;
+}
+.order-DishBlock{
+	height:40px;
 }
 .order-dishCost {
    text-align: right;
@@ -428,19 +1169,19 @@ thead th {
     border: 3px solid #9673A6;
 }
 .order-orderDishes{
-    float:right;
+    float: left;
     margin-bottom: 5px;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    bottom: 0;
-    width: 140px;
+    margin-top: 30px;
+    width: 100%;
+    height: 138px;
 }
 .order-DishesInOrder {
-    /*background-color: darkgreen;*/
+    /* background-color: darkgreen; */
     width: 110px;
-    height: 53px;
+    height: 60px;
     margin-bottom: 5px;
+    float: left;
+    margin-left: 10px;
 }
 .order-dishState{
     width:10px;
@@ -479,27 +1220,111 @@ thead th {
     margin-right: 5px;
     margin-top: 35px;
 }
+.order-orderDishesScroll{	
+    width: 100%;
+    overflow-x: auto;
+    height: 138px;
+    floaT: left;
+}
+.SummCost{
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    float: left;
+    font-weight: 800;
+    padding: 15px 0px;
+	background: linear-gradient(to top, #F06900, #ffd797);
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
+}
 
 /*width<620px*/
+
 @media(max-width: 619px){
-    .auth_pos_people {
+	
+	/*auth*/
+		
+    .pos_people{
         width: 98%;
         margin-right: 0;
         margin-left: 2px;
     }
-}
-.order-orderDishesScroll{
-    max-height: calc(100% - 126px);
-    overflow: auto;
-}
-.SummCost{
-    color: #ffffff;
-    margin: 8px 0 4px;
-}
-.toKitchen, .toPay{
-    width: 85px;
-    padding: 8px;
-    margin: 4px 0;
+	
+	/*rooms*/
+	
+	.id_people{
+		float: left;
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;		
+		color: #B3CB81;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.wrapper_header{
+		height: 100px;		
+	}
+	.rooms{
+		padding-top: 130px;
+	}
+	.pos_room{
+		width: 96%;
+		float: left;
+		height: 150px;
+		border: 2px solid #000;
+		background: rgba(220, 225, 228, 0.8);
+		border-radius: 7px;
+		margin: 0px 0 20px 0;
+		cursor: pointer;
+	}
+	.pos_room:hover{		
+        transition: ease 0.3s;
+		box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.7);
+	}
+	.content_rooms{
+		width: 98%;
+		float: left;
+		height: 160px;
+		box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.6);
+		padding: 20px;		
+		text-align: center;
+	}
+	.content_rooms p{
+		width: 90%;
+		float: left;		
+	}
+	.logo_room{
+		display: none;
+		height: 100%;
+		overflow: hidden;
+		border-radius: 0px 5px 5px 0px;		
+	}
+	.logo_room img{
+		width: 100%;
+		height: 200px;
+	}
+	.content_rooms h3{
+		margin-bottom: 5px;
+		text-align: center;
+		float: left;	
+		width: 90%;
+	}
+	.places{
+		margin: 5px 0px;
+		text-align: center;
+		float: left;	
+		width: 90%;
+	}
+	.content_rooms font{
+		margin-right: 5px;
+		font-weight: bold;
+	}
 }
 
 
@@ -552,4 +1377,40 @@ select{
 }
 .close{
     background: #F26700;
+}
+
+
+/*---------------Tables-----------*/
+
+.room__table_circle {
+   border-radius: 50%;
+   background: url(circle_table_image.png) center;
+}
+
+.room__table_bar {
+   background: url(edittable_u70.png) center;
+   background-size: cover;
+}
+
+.room__chair {
+   transform-origin: center center;
+   position: absolute;
+   width: 23px; height: 6px;
+   background: url(chair_image.png) center;
+}
+
+.room_background {
+    background: gray;
+    position: relative;
+    left: 50%; top: 50%;
+    transform: translate(-50%);
+}
+
+.new_table_div {
+   visibility: hidden;
+   position: fixed;
+   left: 50px; top: 50px;
+   width: 512px;
+   height: 255px;
+   background: gainsboro;
 }
