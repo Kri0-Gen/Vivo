@@ -13,6 +13,8 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
       $scope.categories = orderSrv.getCategories();
       $scope.currentCat = 1;
       $scope.dishes = orderSrv.getDishes();
+      $scope.room_name = window.localStorage['roomName'];
+      $scope.table_name = window.localStorage['tableName'];
       var dishHashMap={};
        $scope.dishes.$promise.then(function(data){
            for (var catId in data){

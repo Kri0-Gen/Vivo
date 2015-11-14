@@ -31,7 +31,8 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
       //tableSrv.save({tables: [{Id: 1, X: 10, Y: 10, Type: 1, Chairs: 3, RoomId: $routeParams.id, Angle: 0}]});
       $scope.captured = -1;
       $scope.rotating_table = null;
-       $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+      $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+      $scope.room_name = window.localStorage['roomName'];
 
       function get_table_by_data(data) {
          return {dbID: data.Id, id: ++$scope.table_counter, x: data.X, y: data.Y,
@@ -287,6 +288,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
 
       $scope.on_table_click = function(table) {
          if ($scope.admin_display == "") return;
+         window.localStorage["tableName"] = "Столик " + table.id;
          if (table.order_id == -1) {
             orderSrv.newOrder({Table: table.dbID, Officiant: window.localStorage['userID']}).$promise.then(function(data){
                 window.location.hash = '/order/' + data.Id + '?roomId=' + $routeParams.id;
