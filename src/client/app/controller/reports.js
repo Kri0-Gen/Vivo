@@ -3,22 +3,20 @@ define('controller/reports', ['controller/main', 'service/waiters', 'service/roo
       $scope.selectedUser = -1;
       $scope.waiters = waitersSrv.query();
       $scope.rooms = roomsSrv.query();
-      $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
-      $scope.isAdmin=window.localStorage['userID']=='0';
 
       $scope.selectUser = function(id){
          window.localStorage['userID'] = id;
          window.location.hash = '/rooms'
       };
 
-      $scope.rooms.$promise.then(function(data) {
-         var nameList = [];
-
-         for ( var i in data ) {
-            if (data[i].Name !== undefined)
-               nameList.push( data[i].Name )
-         }
-      });
+      //$scope.rooms.$promise.then(function(data) {
+      //   var nameList = [];
+      //
+      //   for ( var i in data ) {
+      //      if (data[i].Name !== undefined)
+      //         nameList.push( data[i].Name )
+      //   }
+      //});
 
       var BLResult = {
          //Дни, по которым строится отчет
