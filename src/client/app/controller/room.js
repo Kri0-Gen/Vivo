@@ -1,11 +1,11 @@
-define('controller/room', ['controller/main', 'service/room'], function(controllers, roomProvider){
-   controllers.controller('room', ['$scope', '$routeParams', roomProvider, function ($scope, $routeParams, roomSrv) {
+define('controller/room', ['controller/main', 'service/room'], function(controllers, tableProvider) {
+   controllers.controller('room', ['$scope', '$routeParams', tableProvider, function ($scope, $routeParams, tableSrv) {
       var ZOOM_STEP = 0.5;
       var ZOOM_MAX = 2.0, ZOOM_MIN = 0.5;
       var SCENE_HEIGHT = 750, SCENE_WIDTH = 1000;
 
-      roomSrv.query({roomId: $routeParams.id});
-      roomSrv.save({roomId: $routeParams.id, lala: 'test'});
+      tableSrv.query({roomId: $routeParams.id});
+      tableSrv.save({roomId: $routeParams.id, lala: 'test'});
 
       var TABLE_TYPE = [
          {class: "room__table room__table_circle", width: 50, height: 49, chairs: [
@@ -14,7 +14,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
             {scale_width: 1.0, scale_height: 0.5, x: -8, y: -3, transform: "rotate(90deg)"}
          ]},
-         {class: "room__table room__table_square", width: 49, height: 49, chairs: [ 
+         {class: "room__table room__table_square", width: 49, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 13, y: 0, transform: "rotate(180deg)"},
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
