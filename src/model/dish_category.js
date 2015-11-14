@@ -18,6 +18,25 @@ var dish_catSchem=mongoose.Schema({
     }
 });
 var bind = function(app){
+   // fill categories
+   db.collection('dish_cats').drop();
+   db.collection('dish_cats').insertOne({
+      'Id': 1,
+      'Name': 'Супы'
+   });
+   db.collection('dish_cats').insertOne({
+      'Id': 2,
+      'Name': 'Салаты'
+   });
+   db.collection('dish_cats').insertOne({
+      'Id': 3,
+      'Name': 'Горячее'
+   });
+   db.collection('dish_cats').insertOne({
+      'Id': 4,
+      'Name': 'Закуски'
+   });
+
     app.post('/dish_cats/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);
             var dish_catId = req.body.Id;
