@@ -7,6 +7,7 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
       var orderId = $routeParams.id;
        $scope.userFirstName = window.localStorage['userFirstName'];
        $scope.userLastName = window.localStorage['userLastName'];
+       $scope.isAdmin=window.localStorage['userID']=='0';
 
       // список блюд по категориям для добавления в заказ
       $scope.categories = orderSrv.getCategories();
