@@ -57,44 +57,30 @@ body{
 
 /*------------------Room---------------------*/
 .room__table {
+   position: absolute;
    transform-origin: 0 0;
 }
 
 .room__table_square {
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	background: red;	
+   background: url(edittable_u70.png) center;
+   background-size: 49px 49px;
 }
 
 .room__table_circle {
-   position: absolute;
    border-radius: 50%;
-   width: 100px;
-   height: 100px;
-   background: green;
+   background: url(circle_table_image.png) center;
 }
 
 .room__table_bar {
-   position: absolute;
-   width: 200px;
-   height: 100px;
-   background: yellow;
-}
-
-.room__table_bar_up {
-   position: absolute;
-   width: 100px;
-   height: 200px;
-   background: white;
+   background: url(edittable_u70.png) center;
+   background-size: cover;
 }
 
 .room__chair {
-   transform-origin: 0 0;
+   transform-origin: center center;
    position: absolute;
-   width: 75px;
-   height: 10px;
-   background: brown;
+   width: 23px; height: 6px;
+   background: url(chair_image.png) center;
 }
 
 .room_background {
@@ -103,4 +89,9 @@ body{
 
 .new_table_div {
    visibility: hidden;
+   position: fixed;
+   left: 50px; top: 50px;
+   width: 512px;
+   height: 255px;
+   background: gainsboro;
 }
