@@ -20,12 +20,12 @@ var dishSchem=mongoose.Schema({
     },
     Cost:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Category:{
         type:Number, //ID категории  что-то вроде db.collection('categories')./.../.Id
-        unique:true,
+        unique:false,
         required:true
     } //свзяь
 });
