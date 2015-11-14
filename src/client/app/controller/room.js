@@ -4,9 +4,7 @@ define('controller/room', ['controller/main', 'service/table'], function(control
       var ZOOM_MAX = 2.0, ZOOM_MIN = 0.5;
       var SCENE_HEIGHT = 750, SCENE_WIDTH = 1000;
 
-      tableSrv.save({action: 'store', tables: [{id: 1, x: 10, y: 10, type: 1, chairs: 3, RoomId: $routeParams.id}]});
-      tableSrv.query({action: 'list', id: $routeParams.id});
-
+      var PARAMS = [];
       var TABLE_TYPE = [
          {class: "room__table room__table_circle", width: 50, height: 49, chairs: [
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
@@ -30,15 +28,59 @@ define('controller/room', ['controller/main', 'service/table'], function(control
          ]}
       ];
 
-      // here pass params into controller
-      console.log($routeParams.id);
+      //tableSrv.save({tables: [{Id: 1, X: 10, Y: 10, Type: 1, Chairs: 3, RoomId: $routeParams.id, Angle: 0}]});
 
-      var PARAMS = [
-         {id:1, x:100, y: 100, type: 0, angle: 0, chairs: 4},
-         {id:2, x:300, y: 100, type: 1, angle: 0, chairs: 4},
-         {id:3, x:300, y: 300, type: 2, angle: 0, chairs: 6},
-         {id:4, x:300, y: 300, type: 2, angle: 90, chairs: 4}
-      ];
+      function get_table_by_data(data) {
+         return {dbID: data.Id, id: ++$scope.table_counter, x: data.X, y: data.Y,
+            type: data.Type, chairs: data.Chairs, angle: data.Angle};
+      }
+
+      function get_data_by_table(table) {
+         var type = 0;
+         for (var i = 0; i < TABLE_TYPE.length; i++)
+            if (TABLE_TYPE[i].class == table.type)
+               type = i;
+
+         return {Id: (table.dbID ? table.dbID : undefined), X: table.x, Y: table.y,
+            Type: type, Chairs: table.chairs.length, RoomId: $routeParams.id, Angle: table.angle}
+      }
+
+      function get_data_by_tables(tables) {
+         var result = []
+         for (var i = 0; i < tables.length; i++)
+            result.push(get_data_by_table(tables[i]));
+         return { tables: result, RoomId: $routeParams.id };
+      }
+
+      function send_data() {
+         tableSrv.save(get_data_by_tables($scope.tables));
+      }
+
+      tableSrv.query({id: $routeParams.id}, function(tablesArray) {
+         $scope.table_counter = 0;
+         PARAMS = []
+
+         for (var i = 0; i < tablesArray.length; i++)
+            PARAMS.push(get_table_by_data(tablesArray[i]));
+
+         set_tables_width_height(PARAMS);
+         set_chairs(PARAMS);
+         set_class_type(PARAMS);
+
+
+         $scope.tables = PARAMS;
+
+         $scope.scene = {height: SCENE_HEIGHT, width: SCENE_WIDTH};
+         $scope.scale = 1.0;
+
+         $scope.startX = 0;
+         $scope.startY = 0;
+
+         $scope.captured = -1;
+         $scope.rotating_table = null;
+         $scope.TABLE_TYPE = TABLE_TYPE;
+      });
+
 
       function set_class_type(tables) {
          for (var i = 0; i < tables.length; i++) tables[i].type = TABLE_TYPE[tables[i].type].class;
@@ -73,23 +115,6 @@ define('controller/room', ['controller/main', 'service/table'], function(control
             object.attr(attr, "true");
       }
 
-      set_tables_width_height(PARAMS);
-      set_chairs(PARAMS);
-      set_class_type(PARAMS);
-
-      $scope.table_counter = PARAMS.length;
-      $scope.tables = PARAMS;
-
-      $scope.scene = {height: SCENE_HEIGHT, width: SCENE_WIDTH};
-      $scope.scale = 1.0;
-
-      $scope.startX = 0;
-      $scope.startY = 0;
-
-      $scope.captured = -1;
-      $scope.rotating_table = null;
-      $scope.TABLE_TYPE = TABLE_TYPE;
-
       $scope.capture = function(id, e){
          var offsetX = -$("#room_background").offset().left;
          var offsetY = -$("#room_background").offset().top;
@@ -103,8 +128,13 @@ define('controller/room', ['controller/main', 'service/table'], function(control
       };
 
       $scope.release = function(){
+         if ($scope.captured === -1 && !$scope.rotating_table) {
+            return;
+         }
          $scope.captured = -1;
          $scope.rotating_table = null;
+         console.log('Release');
+         send_data();
       };
 
       $scope.move = function(e){
@@ -214,8 +244,9 @@ define('controller/room', ['controller/main', 'service/table'], function(control
          $scope.new_table.id = ++$scope.table_counter;
 
          $scope.tables.push($scope.new_table);
-         $scope.new_table = null;
+         //$scope.new_table = null;
          $scope.close_table();
+         send_data();
       }
 
       $scope.update_table = function() {
@@ -226,9 +257,11 @@ define('controller/room', ['controller/main', 'service/table'], function(control
       $scope.remove_table = function() {
          $scope.tables.splice($scope.new_table.item_id, 1);
          $scope.close_table();
+         send_data();
       }
 
       $scope.update_chairs_selector = function() {
+         if (!$scope.ChairsSelector) return;
          $scope.new_table.chairs = $scope.ChairsSelector;
          set_table_chairs_by_id($scope.new_table, $scope.new_table.id);
       }
