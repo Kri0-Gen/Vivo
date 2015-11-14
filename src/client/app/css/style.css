@@ -63,3 +63,89 @@ body{
 	height: 100px;
 	background: red;	
 }
+
+/*-------------admin---------------*/
+
+.adminPanel a{
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    padding: 41px;
+}
+
+.adminPanel__container {
+    margin: 64px 8px;
+}
+
+/*---------------Dishes-----------*/
+
+.dishes_container {
+    margin: 4px;
+}
+.dishes__table {
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.dishes__table-head {
+    background: #AFCDE7;
+}
+
+.dishes__table-body {
+    background: #AADDDD;
+}
+
+.dishes__th {
+    padding: 10px 20px;
+}
+
+.dishes__th, .dishes__td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+.dishes__form label {
+    color: #fff;
+}
+.dishes__form {
+    width: 297px;
+}
+
+
+/* Orders */
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 80px;
+   height: 40px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+   background-color: #0ce3ac;
+}
+.order-category2 {/*салаты*/
+   background-color: #aaffff;
+}
+.order-category3 {/*горячее*/
+   background-color: #985f0d;
+}
+.order-category4 {/*гарниры*/
+   background-color: #ac2925;
+}
+.order-category5 {/*напитки*/
+   background-color: #c7254e;
+}

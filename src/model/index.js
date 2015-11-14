@@ -1,5 +1,14 @@
 var fs = require('fs');
 var path = require('path');
+var db=require('../db/db');
+
+db.collection('counters').insert(
+   {
+      _id: "officiantid",
+      seq: 5
+   }
+);
+
 module.exports = function(app){
    var filelist = fs.readdirSync(__dirname);
    for (var i = 0; i < filelist.length; i++){
