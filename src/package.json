@@ -1,5 +1,7 @@
 {
    "dependencies":{
-      "express": "latest"
+      "express": "3.4.7",
+      "mongodb": "latest",
+      "mongoose": "latest"
    }
 }
