@@ -28,11 +28,13 @@ var bind = function(app){
             if (dish_catId) {
                 db.collection('dish_cats').remove({Id: parseInt(dish_catId, 10)});
                 create();
+                res.end('OK');
             }
             else {
                 db.getNextSequence('dish_catid', function(id){
                     req.body.Id = id;
                     create();
+                    res.end('OK');
                 })
             }
 

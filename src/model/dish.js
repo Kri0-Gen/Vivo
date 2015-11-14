@@ -40,6 +40,7 @@ var bind = function(app){
             if (dishId) {
                 db.collection('dishes').remove({Id: parseInt(dishId, 10)});
                 create();
+                res.end('OK');
             }
             else {
                 db.getNextSequence('dishid', function(id){
@@ -48,6 +49,7 @@ var bind = function(app){
                         if(err) throw  err;
                     }).Id;*/
                     create();
+                    res.end('OK');
                 })
             }
 

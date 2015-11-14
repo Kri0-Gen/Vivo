@@ -40,11 +40,13 @@ var bind = function(app){
        if (roomId) {
            db.collection('rooms').remove({Id: parseInt(roomId, 10)});
            create();
+           res.end('OK');
        }
        else {
             db.getNextSequence('roomid', function(id){
                 req.body.Id = id;
                 create();
+                res.end('OK');
             })
        }
 
