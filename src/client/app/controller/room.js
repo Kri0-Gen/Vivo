@@ -57,17 +57,6 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          tableSrv.save(get_data_by_tables($scope.tables));
       }
 
-      $scope.on_table_click = function(table) {
-         if (table.order_id == -1) {
-            orderSrv.newOrder({Table: table.dbID, Officiant: window.localStorage['userID']}).$promise.then(function(data){               
-                window.location.hash = '/order/' + data['0'];
-            });
-         } else {
-            window.location.hash = '/order/' + table.order_id;
-         }
-
-      }
-
       tableSrv.query({id: $routeParams.id}, function(tablesArray) {
          $scope.table_counter = 0;
          PARAMS = [];
@@ -90,6 +79,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.captured = -1;
          $scope.rotating_table = null;
          $scope.TABLE_TYPE = TABLE_TYPE;
+         $scope.admin_display = ($routeParams.admin == 1 ? "" : "display: none");
       });
 
       function set_class_type(tables) {
@@ -126,6 +116,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
       }
 
       $scope.capture = function(id, e){
+         if ($scope.admin_display != "") return;
          var offsetX = -$("#room_background").offset().left;
          var offsetY = -$("#room_background").offset().top;
          var nx = e.pageX + offsetX, ny = e.pageY + offsetY;
@@ -284,5 +275,15 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.rotating_table = table;
       }
 
+      $scope.on_table_click = function(table) {
+         if ($scope.admin_display == "") return;
+         if (table.order_id == -1) {
+            orderSrv.newOrder({Table: table.dbID, Officiant: window.localStorage['userID']}).$promise.then(function(data){
+                window.location.hash = '/order/' + data.Id;
+            });
+         } else {
+            window.location.hash = '/order/' + table.order_id;
+         }
+      }
    }]);
 });

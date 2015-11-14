@@ -27,11 +27,15 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
          $scope.Id = '';
          $scope.Photo = '';
       };
-      $scope.delRoomsadmin = function(roomsadmin) {
-         if (confirm('Вы точно хотите удалить официанта?'))
-            roomsadminSrv.delete({Id:roomsadmin.Id}).$promise.then(function(){
+      $scope.delRoomsadmin = function (id){
+
+         var promise;
+         promise = roomsadminSrv.deleted({Id:id});
+         promise.$promise.then(function(){
+            $scope.roomsadmin = roomsadminSrv.query().$promise.then(function(){
                $scope.roomsadmin = roomsadminSrv.query();
             });
+         });
       };
    }]);
 });

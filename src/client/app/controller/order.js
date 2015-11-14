@@ -20,11 +20,9 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
                }
            }
        });
-
        $scope.SummCost=0;
       // список блюд в заказе с их состояниями (На кухне / Готово)
-     // $scope.orderDishes = [{dishId:1, Name:'Борщ', State:'', Cost:100}, {dishId:1, Name:'Борщ', State:'На кухне', Cost:100}];
-       $scope.orderDishes = [];
+       $scope.orderDishes = []; //orderSrv.getOrderDishes({ OrderId: orderId });
       $scope.selectCategory = function(id){
          $scope.currentCat = id;
       };
@@ -35,19 +33,36 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
        };
         $scope.SelectDishInOrder =function(ind){
             switch ($scope.orderDishes[ind].State){
-                case NEW_DISH: $scope.SummCost-=$scope.orderDishes[ind].Cost;
-                    $scope.orderDishes.splice(ind,1);break;
-                case IN_KITCHEN: $scope.orderDishes[ind].State=READY; break;
+                case NEW_DISH:
+                    $scope.SummCost -= $scope.orderDishes[ind].Cost;
+                    $scope.orderDishes.splice(ind, 1);
+                    break;
+                case IN_KITCHEN:
+                    var res = orderSrv.changeDishState({ OrderId: orderId, DishOrderId: $scope.orderDishes[ind].DishOrderId, Status: READY });
+                    res.$promise.then(function(){
+                        $scope.orderDishes[ind].State = READY;
+                    });
+                    break;
             }
         };
        $scope.toKitchen =function(){
-           for (var i in $scope.orderDishes)
-           if ($scope.orderDishes[i].State===0)
-           {
-               $scope.orderDishes[i].State=1;
+           var newDishes = [];
+           for (var i in $scope.orderDishes) {
+               if ($scope.orderDishes.hasOwnProperty(i) && $scope.orderDishes[i].State === NEW_DISH) {
+                  newDishes.push($scope.orderDishes[i].dishId);
+               }
            }
+           var res = orderSrv.appendDishesToOrder({ OrderId: orderId, dishes: newDishes });
+           res.$promise.then(function(){
+               $scope.orderDishes = orderSrv.getOrderDishes({ OrderId: orderId });
+           });
        };
-       $scope.toPay =function(){};
+       $scope.toPay =function(){
+           var res = orderSrv.closeOrder({OrderId:orderId, Status: 'close'});
+           res.$promise.then(function(){
+               window.location.hash='/room/'+data[0];
+           });
+       };
    }]);
    return 'order';
 });
