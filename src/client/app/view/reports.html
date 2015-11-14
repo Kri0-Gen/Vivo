@@ -1,29 +1,3 @@
-<div class="container" ng-app="example" ng-controller="reports">
-   <header class="header">
-      Отчеты
-   </header>
-   <style>
-      .container {
-         width: 600px;
-         height: 300px;
-      }
-   </style>
-   <!--<div style="height:300px;width:250px;overflow:auto;float:left;">
-      <table class="table table-striped">
-         <tr ng-repeat="price in book.prices">
-            <td>{{price}}</td>
-         </tr>
-      </table>
-   </div>
-   <div style="border: 1px solid #ccc; width: 620px; float: right">
-      <highchart id="chart1" config="chartConfig"></highchart>
-   </div>-->
-
-
-     <!-- <div class="report__reportBlock" ng-repeat="report in reports">
-        {{report.name}}
-      </div>-->
-      <linechart data="data" options="options"></linechart>
-   </div>
-
-
+<div class="main" ng-controller="reports">
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div>

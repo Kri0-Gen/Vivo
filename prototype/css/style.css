@@ -43,6 +43,9 @@ body{
 	position: fixed;
 	z-index: 10;
 }
+.order-DishesInOrder{
+	cursor:pointer;
+}
 
 /*popup*/
 
@@ -95,22 +98,31 @@ body{
 	background: rgba(210, 210, 210, 0.7);
 }
 .settings{
-	width: 100%;
+	width: 315px;
 	float: left;
-	height: 400px;
+	height: 300px;
 	padding: 100px 20px 0 20px;
 	text-align: center;
 }
 .settings select{
 	width: 220px;
 	margin: 20px auto;
+	float: none;
 }
 .btn_done{
-	text-align: center;
-	cursor: pointer;
-	background: #B3CB81;
-	width: 250px;
-	margin: 30px auto 0 auto;
+    text-align: center;
+    cursor: pointer;
+    background: #B3CB81;
+    width: 200px;
+    margin: 125px auto 0 auto;
+    padding: 17px 20px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 13px;
+    box-shadow: 0 0 20px;
+}
+.btn_done:hover{
+    box-shadow: 0 0 20px #000;	
 }
 .form > form{
 	width: 200px;
@@ -430,6 +442,120 @@ select{
 		width: 100%;
 		height: auto;
 	}
+	
+	/*Order*/
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
+.order-dishes{
+    float: left;
+    width: 80%;
+}
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 95px;
+   height: 30px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+   cursor: pointer;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+   font-weight: 800;
+   width: 95px;
+}
+.order-DishBlock{
+	height:40px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
+}
+.order-category2 {/*салаты*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
+}
+.order-category3 {/*горячее*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
+}
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
+}
+.order-category5 {/*напитки*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
+}
+.order-orderDishes{
+    float:right;
+    margin-bottom: 5px;
+    width: 140px;
+}
+.order-DishesInOrder {
+    /*background-color: darkgreen;*/
+    width: 110px;
+    height: 53px;
+    margin-bottom: 5px;
+}
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
+.order-DishStateInOrder{
+    -webkit-transform:rotate(270deg);
+    font-size: 8pt;
+    height: 10px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishNameInOrder{
+    margin-top: 15px;
+    float: left;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishCostInOrder {
+    font-size: 9pt;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+.order-orderDishesScroll{	
+	height: 60%;
+	overflow-y: auto;
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
 }
 
 /*Tablets*/
@@ -586,6 +712,121 @@ select{
 		width: 100%;
 		height: auto;
 	}
+	/*Order*/
+	
+	
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
+.order-dishes{
+    float: left;
+    width: 80%;
+}
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 95px;
+   height: 30px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+   cursor: pointer;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+   font-weight: 800;
+   width: 95px;
+}
+.order-DishBlock{
+	height:40px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
+}
+.order-category2 {/*салаты*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
+}
+.order-category3 {/*горячее*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
+}
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
+}
+.order-category5 {/*напитки*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
+}
+.order-orderDishes{
+    float:right;
+    margin-bottom: 5px;
+    width: 140px;
+}
+.order-DishesInOrder {
+    /*background-color: darkgreen;*/
+    width: 110px;
+    height: 53px;
+    margin-bottom: 5px;
+}
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
+.order-DishStateInOrder{
+    -webkit-transform:rotate(270deg);
+    font-size: 8pt;
+    height: 10px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishNameInOrder{
+    margin-top: 15px;
+    float: left;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishCostInOrder {
+    font-size: 9pt;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+.order-orderDishesScroll{	
+	height: 60%;
+	overflow-y: auto;
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
 }
 
 /*Phones*/
@@ -739,6 +980,134 @@ select{
 		width: 100%;
 		height: 200px;
 	}
+	/*Order*/
+	
+	.content-order{
+		width: 100%;
+		float: left;
+		margin-top: 100px;
+	}
+.order-dishes{
+    float: left;
+    width: 98%;
+}
+.order-categoryBlock, .order-dishBlock {
+   display: inline-block;
+   width: 95px;
+   height: 30px;
+   margin: 2px 4px;
+   padding: 2px 4px;
+   cursor: pointer;
+}
+.order-dishName {
+   text-align: center;
+}
+.order-categoryName {
+   text-align: center;
+   padding-top:10px;
+   font-weight: 800;
+   width: 95px;
+}
+.order-DishBlock{
+	height:40px;
+}
+.order-dishCost {
+   text-align: right;
+}
+.order-category1 {/*супы*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
+}
+.order-category2 {/*салаты*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
+}
+.order-category3 {/*горячее*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
+}
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
+}
+.order-category5 {/*напитки*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
+}
+.order-orderDishes{
+    float: left;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    width: 100%;
+    height: 138px;
+}
+.order-DishesInOrder {
+    /* background-color: darkgreen; */
+    width: 110px;
+    height: 60px;
+    margin-bottom: 5px;
+    float: left;
+    margin-left: 10px;
+}
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
+.order-DishStateInOrder{
+    -webkit-transform:rotate(270deg);
+    font-size: 8pt;
+    height: 10px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishNameInOrder{
+    margin-top: 15px;
+    float: left;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 50px;
+}
+.order-DishCostInOrder {
+    font-size: 9pt;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+.order-orderDishesScroll{	
+    width: 100%;
+    overflow-x: auto;
+    height: 138px;
+    floaT: left;
+}
+.SummCost{
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    float: left;
+    font-weight: 800;
+    padding: 15px 0px;
+	background: linear-gradient(to top, #F06900, #ffd797);
+}
+.toKitchen,
+.toPay{
+	padding: 7px 0px;
+	font-size: 20px;
+	height:55px;
+	float:left;
+}
 }
 
 /*width<620px*/
@@ -823,3 +1192,4 @@ select{
 		font-weight: bold;
 	}
 }
+
