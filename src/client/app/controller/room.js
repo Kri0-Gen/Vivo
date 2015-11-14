@@ -1,5 +1,5 @@
-define('controller/room', ['controller/main', 'service/table'], function(controllers, tableProvider) {
-   controllers.controller('room', ['$scope', '$routeParams', tableProvider, function ($scope, $routeParams, tableSrv) {
+define('controller/room', ['controller/main', 'service/table', 'service/order'], function(controllers, tableProvider, orderProvider) {
+   controllers.controller('room', ['$scope', '$routeParams', tableProvider, orderProvider, function ($scope, $routeParams, tableSrv, orderSrv) {
       var ZOOM_STEP = 0.5;
       var ZOOM_MAX = 2.0, ZOOM_MIN = 0.5;
       var SCENE_HEIGHT = 750, SCENE_WIDTH = 1000;
@@ -32,7 +32,8 @@ define('controller/room', ['controller/main', 'service/table'], function(control
 
       function get_table_by_data(data) {
          return {dbID: data.Id, id: ++$scope.table_counter, x: data.X, y: data.Y,
-            type: data.Type, chairs: data.Chairs, angle: data.Angle};
+            type: data.Type, chairs: data.Chairs, angle: data.Angle,
+            order_id: data.OrderId};
       }
 
       function get_data_by_table(table) {
@@ -56,9 +57,20 @@ define('controller/room', ['controller/main', 'service/table'], function(control
          tableSrv.save(get_data_by_tables($scope.tables));
       }
 
+      $scope.on_table_click = function(table) {
+         if (table.order_id == -1) {
+            orderSrv.newOrder({Table: table.dbID, Officiant: window.localStorage['userID']}).$promise.then(function(data){               
+                window.location.hash = '/order/' + data['0'];
+            });
+         } else {
+            window.location.hash = '/order/' + table.order_id;
+         }
+
+      }
+
       tableSrv.query({id: $routeParams.id}, function(tablesArray) {
          $scope.table_counter = 0;
-         PARAMS = []
+         PARAMS = [];
 
          for (var i = 0; i < tablesArray.length; i++)
             PARAMS.push(get_table_by_data(tablesArray[i]));
@@ -66,7 +78,6 @@ define('controller/room', ['controller/main', 'service/table'], function(control
          set_tables_width_height(PARAMS);
          set_chairs(PARAMS);
          set_class_type(PARAMS);
-
 
          $scope.tables = PARAMS;
 
@@ -80,7 +91,6 @@ define('controller/room', ['controller/main', 'service/table'], function(control
          $scope.rotating_table = null;
          $scope.TABLE_TYPE = TABLE_TYPE;
       });
-
 
       function set_class_type(tables) {
          for (var i = 0; i < tables.length; i++) tables[i].type = TABLE_TYPE[tables[i].type].class;
