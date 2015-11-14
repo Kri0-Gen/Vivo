@@ -594,6 +594,24 @@ select{
 	height:55px;
 	float:left;
 }
+
+.btn_admin{
+    float: left;
+    width: 48%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
+}
 }
 
 /*Tablets*/
@@ -780,7 +798,7 @@ select{
    font-weight: 800;
    width: 95px;
 }
-.order-DishBlock{
+.order-dishBlock{
 	height:40px;
 }
 .order-dishCost {
@@ -864,6 +882,24 @@ select{
 	font-size: 20px;
 	height:55px;
 	float:left;
+}
+
+.btn_admin{
+    float: left;
+    width: 98%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
 }
 }
 
@@ -1049,7 +1085,7 @@ select{
    font-weight: 800;
    width: 95px;
 }
-.order-DishBlock{
+.order-dishBlock{
 	height:40px;
 }
 .order-dishCost {
@@ -1148,6 +1184,24 @@ select{
 	font-size: 20px;
 	height:55px;
 	float:left;
+}
+
+.btn_admin{
+    float: left;
+    width: 98%;
+    background: #F26700;
+    text-align: center;
+    padding: 24px 0px;
+    border-radius: 10px;
+    margin: 0px 5px 15px 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 27px;
+	cursor: pointer;
+}
+.btn_admin:hover{
+	background: #B3CB81;
+    transition: ease 0.3s;
 }
 }
 
