@@ -4,7 +4,8 @@ define('service/dishes',['service/main'], function(services){
    services.factory(providerName, ['$resource', function($resource){
       return $resource('dishes/:method', {}, {
          query: {method:'GET', params:{method:'list'}, isArray:true},
-         store: {method: 'POST', params:{method:'store'}}
+         store: {method: 'POST', params:{method:'store'}},
+         deleted: {method: 'POST', params:{method:'delete'}}
       });
    }]);     
    return providerName;

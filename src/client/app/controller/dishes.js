@@ -34,7 +34,12 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
         };
 
         $scope.delete = function (id){
-            alert ("Удаляем id: " + id);
+
+           var promise;
+            promise = dishesSrv.deleted({Id:id});
+            promise.$promise.then(function(){
+                $scope.dishes = dishesSrv.query()
+            });
         };
         $scope.check = function(){
 
