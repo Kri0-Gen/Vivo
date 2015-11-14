@@ -1,7 +1,24 @@
-<div ng-controller="admin" class="adminPanel">
-    <div class="adminPanel__container">
-        <a class="rooms__roomBlock" ng-href="#/dishes">Блюда</a>
-        <a class="rooms__roomBlock" ng-href="#/waiters">Официанты</a>
-        <a class="rooms__roomBlock" ng-href="#/rooms">Залы</a>
+<div ng-controller="admin" class="main">
+    <div class="header">
+        <div class="wrapper_header">
+            <h3 class="title_header">Админ панель</h3>
+            <div class="id_people">ФИО Сотрудника</div>
+        </div>
     </div>
+
+    <div class="content-order">
+        <a class="btn_admin" ng-href="#/rooms">
+            Список заллов
+        </a>
+        <a class="btn_admin" ng-href="#/waiters">
+            Список официантов
+        </a>
+        <a class="btn_admin" ng-href="#/dishes">
+            Список блюд
+        </a>
+        <a class="btn_admin" ng-href="#/reports">
+            Отчет
+        </a>
+    </div>
+
 </div>
