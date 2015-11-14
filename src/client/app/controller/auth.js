@@ -3,7 +3,7 @@ define('controller/auth', ['controller/main', 'service/waiters'], function(contr
       $scope.selectedUser = -1;
       $scope.waiters = waitersSrv.query();
       $scope.selectUser = function(id){
-		 window.localStorage['userID'] = id;
+		   window.localStorage['userID'] = id;
          window.location.hash = '/rooms'
       };
    }]);

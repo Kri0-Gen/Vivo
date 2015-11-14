@@ -10,14 +10,14 @@
         </h2>
         <div class="people">
             <div ng-repeat="waiter in waiters">
-                <div class="pos_people" ng-click="selectUser(user.id);">
+                <div class="pos_people" ng-click="selectUser(waiter.Id);">
                     {{waiter.FirstName + ' ' + waiter.LastName}}
                 </div>
             </div>
         </div>
     </div>
     <div class="footer">
-        <div class="admin" ng-click="selectedUser = 0">
+        <div class="admin" ng-click="selectUser(0);">
             Я - администратор
         </div>
         <div class="copyrights">
