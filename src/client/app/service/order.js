@@ -8,8 +8,8 @@ define('service/order',['service/main'], function(services){
          appendDishesToOrder: {method:'POST', params:{ param1: 'order', param2: 'appendToOrder' }},
          getOrderDishes: {method:'POST', params:{ param1: 'order', param2: 'readDishes' }, isArray:true},
          changeDishState: {method:'POST', params:{ param1: 'order', param2: 'changeDishStatus' }},
-         newOrder: {method: 'POST', params: {param1: 'order', param2: 'new'}}
-         closeOrder: {method: 'POST', params: {param1: 'order', param2:''}}
+         newOrder: {method: 'POST', params: {param1: 'order', param2: 'new'}},
+         closeOrder: {method: 'POST', params: {param1: 'order', param2:'changeStatus'}}
       });
    }]);
    return providerName;
