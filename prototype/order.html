@@ -1,0 +1,247 @@
+﻿<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Зал 1</title>
+        <link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <div class="wrapper_header">
+					<h3 class="title_header">Зал 1 - Столик 1</h3>
+					<div class="id_people">ФИО Сотрудника</div>
+				</div>
+            </div>
+			<!--content-->
+			<div class="content-order">
+				<div ng-controller="order">
+   <div class="order-dishes">
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category1" ng-click="selectCategory(category.Id);">
+         Супы
+      </div>
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category2" ng-click="selectCategory(category.Id);">
+         Супы
+      </div>
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category3" ng-click="selectCategory(category.Id);">
+         Супы
+      </div>
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category4" ng-click="selectCategory(category.Id);">
+         Супы
+      </div>
+      <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category5" ng-click="selectCategory(category.Id);">
+         Супы
+      </div>
+      <br />
+      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock order-category1" ng-click="selectDish(dish.Id);">
+         <div class="order-dishName">Щи</div>
+         <div class="order-dishCost">150-</div>
+      </div>
+   </div>
+   <div class="order-orderDishes">
+       <div class="order-orderDishesScroll">
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category1" ng-click="SelectDishInOrder($index);">
+           <div class="order-dishState">
+                <div class="order-DishStateInOrder">На кухне</div>
+           </div>
+           <div class="order-orderDishName">
+                <div class="order-DishNameInOrder">Щи</div>
+           </div>
+           <div class="order-orderDishCost">
+                <div class="order-DishCostInOrder">150-</div>
+           </div>
+       </div>
+       </div>
+       <div class="SummCost">
+           Итого: 150-
+       </div>
+       <div>
+       <input type="button" class="toKitchen" ng-click="toKitchen();" value="На кухню">
+       </div>
+       <div>
+       <input type="button" class="toPay" ng-click="toPay();" value="Оплатить">
+        </div>
+   </div>
+</div>
+</div>
+			<!--/content-->
+        </div>
+    </body>
+</html>
