@@ -69,26 +69,52 @@ var bind = function(app){
    .get('/rooms/list', function(req, res){
        db.collection('rooms').find().toArray().then(function(rooms){
           db.collection('tables').find().toArray().then(function(tables){
-             var tablesByRoom = {};
-             tables.each(function(item){
+             var tablesByRoom = {},
+                tablesByRoom2 = {};
+
+             tables.forEach(function(item){
                 tablesByRoom[item.RoomId] = tablesByRoom[item.RoomId] || [];
+                tablesByRoom2[item.RoomId] = tablesByRoom2[item.RoomId] || {};
                 tablesByRoom[item.RoomId].push(item);
+                tablesByRoom2[item.RoomId][item.Id] = 1;
              });
-             db.collection('orders').find({Status: 'Open'}).toArray().then(function(orders){
-                var ordersByTable = {};
-                orders.each(function(item){
-                   ordersByTable[item.RoomId] = ordersByTable[item.RoomId] || [];
-                   ordersByTable[item.RoomId].push(item);
+             db.collection('dishes').find().toArray().then(function(dishes){
+                var dishesById = {};
+                dishes.forEach(function(item){
+                   dishesById[item.Id] = item;
                 });
-                rooms.map(function(room){
-                   var totalPlace = 0;
-                   if (tablesByRoom[room['Id']]){
-                      tablesByRoom[room['Id']].each(function(table){
-                        totalPlace += parseInt(table.Chairs, 10);
-                      });
-                   }
+                db.collection('orders').find({Status: 'Open'}).toArray().then(function(orders){
+                   var ordersByTable = {};
+                   orders.forEach(function(item){
+                      ordersByTable[item.Table] = ordersByTable[item.Table] || [];
+                      ordersByTable[item.Table].push(item);
+                      for (var i in tablesByRoom2){
+                         delete tablesByRoom2[i][item.Table];
+                      }
+                   });
+                   res.json(rooms.map(function(room){
+                      var totalPlace = 0,
+                         totalOpenOrder = 0;
+                      if (tablesByRoom[room['Id']]){
+                         tablesByRoom[room['Id']].forEach(function(table){
+                            totalPlace += parseInt(table.Chairs, 10);
+                            if (ordersByTable[table.Id]){
+                               ordersByTable[table.Id].forEach(function(item){
+                                  item.Order.forEach(function(item){
+                                     totalOpenOrder += dishesById[item.Dish].Cost
+                                  });
+                               });
+                            }
+                         });
+                      }
+                      room.totalPlace = totalPlace;
+                      room.totalTables = (tablesByRoom[room.Id] || []).length;
+                      var obj = tablesByRoom2[room.Id] || {};
+                      room.freeTables = room.totalTables - Object.keys(obj).length;
+                      room.totalOpenOrder = totalOpenOrder;
+                      return room
+                   }));
                 });
-                res.json(rooms);
              });
           });
        });

@@ -50,6 +50,11 @@ var dishSchem=mongoose.Schema({
       unique:false,
       required:true
    },
+   Date:{
+      type:Date,
+      unique:false,
+      required:true
+   },
    Category:{
       type:Number,
       unique:false,
@@ -70,8 +75,9 @@ module.exports = function(app){
          create({
             Id: id,
             Status: 'Open',
+            Date: new Date(),
             Table: parseInt(req.body['Table'], 10),
-            Officiant: parseInt(req.body['Officiant'], 10)
+            Officiant: parseInt(req.body['Officiant'], 10) || 0
          });
       });
    });
