@@ -433,6 +433,7 @@ select{
     .logo_room img{
         width: 100%;
         height: auto;
+        vertical-align: top;
     }
 	/*Order*/
 
@@ -721,6 +722,7 @@ select{
 	.logo_room img{
 		width: 100%;
 		height: auto;
+      vertical-align: top;
 	}
 	/*Order*/
 
