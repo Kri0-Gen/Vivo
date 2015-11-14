@@ -1,7 +1,10 @@
 <div ng-controller="dishes">
-    <header class="header">
-        Список блюд
-    </header>
+    <div class="header">
+        <div class="wrapper_header">
+            <h3 class="title_header">Список блюд</h3>
+            <div class="id_people">{{fio}}</div>
+        </div>
+    </div>
     <div class="dishes_container">
         <div class="dishes_tableContainer">
             <table class="dishes__table">
@@ -10,7 +13,7 @@
                     <th class="dishes__th">Название</th>
                     <th class="dishes__th">Цена</th>
                     <th class="dishes__th">Категория</th>
-                    <th class="dishes__th">Правка </th>
+                    <th class="dishes__th dishes_th-editColumn">Правка </th>
                 </tr>
                 </thead>
                 <tbody class="dishes__table-body">
@@ -18,7 +21,7 @@
                     <td class="dishes__th">{{dish.Name}}</td>
                     <td class="dishes__th">{{dish.Cost}}</td>
                     <td class="dishes__th">{{dish.Category}}</td>
-                    <td class="dishes__th"><button class="dishes__edit-button" ng-click="setAppendMode(true, dish.Id)"> ♥ </button> <button class="dishes__delete-button"  ng-click="delete(dish.Id)"> × </button></td>
+                    <td class="dishes__th"><span><div class="dishes__edit-button" ng-click="setAppendMode(true, dish.Id)"> ✏ </div> <div class="dishes__delete-button"  ng-click="delete(dish.Id)"> ✘ </div></span></td>
                 </tr>
                 </tbody>
             </table>

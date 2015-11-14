@@ -31,8 +31,46 @@ body{
 }
 .header{
     width:100%;
-    padding: 40px 0px;
+    height: 51px;
 }
+
+thead th {
+    text-align: center;
+}
+
+.dishes__edit-button,
+.dishes__delete-button {
+    float: left;
+    width: 40px;
+    cursor: pointer;
+}
+
+.dishes_th-editColumn {
+    width: 121px;
+}
+
+.wrapper_header{
+    float: left;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    z-index: 10;
+}
+
+.title_header{
+    float: left;
+    margin: 15px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.id_people{
+    float: right;
+    margin: 15px 40px 0px 0px;
+    color: #B3CB81;
+}
+
 .logo{
     width: 160px;
     height: 160px;
@@ -298,8 +336,9 @@ body{
     font-size: 14px;
     border-collapse: collapse;
     text-align: center;
-    color:#009ACD;
+    color:black;
     margin-bottom: 8px;
+    width: 100%;
 }
 
 .dishes__table-head {
@@ -309,7 +348,7 @@ body{
 
 .dishes__table-body {
     background: #FFE7BA;
-    opacity: 1;
+    opacity: 0.89;
 }
 
 .dishes__th {
