@@ -23,7 +23,7 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
 
        $scope.SummCost=0;
       // список блюд в заказе с их состояниями (На кухне / Готово)
-       $scope.orderDishes = orderSrv.getOrderDishes({ OrderId: orderId });
+       $scope.orderDishes = []; //orderSrv.getOrderDishes({ OrderId: orderId });
       $scope.selectCategory = function(id){
          $scope.currentCat = id;
       };
