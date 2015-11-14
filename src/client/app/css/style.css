@@ -244,6 +244,7 @@ select{
 .table.circle{
 	position: absolute;
 	background: url(../images/table_circle.png) no-repeat;
+   border-radius: 50%;
 	margin: 6px;
 }
 .table.rectangle{
@@ -1435,6 +1436,3 @@ select{
     text-align: center;
     cursor: pointer;
 }
-
-
-

@@ -16,11 +16,15 @@
 
 	<div id="room_background" class="tables edit" style="top:0px;width:{{scene.width*scale}}px;height:{{scene.height*scale}}px;">
 		<div ng-repeat="table in tables" class="room__table" style="transform:scale({{scale}});top:{{table.y*scale}}px;left:{{table.x*scale}}px;width:{{table.width}}px;height:{{table.height}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)">
-			<div ng-click="on_table_click(table)" class="{{table.type}}" style="transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
+			<div ng-click="on_table_click(table)" class="{{table.type}}" style="background-color: {{get_background_color(table)}}; transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
 				<div ng-repeat="chair in table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{table.height*chair.scale_height+chair.y}}px;left:{{table.width*chair.scale_width+chair.x}}px"></div>
             <div class="table_edit" ng-click="open_create_table_window(table, false, true, true)" style="transform-origin: center center; left: {{table.width*0.5}}px; top: {{table.height*0.5}}px;{{admin_display}}"><i class="fa fa-pencil-square-o"></i></div>
             <div class="table_rotate" ng-mousedown="rotating_begin(table)" style="top: {{table.height+7}}px; left: {{table.width+7}}px; {{admin_display}}"><i class="fa fa-undo"></i></div>
+            <div style="display: inline-block; transform-origin: center center; position: relative; left: 50%; top: 50%; transform: translate(-50%, -50%); {{order_display(table)}}">
+               <div style="transform: rotate({{-table.angle}}deg)">{{table.order_id}}</div>
+            </div>
 			</div>
+
 		</div>
 	</div>
 
