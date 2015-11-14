@@ -52,7 +52,13 @@ var bind = function(app){
             }
 
 
-        }).get('/dishes/list', function(req, res){
+        })
+        .post('/dishes/delete', function(req, res) {
+            req.body.Id= parseInt(req.body.Id || '0', 10);
+            var dishId = req.body.Id;
+            db.collection('dishes').remove({Id: parseInt(dishId, 10)});
+        })
+        .get('/dishes/list', function(req, res){
              db.collection('dishes').find().toArray().then(function(dishes){
                 res.json(dishes);
              })
