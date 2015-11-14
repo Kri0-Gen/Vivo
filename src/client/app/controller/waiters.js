@@ -10,7 +10,9 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
       };
       $scope.onSubmit = function(){
          if ( $scope.FirstName != '' && $scope.LastName != '' )
-            waitersSrv.store({Id:$scope.Id, FirstName: $scope.FirstName, LastName:$scope.LastName});
+            waitersSrv.store({Id:$scope.Id, FirstName: $scope.FirstName, LastName:$scope.LastName}).$promise.then(function(){
+               $scope.waiters = waitersSrv.query();
+            });
          $scope.formHidden = true;
       };
       $scope.amendWaiters = function(waiter) {
@@ -27,7 +29,9 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
       };
       $scope.delWaiters = function(waiter) {
          if (confirm('Вы точно хотите удалить официанта?'))
-            waitersSrv.delete({Id:waiter.Id});
+            waitersSrv.delete({Id:waiter.Id}).$promise.then(function(){
+               $scope.waiters = waitersSrv.query();
+            });
       }
    }]);
 });

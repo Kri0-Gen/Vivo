@@ -40,6 +40,7 @@
          position: absolute;
          left: 300px;
          top: 3px;
+         color: yellow;
       }
       .roomsadmin__roomsadminBlock {
          position: relative;
@@ -48,8 +49,8 @@
    </style>
    <div>
       <div class="roomsadmin__roomsadminBlock" ng-repeat="roomsadm in roomsadmin" style="color: #ffff00">
-         <div  ng-click="amendRoomsadmin(roomsadm)">{{roomsadm.Name}}</div>
-         <button class="delBut" ng-click="delroomsadmin(roomsadm.Id)">Х</button>
+         <div ng-click="amendRoomsadmin(roomsadm)">{{roomsadm.Name}}</div>
+         <button class="delBut" ng-click="delRoomsadmin(roomsadm.Id)">Х</button>
       </div>
       <div id="buttonAddRooms" ng-click="addNew()" >
          <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
@@ -61,8 +62,8 @@
          <form novalidate id="prompt-form" ng-submit="onSubmit($event)">
             <div id="prompt-message"></div>
             <input name="text" type="hidden" ng-model="Id">
-            Название<input name="text" type="text" ng-model="name" style="border:{{name?'':'1px solid red'}}">
-            Фото<input name="text" type="file" ng-model="photo">
+            Название<input name="text" type="text" ng-model="Name" style="border:{{name?'':'1px solid red'}}">
+            Фото<input name="text" type="file" ng-model="Photo">
             <input type="submit" value="Ок">
             <input type="button" name="cancel" value="Отмена" ng-click="onCancel()">
          </form>
