@@ -17,27 +17,27 @@ var tableSchem=mongoose.Schema({
     },
     X:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Y:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Type:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Chairs:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     RoomId:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
             }
 });
