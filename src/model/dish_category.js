@@ -36,6 +36,10 @@ var bind = function(app){
       'Id': 4,
       'Name': 'Закуски'
    });
+    db.collection('dish_cats').insertOne({
+      'Id': 5,
+      'Name': 'Напитки'
+   });
 
     app.post('/dish_cats/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);
@@ -61,7 +65,9 @@ var bind = function(app){
         })
         .get('/dish_cats/list', function(req, res){
             db.collection('dish_cats').find().toArray().then(function(data){
-                res.json(data);
+                res.json(data.sort(function(a, b) {
+                    return a.Id > b.Id;
+                }));
             });
 
         });
