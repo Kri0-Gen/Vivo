@@ -14,11 +14,9 @@
         </div>
     </div>
     <div class="rooms">
-        <div class="pos_room" ng-repeat="room in roomsadmin" ng-click="onClick(room)">
-            <div class="content_rooms" style="position: relative">
+        <div class="pos_room" ng-repeat="room in roomsadmin" style="position: relative">
+            <div class="content_rooms" ng-click="onClick(room)">
                 <h3>{{room.Name}}</h3>
-                <div class="dishes__edit-button" style="right: 43px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="amendRoomsadmin(room)"> ✏ </div>
-                <div class="dishes__delete-button" style="right: 3px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="delRoomsadmin(room.Id)"> ✘ </div>
                 <p class="places">
                     {{room.totalPlace}} мест
                 </p>
@@ -26,7 +24,9 @@
                 <p><font>Сумма:</font>{{room.totalOpenOrder}} руб.</p>
             </div>
 
-            <!--<div class="logo_room"><img src="C:/images/{{rooms.photo}}"></div>-->
+            <div class="logo_room"><img src="C:/images/{{rooms.photo}}"></div>
+            <div class="dishes__edit-button" style="right: 43px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="amendRoomsadmin(room)"> ✏ </div>
+            <div class="dishes__delete-button" style="right: 3px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="delRoomsadmin(room.Id)"> ✘ </div>
         </div>
     </div>
 

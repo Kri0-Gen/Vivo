@@ -6,7 +6,8 @@ define('controller/auth', ['controller/main', 'service/waiters'], function(contr
 		   window.localStorage['userID'] = waiter.Id;
 		   window.localStorage['userFirstName'] = waiter.FirstName;
 		   window.localStorage['userLastName'] = waiter.LastName;
-         window.location.hash = '/rooms'
+         if ( waiter.FirstName == 'Администратор' ) window.location.hash = '/roomsadmin'
+         else window.location.hash = '/rooms'
       };
    }]);
    return 'auth';

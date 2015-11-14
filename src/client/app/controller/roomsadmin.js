@@ -39,5 +39,9 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
 
 
       };
+      $scope.onClick = function(room){
+         window.localStorage['roomName'] = room['Name'];
+         window.location.hash = '/room/' + room.Id;
+      }
    }]);
 });
