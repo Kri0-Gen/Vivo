@@ -1,4 +1,7 @@
 define('controller/order', ['controller/main', 'service/order'], function(controllers, orderProvider){
+   var NEW_DISH = 0,
+       IN_KITCHEN = 1,
+       READY = 2;
    // контроллер для блюд в заказе
    controllers.controller('order', ['$scope', '$routeParams', orderProvider, function ($scope, $routeParams, orderSrv) {
       var orderId = $routeParams.id;
