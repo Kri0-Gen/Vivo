@@ -2,7 +2,8 @@
     <div class="header">
         <div class="wrapper_header">
             <h3 class="title_header">Список блюд</h3>
-            <div class="id_people">{{fio}}</div>
+            <div class="id_people">{{userFirstName}} {{userLastName}}</div>
+            <a href="#/admin" class="btn_edit" style="display:{{isAdmin?'':'none'}};">Админ панель</a>
         </div>
     </div>
     <div class="dishes_container" style="margin-top: 80px; float: left; width: 98%;">
