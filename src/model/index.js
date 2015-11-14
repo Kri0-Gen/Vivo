@@ -23,6 +23,10 @@ db.collection('counters').insert({
     _id: "dish_catid",
     seq: 150
 });
+db.collection('counters').insert({
+   _id: "tableid",
+    seq: 250
+});
 
 module.exports = function(app){
    var filelist = fs.readdirSync(__dirname);

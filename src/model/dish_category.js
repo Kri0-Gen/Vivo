@@ -19,6 +19,7 @@ var dish_catSchem=mongoose.Schema({
 });
 var bind = function(app){
     app.post('/dish_cats', function(req, res) {
+            req.body.Id = parseInt(req.body.Id || '0', 10);
             var dish_catId = req.body.Id;
             var dish_cat = db.model('dish_cats', dish_catSchem);
             var create = function(){

@@ -31,6 +31,7 @@ var dishSchem=mongoose.Schema({
 });
 var bind = function(app){
     app.post('/dishes', function(req, res) {
+            req.body.Id = parseInt(req.body.Id || '0', 10);
             var dishId = req.body.Id;
             var dish = db.model('dishes', dishSchem);
             var create = function(){

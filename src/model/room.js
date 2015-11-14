@@ -31,7 +31,9 @@ var roomSchem=mongoose.Schema({
 
 var bind = function(app){
    app.post('/rooms', function(req, res) {
+       req.body.Id = parseInt(req.body.Id || '0', 10);
        var roomId = req.body.Id;
+
        var room = db.model('rooms', roomSchem);
        var create = function(){
            var roomPostedElem = new room(req.body);
