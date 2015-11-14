@@ -13,7 +13,7 @@
             </tr>
             </thead>
             <tbody class="dishes__table-body">
-            <tr ng-repeat="dish in dishes">
+            <tr ng-repeat="dish in dishes | orderBy:sortField">
                 <td class="dishes__th">{{dish.Name}}</td>
                 <td class="dishes__th">{{dish.Cost}}</td>
                 <td class="dishes__th">{{dish.Category}}</td>

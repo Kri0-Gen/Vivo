@@ -3,6 +3,7 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
         $scope.appendMode = false;
         $scope.form = {};
         $scope.dishes = dishesSrv.query();
+        $scope.sortField = 'Name';
 
         $scope.getDishById = function(id){
             for(var i = 0; i < $scope.dishes.length; i++){
@@ -37,14 +38,16 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
         };
         $scope.check = function(){
 
+            var promise;
             if ($scope.form.id===undefined){
-                dishesSrv.store({Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category}).$promise.then(function(){
-                    $scope.dishes = dishesSrv.query();
-                });
+                promise = dishesSrv.store({Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category});
             }
             else{
-                dishesSrv.store({Id: $scope.form.id ,Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category});
+                promise = dishesSrv.store({Id: $scope.form.id ,Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category});
             }
+            promise.$promise.then(function(){
+                $scope.dishes = dishesSrv.query();
+            });
 
             $scope.appendMode = false;
         };
