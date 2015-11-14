@@ -4,6 +4,7 @@ define('controller/dishes', ['controller/main', 'service/dishes'], function(cont
         $scope.form = {};
         $scope.dishes = dishesSrv.query();
         $scope.sortField = 'Name';
+        $scope.fio = 'Name';
 
         $scope.getDishById = function(id){
             for(var i = 0; i < $scope.dishes.length; i++){
