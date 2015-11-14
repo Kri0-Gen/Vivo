@@ -1,14 +1,12 @@
-define('controller/order', ['controller/main'], function(controllers){
+define('controller/order', ['controller/main', 'service/order'], function(controllers, orderProvider){
    // контроллер для блюд в заказе
-   controllers.controller('order', ['$scope', '$routeParams', function ($scope, $routeParams) {
+   controllers.controller('order', ['$scope', '$routeParams', orderProvider, function ($scope, $routeParams, orderSrv) {
       var orderId = $routeParams.id;
 
       // список блюд по категориям для добавления в заказ
-      $scope.categories = [{ Id: 1, Name: 'Супы' },
-         { Id: 2, Name: 'Салаты' }];
+      $scope.categories = orderSrv.getCategories();
       $scope.currentCat = 1;
-      $scope.dishes = { 1: [{ Id: 1, Name: 'Борщ', Cost: 100 }, { Id: 2, Name: 'Щи', Cost: 70 }],
-         2: [{ Id: 3, Name: 'Цезарь', Cost: 130 }, { Id: 4, Name: 'Греческий', Cost: 110 }] };
+      $scope.dishes = orderSrv.getDishes();
       var dishHashMap={};
        for (var catId in $scope.dishes){
            if ($scope.dishes.hasOwnProperty(catId)){

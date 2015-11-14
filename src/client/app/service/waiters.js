@@ -3,7 +3,8 @@ define('service/waiters',['service/main'], function(services){
    services.factory(providerName, ['$resource', function($resource){
       return $resource('officiants/:method', {}, {
          query: {method:'GET', params:{method:'list'}, isArray:true},
-         store: {method: 'POST', params:{method:'store'}}
+         store: {method: 'POST', params:{method:'store'}},
+         delete: {method: 'POST', params:{method:'delete'}}
       });
    }]);     
    return providerName;
