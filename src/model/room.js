@@ -19,13 +19,16 @@ var roomSchem=mongoose.Schema({
         unique:false,
         required:true
     },
-    Size:{
-        type:Number,
+    Photo:{
+        type:String,
         unique:false,
-        required:true
-    },
-    Photo:String,//?
-    Tables:Array
+        required:false
+    },//?
+    Tables:{
+        type:Array,
+        unique:false,
+        required:false
+    }
 });
 
 
@@ -55,8 +58,8 @@ var bind = function(app){
 
    })
    .get('/rooms/list', function(req, res){
-       var roomId = req.query['id'];
-       db.collection('rooms').find({Id:parseInt(roomId, 10)}).toArray().then(function(data){
+
+       db.collection('rooms').find().toArray().then(function(data){
 
            res.json(data);
        });

@@ -1,10 +1,7 @@
+/*-----------------Common---------------------*/
+
 html{
    height: 100%;
-}
-body{
-   background: url(bg.png) repeat center;
-   height: 100%;
-   position: relative;
 }
 
 .mainView{
@@ -15,33 +12,248 @@ body{
    bottom:0;
 }
 
-/*-----------------Common---------------------*/
-
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    width:100%;
+    height:100%;
+    background: url(../images/background.JPG) center 0 no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.main{
+    width:100%;
+    height: 100%;
+    float: left;
+}
 .header{
-   height:40px;
-   background: #C3C3C3;
-   font-size: 25px;
-   padding: 0 20px;
+    width:100%;
+    padding: 40px 0px;
+}
+.logo{
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.logo img{
+    width: 160px;
+    height: 160px;
 }
 
 /*-----------------Auth---------------------*/
 
-.auth__btnWrapper{
-   margin-bottom: 20px;
+/*Desktop*/
+
+@media (min-width: 992px){
+    .auth_people_block {
+        width: 960px;
+        height: 300px;
+        margin: 20px auto 0px auto;
+        background: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .auth_people {
+        float: left;
+        overflow-y: auto;
+        width: 960px;
+        height: 240px;
+    }
+    .auth_title_people {
+        text-align: center;
+        padding: 15px 0px;
+        color: #fff;
+        float: left;
+        width: 98%;
+    }
+    .auth_pos_people {
+        float: left;
+        width: 98%;
+        height: 30px;
+        text-align:center;
+        background: #DCE1E4;
+        box-shadow: 0px 0px 2px #000;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-top: 10px;
+        margin: 10px 5px;
+        cursor:pointer;
+    }
+    .auth_pos_people:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_footer {
+        width: 100%;
+        height: 50px;
+    }
+    .auth_admin {
+        border-radius: 10px;
+        width: 250px;
+        height: 40px;
+        font-size: 18px;
+        background:#F26700;
+        color: #fff;
+        padding-top: 16px;
+        float: left;
+        margin: 30px 0px 0px 10px;
+        text-align:center;
+        cursor: pointer;
+    }
+    .auth_admin:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_copyrights {
+        float: right;
+        margin: 55px 30px 0px 0px;
+        color: #fff;
+    }
 }
 
-.auth__Scroller{
-   position: absolute;
-   left: 15%;
-   right: 15%;
-   top: 10%;
-   bottom: 20%;
-   overflow: auto;
+/*Tablets*/
+
+@media(min-width: 768px) and (max-width: 991px){
+    .auth_people_block {
+        width: 768px;
+        height: 300px;
+        margin: 10px auto 0px auto;
+        background: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .auth_people {
+        float: left;
+        overflow-y: auto;
+        width: 768px;
+        height: 240px;
+    }
+    .auth_title_people {
+        text-align: center;
+        padding: 15px 0px;
+        color: #fff;
+        float: left;
+        width: 98%;
+    }
+    .auth_pos_people {
+        float: left;
+        width: 48%;
+        height: 50px;
+        text-align:center;
+        background: #DCE1E4;
+        box-shadow: 0px 0px 2px #000;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-top: 10px;
+        margin: 10px 5px;
+        cursor:pointer;
+    }
+    .auth_pos_people:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_footer {
+        width: 100%;
+        height: 50px;
+    }
+    .auth_admin {
+        border-radius: 10px;
+        width: 250px;
+        height: 40px;
+        font-size: 18px;
+        background:#F26700;
+        color: #fff;
+        padding-top: 16px;
+        float: left;
+        margin: 30px 0px 0px 10px;
+        text-align:center;
+        cursor: pointer;
+    }
+    .auth_admin:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_copyrights {
+        float: right;
+        margin: 55px 30px 0px 0px;
+        color: #fff;
+    }
 }
 
-.auth__adminBtn{
-   float: right;
-   margin: 0 40px 0 0;
+/*Phones*/
+
+@media(max-width: 767px){
+    .auth_people_block {
+        width: 100%;
+        overflow: hidden;
+        margin: 10px auto 0px auto;
+        background: rgba(0, 0, 0, 0.7);
+        padding-bottom: 10px;
+    }
+    .auth_people {
+        float: left;
+        width: 100%;
+    }
+    .auth_title_people {
+        text-align: center;
+        padding: 15px 0px;
+        color: #fff;
+        float: left;
+        width: 98%;
+    }
+    .auth_pos_people {
+        float: left;
+        width: 48%;
+        height: 40px;
+        text-align:center;
+        background: #DCE1E4;
+        box-shadow: 0px 0px 2px #000;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-top: 10px;
+        margin: 10px 5px;
+        cursor:pointer;
+    }
+    .auth_pos_people:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_footer {
+        width: 100%;
+        height: 50px;
+    }
+    .auth_admin {
+        border-radius: 10px;
+        width: 250px;
+        height: 40px;
+        font-size: 18px;
+        background:#F26700;
+        color: #fff;
+        padding-top: 16px;
+        float: left;
+        margin: 30px 0px 0px 0px;
+        text-align:center;
+        cursor: pointer;
+    }
+    .auth_admin:hover{
+        background: #B3CB81;
+        color: #fff;
+        transition: ease 0.3s;
+    }
+    .auth_copyrights {
+        float: right;
+        margin: 55px 30px 0px 0px;
+        color: #fff;
+    }
 }
 
 /*-----------------Rooms---------------------*/
@@ -68,16 +280,16 @@ body{
 
 /*-------------admin---------------*/
 
-.adminPanel a{
+/*.adminPanel a{
     text-align: center;
     color: white;
     font-size: 23px;
     padding: 41px;
-}
+}*/
 
-.adminPanel__container {
+/*.adminPanel__container {
     margin: 64px 8px;
-}
+}*/
 
 /*---------------Dishes-----------*/
 
@@ -121,6 +333,7 @@ body{
 /* Orders */
 .order-dishes{
     float: left;
+    width: calc(100% - 120px);
 }
 .order-categoryBlock, .order-dishBlock {
    display: inline-block;
@@ -157,6 +370,11 @@ body{
 .order-orderDishes{
     float:right;
     margin-bottom: 5px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    bottom: 0;
+    width: 120px;
 }
 .order-DishesInOrder {
     background-color: darkgreen;
@@ -164,24 +382,61 @@ body{
     height: 53px;
     margin-bottom: 5px;
 }
+.order-dishState{
+    width:10px;
+    float: left;
+    height:100%;
+}
 .order-DishStateInOrder{
     -webkit-transform:rotate(270deg);
     font-size: 8pt;
-    float: left;
     height: 10px;
-    margin-left: -17px;
-    margin-top:22px;
+    float:left;
+    width: 42px;
+    text-align: center;
+    margin-left: -16px;
+    margin-top: 22px;
+    white-space: nowrap;
+}
+.order-orderDishName{
+    float:left;
+    height: 100%;
+    width: 50px;
 }
 .order-DishNameInOrder{
     margin-top: 15px;
     float: left;
-    padding-left: 2px;
+    padding-left: 10px;
+}
+.order-orderDishCost{
+    float:left;
+    height: 100%;
+    width: 40px;
 }
 .order-DishCostInOrder {
     font-size: 9pt;
     float: right;
     margin-right: 5px;
     margin-top: 35px;
+}
+
+/*width<620px*/
+@media(max-width: 619px){
+    .auth_pos_people {
+        width: 98%;
+        margin-right: 0;
+        margin-left: 2px;
+    }
+}
+.order-orderDishesScroll{
+    max-height: calc(100% - 80px);
+    overflow: auto;
+}
+.SummCost{
+    color: #ffffff;
+}
+.toKitchen{
+    color: #000000;
 }
 
 

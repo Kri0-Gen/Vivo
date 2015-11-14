@@ -20,12 +20,12 @@ var dishSchem=mongoose.Schema({
     },
     Cost:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Category:{
-        type:Number, //ID категории  что-то вроде db.collection('categories')./.../.Id
-        unique:true,
+        type:Number,
+        unique:false,
         required:true
     } //свзяь
 });
@@ -51,15 +51,14 @@ var bind = function(app){
                 })
             }
 
+
+        })
+        .post('/dishes/delete', function(req, res) {
+            req.body.Id= parseInt(req.body.Id || '0', 10);
+            var dishId = req.body.Id;
+            db.collection('dishes').remove({Id: parseInt(dishId, 10)});
         })
         .get('/dishes/list', function(req, res){
-            var dishId = req.query['id'];
-            db.collection('dishes').find().toArray().then(function(data){
-
-                res.json(data);
-            });
-
-        }).get('/dishes/list', function(req, res){
              db.collection('dishes').find().toArray().then(function(dishes){
                 res.json(dishes);
              })

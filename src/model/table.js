@@ -17,53 +17,66 @@ var tableSchem=mongoose.Schema({
     },
     X:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Y:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Type:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     Chairs:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
     },
     RoomId:{
         type:Number,
-        unique:true,
+        unique:false,
         required:true
-            }
+            },
+    Angle: {
+        type: Number,
+        unique: false,
+        require: true
+    }
 });
 
 var bind = function(app){
     app.post('/tables/store', function(req, res) {
-            req.body.Id = parseInt(req.body.Id || '0', 10);
-            var tableId = req.body.Id;
-            var table = db.model('tables', tableSchem);
-            var create = function(){
-                var tablePostedElem = new table(req.body);
-                tablePostedElem.save();
-            };
-            if (tableId) {
-                db.collection('tables').remove({Id: parseInt(tableId, 10)});
-                create();
-                res.end('OK');
-            }
-            else {
-                db.getNextSequence('tableid', function(id){
-                    req.body.Id = id;
-                    create();
-                    res.end('OK');
-                })
-            }
+        //for?
 
+        for(var i=0;i<req.body.tables.length;i++)
+            {
+                req.body.tables[i].Id = parseInt(req.body.tables[i].Id || '0', 10);
+                var tableId = req.body.tables[i].Id;
+                var table = db.model('tables', tableSchem);
+                var create = function (tableDesc) {
+                    var tablePostedElem = new table(tableDesc);
+                    tablePostedElem.save();
+                };
+                if (tableId) {
+                    db.collection('tables').remove({Id: parseInt(tableId, 10)});
+                    create(req.body.tables[i]);
+                }
+                else {
+                    var closureFunc = function(tableDesc) {
+                        db.getNextSequence('tableid', function (id) {
+                            tableDesc.Id = id;
+                            create(tableDesc);
+
+                        })
+                    };
+                    closureFunc(req.body.tables[i]);
+                }
+                //\for?
+            }
+            res.end('OK');
         })
         .get('/tables/list', function(req, res){
             var roomId = req.query['id'];
