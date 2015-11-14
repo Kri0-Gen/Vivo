@@ -74,7 +74,7 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          $scope.tables = PARAMS;
 
          $scope.scene = {height: SCENE_HEIGHT, width: SCENE_WIDTH};
-         $scope.scale = 1.0;
+         $scope.scale = (document.getElementsByTagName('html')[0].clientWidth < 1020) ? ZOOM_MIN : 1.0;
 
          $scope.startX = 0;
          $scope.startY = 0;
@@ -294,6 +294,14 @@ define('controller/room', ['controller/main', 'service/table', 'service/order'],
          } else {
             window.location.hash = '/order/' + table.order_id + '?roomId=' + $routeParams.id;
          }
+      }
+
+      $scope.get_background_color = function(table) {
+         return ($routeParams.admin != 1 && table.order_id >= 0) ? "#F26700" : "";
+      }
+
+      $scope.order_display = function(table) {
+         return ($routeParams.admin != 1 && table.order_id >= 0) ?  "" : "display: none"
       }
 
    }]);
