@@ -8,6 +8,12 @@ db.collection('counters').insert(
       seq: 5
    }
 );
+db.collection('counters').insert(
+    {
+        _id: "roomid",
+        seq: 10
+    }
+);
 
 module.exports = function(app){
    var filelist = fs.readdirSync(__dirname);
