@@ -20,7 +20,6 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
                }
            }
        });
-
        $scope.SummCost=0;
       // список блюд в заказе с их состояниями (На кухне / Готово)
        $scope.orderDishes = []; //orderSrv.getOrderDishes({ OrderId: orderId });
@@ -58,7 +57,12 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
                $scope.orderDishes = orderSrv.getOrderDishes({ OrderId: orderId });
            });
        };
-       $scope.toPay =function(){};
+       $scope.toPay =function(){
+           var res = orderSrv.closeOrder({OrderId:orderId, Status: 'close'});
+           res.$promise.then(function(){
+               window.location.hash='/room/'+data[0];
+           });
+       };
    }]);
    return 'order';
 });
