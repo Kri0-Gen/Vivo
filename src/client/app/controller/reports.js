@@ -3,6 +3,8 @@ define('controller/reports', ['controller/main', 'service/waiters', 'service/roo
       $scope.selectedUser = -1;
       $scope.waiters = waitersSrv.query();
       $scope.rooms = roomsSrv.query();
+      $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+      $scope.isAdmin=window.localStorage['userID']=='0';
 
       $scope.selectUser = function(id){
          window.localStorage['userID'] = id;

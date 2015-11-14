@@ -10,12 +10,13 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
          $scope.Id=0;
          $scope.Photo = '';
       };
-      $scope.onSubmit = function(){
-         if ( $scope.Name != '' )
-            roomsadminSrv.store({Id: $scope.Id, Name: $scope.Name}).$promise.then(function(){
+      $scope.onSubmit = function() {
+         if ( $scope.Name !== '' ) {
+            roomsadminSrv.store({Id: $scope.Id, Name: $scope.Name}).$promise.then(function () {
                $scope.roomsadmin = roomsadminSrv.query();
             });
          $scope.formHidden = true;
+         }
       };
       $scope.amendRoomsadmin = function(roomsadmin) {
          $scope.formHidden = false;
@@ -31,6 +32,7 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
       };
       $scope.delRoomsadmin = function (id){
          var promise;
+         if (confirm('Удалить зал?'))
          roomsadminSrv.deleted({Id:id}).$promise.then(function(){
             $scope.roomsadmin = roomsadminSrv.query();
          });
