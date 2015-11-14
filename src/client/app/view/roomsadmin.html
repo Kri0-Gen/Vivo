@@ -80,7 +80,7 @@
             Добавить
          </button>
       </div>
-      <div id="wrapper_edit_table" style="display:{{formHidden?'none':'block'}}">
+      <div id="wrapper_edit_table" style="position: absolute;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.7);display:{{formHidden?'none':'block'}}">
          <div class="form">
          <form novalidate class="dishes__form" ng-submit="onSubmit($event)">
             <input name="text" type="hidden" ng-model="Id">
