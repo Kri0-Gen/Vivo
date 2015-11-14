@@ -1,8 +1,11 @@
 <div ng-controller="roomsadmin">
 
-   <header class="header">
-      Список зало (Администрация)
-   </header>
+    <div class="header">
+        <div class="wrapper_header">
+            <h3 class="title_header">Спиок залов</h3>
+            <div class="id_people">{{fio}}</div>
+        </div>
+    </div>
    <style>
       #prompt-form-container {
          position: fixed;
@@ -47,11 +50,30 @@
          width: 290px;
       }
    </style>
-   <div>
-      <div class="roomsadmin__roomsadminBlock" ng-repeat="roomsadm in roomsadmin" style="color: #ffff00">
-         <div ng-click="amendRoomsadmin(roomsadm)">{{roomsadm.Name}}</div>
-         <button class="delBut" ng-click="delRoomsadmin(roomsadm.Id)">Х</button>
-      </div>
+
+   <div style="margin-top: 80px; float: left; width: 99%;">
+
+       <div class="dishes_tableContainer" style="width: 100%; left;">
+           <table class="dishes__table" style="width: 100%; float: left;">
+               <thead class="dishes__table-head">
+               <tr>
+                   <th class="dishes__th">Название зала</th>
+                   <th class="dishes__th">Редактирование</th>
+               </tr>
+               </thead>
+               <tbody class="dishes__table-body">
+               <tr ng-repeat="roomsadm in roomsadmin">
+                   <td class="dishes__th">{{roomsadm.Name}}</td>
+                   <td class="dishes__th" style="width:80px; margin:0 auto; height: 20px; text-align:center;">
+                       <font style="">
+                       <div class="dishes__edit-button" style="margin-left: 20px;"  ng-click="amendRoomsadmin(roomsadm)"> ✏ </div>
+                       <div class="dishes__delete-button"  ng-click="delRoomsadmin(roomsadm.Id)"> ✘ </div>
+                           </font>
+                   </td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
       <div id="buttonAddRooms" ng-click="addNew()" >
          <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
          <button class="btn done">

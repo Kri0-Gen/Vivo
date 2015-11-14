@@ -32,9 +32,7 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
          var promise;
          promise = roomsadminSrv.deleted({Id:id});
          promise.$promise.then(function(){
-            $scope.roomsadmin = roomsadminSrv.query().$promise.then(function(){
-               $scope.roomsadmin = roomsadminSrv.query();
-            });
+            $scope.roomsadmin = roomsadminSrv.query();
          });
       };
    }]);

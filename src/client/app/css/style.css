@@ -176,7 +176,7 @@ thead th {
 }
 input,
 select{
-	width: 100%;
+	width: 94%;
 	float: left;
 	height: 30px;
 	font-weight: 300;
@@ -608,6 +608,7 @@ select{
     font-weight: 800;
     font-size: 27px;
 	cursor: pointer;
+    text-decoration: none;
 }
 .btn_admin:hover{
 	background: #B3CB81;
@@ -898,6 +899,7 @@ select{
     font-weight: 800;
     font-size: 27px;
 	cursor: pointer;
+    text-decoration: none;
 }
 .btn_admin:hover{
 	background: #B3CB81;
@@ -1200,6 +1202,7 @@ select{
     font-weight: 800;
     font-size: 27px;
 	cursor: pointer;
+    text-decoration: none;
 }
 .btn_admin:hover{
 	background: #B3CB81;
@@ -1315,7 +1318,7 @@ select{
 }
 input,
 select{
-    width: 100%;
+    width: 94%;
     float: left;
     height: 25px;
     font-weight: 300;
@@ -1377,16 +1380,8 @@ select{
    height: 255px;
    background: gainsboro;
 }
-/*-----------------Rooms---------------------*/
 
-.rooms__roomBlock{
-   width: 450px;
-   height: 140px;
-   background: #4C4C4C;
-   border: 1px solid #333333;
-   float: left;
 
-}
 
 /*------------------Room---------------------*/
 .room__table {
@@ -1466,6 +1461,28 @@ select{
 .dishes__delete-button {
     background: #EE6363;
     color :#363636;
+}
+
+
+/*reports*/
+
+
+.reports input {
+    width: 160px;
+}
+
+.reports__filter {
+    margin: 4px;
+}
+
+.reports__button {
+    width: 160px;
+    height: 40px;
+    background: green;
+    color: white;
+    float: left;
+    text-align: center;
+    cursor: pointer;
 }
 
 
