@@ -30,7 +30,7 @@ var dishSchem=mongoose.Schema({
     } //свзяь
 });
 var bind = function(app){
-    app.post('/dishes', function(req, res) {
+    app.post('/dishes/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);
             var dishId = req.body.Id;
             var dish = db.model('dishes', dishSchem);
@@ -46,16 +46,13 @@ var bind = function(app){
             else {
                 db.getNextSequence('dishid', function(id){
                     req.body.Id = id;
-                  /*  req.body.Category = db.collection('categories').find(req.body.Category,function(err){
-                        if(err) throw  err;
-                    }).Id;*/
                     create();
                     res.end('OK');
                 })
             }
 
         })
-        .get('/dishes', function(req, res){
+        .get('/dishes/list', function(req, res){
             var dishId = req.query['id'];
             db.collection('dishes').find({Id:parseInt(dishId, 10)}).toArray().then(function(data){
 

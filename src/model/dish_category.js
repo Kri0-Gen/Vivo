@@ -18,7 +18,7 @@ var dish_catSchem=mongoose.Schema({
     }
 });
 var bind = function(app){
-    app.post('/dish_cats', function(req, res) {
+    app.post('/dish_cats/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);
             var dish_catId = req.body.Id;
             var dish_cat = db.model('dish_cats', dish_catSchem);
@@ -40,7 +40,7 @@ var bind = function(app){
             }
 
         })
-        .get('/dishes', function(req, res){
+        .get('/dishes/list', function(req, res){
             var dishId = req.query['id'];
             db.collection('dishes').find({Id:parseInt(dishId, 10)}).toArray().then(function(data){
 
