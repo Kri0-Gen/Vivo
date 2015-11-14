@@ -335,7 +335,7 @@ body{
 }
 .order-categoryBlock, .order-dishBlock {
    display: inline-block;
-   width: 80px;
+   width: 85px;
    height: 40px;
    margin: 2px 4px;
    padding: 2px 4px;
@@ -346,34 +346,30 @@ body{
 .order-categoryName {
    text-align: center;
    padding-top:10px;
+   font-weight: bold;
 }
 .order-dishCost {
    text-align: right;
 }
 .order-category1 {/*супы*/
-    background: linear-gradient(to top, #0ce3ac, #ffffff);
-    border: 2px solid #00a379;
-   /*background-color: #0ce3ac;*/
+    background: linear-gradient(to top, #7EA6E0, #DAE8FC);
+    border: 3px solid #6C8EBF;
 }
 .order-category2 {/*салаты*/
-    background: linear-gradient(to top, #2f6fad, #ffffff);
-    border: 2px solid #2f6fad;
-   /*background-color: #aaffff;*/
+    background: linear-gradient(to top, #97D077, #D5E8D4);
+    border: 3px solid #82B366;
 }
 .order-category3 {/*горячее*/
-    background: linear-gradient(to top, #985f0d, #ffffff);
-    border: 2px solid #8a6343;
-   /*background-color: #985f0d;*/
+    background: linear-gradient(to top, #FFA500, #FFED56);
+    border: 3px solid #D79B00;
 }
-.order-category4 {/*гарниры*/
-    background: linear-gradient(to top, #ac2925, #ffffff);
-    border: 2px solid #b94a48;
-   /*background-color: #ac2925;*/
+.order-category4 {/*закуски*/
+    background: linear-gradient(to top, #EA6B66, #F8CECC);
+    border: 3px solid #B85450;
 }
 .order-category5 {/*напитки*/
-    background: linear-gradient(to top, #c7254e, #ffffff);
-    border: 2px solid #e43725;
-   /*background-color: #c7254e;*/
+    background: linear-gradient(to top, #8C6C9C, #E1D5E7);
+    border: 3px solid #9673A6;
 }
 .order-orderDishes{
     float:right;
@@ -437,14 +433,17 @@ body{
     }
 }
 .order-orderDishesScroll{
-    max-height: calc(100% - 80px);
+    max-height: calc(100% - 126px);
     overflow: auto;
 }
 .SummCost{
     color: #ffffff;
+    margin: 8px 0 4px;
 }
-.toKitchen{
-    color: #000000;
+.toKitchen, .toPay{
+    width: 85px;
+    padding: 8px;
+    margin: 4px 0;
 }
 
 
