@@ -1,32 +1,55 @@
 define('controller/dishes', ['controller/main', 'service/dishes'], function(controllers, provider){
     controllers.controller('dishes', ['$scope',provider, function ($scope, dishesSrv) {
         $scope.appendMode = false;
-        $scope.dishes = [{
-            Id: 0,
-            Name: 'Борщ',
-            Price: '100',
-            Group: 1
+        $scope.form = {};
+        $scope.dishes = dishesSrv.query();
+        $scope.sortField = 'Name';
 
-        }, {
-            Id: 1,
-            Name: 'Цезарь',
-            Price: '50',
-            Group: 0
-
-        }, {
-            Id: 2,
-            Name: 'test',
-            Price: '100',
-            Group: 2
-        }];
-
-        $scope.add = function(){
-            alert('Отправляем: ' + $scope.form.name + ' ' + $scope.form.price + ' ' + $scope.form.group);
-            $scope.appendMode = false;
+        $scope.getDishById = function(id){
+            for(var i = 0; i < $scope.dishes.length; i++){
+                if($scope.dishes[i].Id === id){
+                    return $scope.dishes[i];
+                }
+            }
         };
 
-        $scope.setAppendMode = function(f){
+        $scope.setAppendMode = function(f, id){
             $scope.appendMode = f;
+            if(f){
+                if(id !== undefined){
+                    var dish = $scope.getDishById(id);
+                    $scope.form.id = dish.Id;
+                    $scope.form.name = dish.Name;
+                    $scope.form.Cost = dish.Cost;
+                    $scope.form.Category = dish.Category;
+                }
+                else {
+                    $scope.form.id = undefined;
+                    $scope.form.name = null;
+                    $scope.form.Cost = null;
+                    $scope.form.Category = null;
+                }
+            }
+
+        };
+
+        $scope.delete = function (id){
+            alert ("Удаляем id: " + id);
+        };
+        $scope.check = function(){
+
+            var promise;
+            if ($scope.form.id===undefined){
+                promise = dishesSrv.store({Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category});
+            }
+            else{
+                promise = dishesSrv.store({Id: $scope.form.id ,Name: $scope.form.name, Cost:$scope.form.Cost, Category:$scope.form.Category});
+            }
+            promise.$promise.then(function(){
+                $scope.dishes = dishesSrv.query();
+            });
+
+            $scope.appendMode = false;
         };
     }]);
 });

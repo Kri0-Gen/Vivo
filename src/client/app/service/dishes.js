@@ -2,8 +2,9 @@
 define('service/dishes',['service/main'], function(services){
    var providerName = 'Dish';
    services.factory(providerName, ['$resource', function($resource){
-      return $resource('room/dishes', {}, {
-         query: {method:'POST', params:{}, isArray:true}
+      return $resource('dishes/:method', {}, {
+         query: {method:'GET', params:{method:'list'}, isArray:true},
+         store: {method: 'POST', params:{method:'store'}}
       });
    }]);     
    return providerName;

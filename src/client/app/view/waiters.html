@@ -1,10 +1,70 @@
 <div ng-controller="waiters">
+
    <header class="header">
       Список официантов
    </header>
+   <style>
+      #prompt-form-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 9999;
+         display: none;
+         width: 100%;
+         height: 100%;
+         text-align: center;
+      }
+      #prompt-form {
+         display: inline-block;
+         padding: 5px 5px 5px 10px;
+         width: 200px;
+         border: 1px solid black;
+         background: white;
+         vertical-align: middle;
+      }
+      #prompt-form-container:before {
+         display: inline-block;
+         height: 100%;
+         content: '';
+         vertical-align: middle;
+      }
+
+      #prompt-form input[name="text"] {
+         display: block;
+         margin: 5px;
+         width: 180px;
+      }
+      .delBut {
+         background-color: transparent;
+         border: none;
+         position: absolute;
+         left: 300px;
+         top: 3px;
+      }
+      .waiters__waitersBlock {
+         position: relative;
+         width: 290px;
+      }
+   </style>
    <div>
       <div class="waiters__waitersBlock" ng-repeat="waiter in waiters" style="color: #ffff00">
-         {{waiter.name}}
+         <div  ng-click="amendWaiters(waiter)">{{waiter.FirstName + ' ' + waiter.LastName}}</div> <button class="delBut" ng-click="delWaiters(waiter.id)">Х</button>
+      </div>
+      <div id="buttonAddRooms" ng-click="addNew()" >
+         <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
+         <button>
+            Добавить
+         </button>
+      </div>
+      <div id="prompt-form-container" style="display:{{formHidden?'none':'block'}}">
+         <form novalidate id="prompt-form" ng-submit="onSubmit($event)">
+            <div id="prompt-message"></div>
+            <input name="text" type="hidden" ng-model="Id">
+            Имя<input name="text" type="text" ng-model="FirstName" style="border:{{FirstName?'':'1px solid red'}}">
+            Фамилия<input name="text" type="text" ng-model="LastName" style="border:{{LastName?'':'1px solid red'}}">
+            <input type="submit" value="Ок">
+            <input type="button" name="cancel" value="Отмена" ng-click="onCancel()">
+         </form>
       </div>
    </div>
 </div>
