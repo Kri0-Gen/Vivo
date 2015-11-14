@@ -53,18 +53,24 @@
       </div>
       <div id="buttonAddRooms" ng-click="addNew()" >
          <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
-         <button>
+         <button class="btn done">
             Добавить
          </button>
       </div>
-      <div id="prompt-form-container" style="display:{{formHidden?'none':'block'}}">
-         <form novalidate id="prompt-form" ng-submit="onSubmit($event)">
-            <div id="prompt-message"></div>
-            <input name="text" type="hidden" ng-model="Id">
-            Имя<input name="text" type="text" ng-model="FirstName" style="border:{{FirstName?'':'1px solid red'}}">
-            Фамилия<input name="text" type="text" ng-model="LastName" style="border:{{LastName?'':'1px solid red'}}">
-            <input type="submit" value="Ок">
-            <input type="button" name="cancel" value="Отмена" ng-click="onCancel()">
+      <div id="wrapper_edit_table" style="display:{{formHidden?'none':'block'}}">
+         <div class="form">
+            <form novalidate class="dishes__form" ng-submit="onSubmit($event)">
+               <input name="text" type="hidden" ng-model="Id">
+               <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
+                  <label class="dishes__label">Имя</label>
+                  <input name="text" type="text" ng-model="FirstName" style="border:{{FirstName?'':'1px solid red'}}" required>
+               </div>
+               <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
+               <label class="dishes__label">Фамилия</label>
+               <input name="text" type="text" ng-model="LastName" style="border:{{LastName?'':'1px solid red'}}" required>
+</div>
+            <input type="submit" value="Ок" class="btn done">
+            <input type="button" name="cancel" value="Отмена" ng-click="onCancel()" class="btn close">
          </form>
       </div>
    </div>
