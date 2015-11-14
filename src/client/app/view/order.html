@@ -7,12 +7,16 @@
          {{category.Name}}
       </div>
       <br />
-      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock order-category{{currentCat}}">
+      <div ng-repeat="dish in dishes[currentCat]" class="order-dishBlock order-category{{currentCat}}" ng-click="selectDish(dish.Id);">
          <div class="order-dishName">{{dish.Name}}</div>
          <div class="order-dishCost">{{dish.Cost}}</div>
       </div>
    </div>
    <div class="order-orderDishes">
-
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder">
+            <div class="order-DishStateInOrder">{{dish.State}} </div>
+            <div class="order-DishNameInOrder">{{dish.Name}} </div>
+            <div class="order-DishCostInOrder">-{{dish.Cost}}</div>
+       </div>
    </div>
 </div>
