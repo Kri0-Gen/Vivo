@@ -1414,4 +1414,26 @@ select{
 }
 
 
+/*reports*/
+
+
+.reports input {
+    width: 160px;
+}
+
+.reports__filter {
+    margin: 4px;
+}
+
+.reports__button {
+    width: 160px;
+    height: 40px;
+    background: green;
+    color: white;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+
+
 
