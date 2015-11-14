@@ -176,7 +176,7 @@ thead th {
 }
 input,
 select{
-	width: 100%;
+	width: 94%;
 	float: left;
 	height: 30px;
 	font-weight: 300;
@@ -1316,7 +1316,7 @@ select{
 }
 input,
 select{
-    width: 100%;
+    width: 94%;
     float: left;
     height: 25px;
     font-weight: 300;

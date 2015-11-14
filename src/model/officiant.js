@@ -20,6 +20,7 @@ module.exports = function(app){
       db.collection('officiants').remove({Id:parseInt(OfficiantId,10)});
        res.send('OK')
    });
+
    app.post('/officiants/store', function(req, res){
       req.body.Id = parseInt(req.body.Id || '0', 10);
       if (!req.body.Id){

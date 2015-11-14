@@ -62,6 +62,8 @@ var bind = function(app){
        var roomId = req.body.Id;
         db.collection('rooms').remove({Id: parseInt(roomId, 10)});
         db.collection('tables').remove({RoomId: parseInt(12, 10)});
+           res.end('OK');
+
    })
 
    .get('/rooms/list', function(req, res){
