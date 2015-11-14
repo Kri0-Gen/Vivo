@@ -34,7 +34,7 @@ body{
 /*Desktop*/
 
 @media (min-width: 992px){
-    .people_block{
+    .auth_people_block {
         width: 960px;
         height: 300px;
         margin: 20px auto 0px auto;
@@ -105,7 +105,7 @@ body{
 /*Tablets*/
 
 @media(min-width: 768px) and (max-width: 991px){
-    .people_block{
+    .auth_people_block {
         width: 768px;
         height: 300px;
         margin: 10px auto 0px auto;
@@ -173,7 +173,7 @@ body{
     }
 }
 @media(max-width: 767px){
-    .people_block{
+    .auth_people_block {
         width: 100%;
         overflow: hidden;
         margin: 10px auto 0px auto;

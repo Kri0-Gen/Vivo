@@ -53,13 +53,6 @@ var bind = function(app){
 
         })
         .get('/dishes/list', function(req, res){
-            var dishId = req.query['id'];
-            db.collection('dishes').find().toArray().then(function(data){
-
-                res.json(data);
-            });
-
-        }).get('/dishes/list', function(req, res){
              db.collection('dishes').find().toArray().then(function(dishes){
                 res.json(dishes);
              })
