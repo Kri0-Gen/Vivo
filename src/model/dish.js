@@ -46,18 +46,15 @@ var bind = function(app){
             else {
                 db.getNextSequence('dishid', function(id){
                     req.body.Id = id;
-                  /*  req.body.Category = db.collection('categories').find(req.body.Category,function(err){
-                        if(err) throw  err;
-                    }).Id;*/
                     create();
                     res.end('OK');
                 })
             }
 
         })
-        .get('/dishes', function(req, res){
+        .get('/dishes/list', function(req, res){
             var dishId = req.query['id'];
-            db.collection('dishes').find({Id:parseInt(dishId, 10)}).toArray().then(function(data){
+            db.collection('dishes').find().toArray().then(function(data){
 
                 res.json(data);
             });

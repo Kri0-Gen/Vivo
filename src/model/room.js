@@ -30,7 +30,7 @@ var roomSchem=mongoose.Schema({
 
 
 var bind = function(app){
-   app.post('/rooms', function(req, res) {
+   app.post('/rooms/store', function(req, res) {
        req.body.Id = parseInt(req.body.Id || '0', 10);
        var roomId = req.body.Id;
 
@@ -47,13 +47,14 @@ var bind = function(app){
        else {
             db.getNextSequence('roomid', function(id){
                 req.body.Id = id;
+                req.body.Tables =
                 create();
                 res.end('OK');
             })
        }
 
    })
-   .get('/rooms', function(req, res){
+   .get('/rooms/list', function(req, res){
        var roomId = req.query['id'];
        db.collection('rooms').find({Id:parseInt(roomId, 10)}).toArray().then(function(data){
 
