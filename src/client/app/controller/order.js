@@ -62,7 +62,7 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
        $scope.toPay =function(){
            var res = orderSrv.closeOrder({OrderId:orderId, Status: 'close'});
            res.$promise.then(function(){
-               window.location.hash='/room/'+data[0];
+               window.location.hash='/room/'+$routeParams.roomId;
            });
        };
    }]);
