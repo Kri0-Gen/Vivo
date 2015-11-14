@@ -9,7 +9,7 @@
 	<div>
 	<div id="room_background" class="room_background" style="top:0px;width:{{scene.width*scale}}px;height:{{scene.height*scale}}px;">
 		<div ng-repeat="table in tables" class="room__table" style="transform:scale({{scale}});top:{{table.y*scale}}px;left:{{table.x*scale}}px;width:{{table.width}}px;height:{{table.height}}px" ng-mouseup="release()" ng-mousedown="capture(table.id, $event)">
-			<div class="{{table.type}}" style="transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
+			<div ng-click="on_table_click(table)" class="{{table.type}}" style="transform-origin: center center; transform: rotate({{table.angle}}deg);width:{{table.width}}px;height:{{table.height}}px">
 				<div ng-repeat="chair in table.chairs" class="room__chair" style="transform: {{chair.transform}};top:{{table.height*chair.scale_height+chair.y}}px;left:{{table.width*chair.scale_width+chair.x}}px"></div>
 				<button ng-click="open_create_table_window(table, false, true, true)">edit</button>
 				<button style="position: absolute; left: 100%; top: 100%" ng-mousedown="rotating_begin(table)">r</button>
