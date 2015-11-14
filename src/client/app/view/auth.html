@@ -9,9 +9,9 @@
             Сотрудники:
         </h2>
         <div class="auth_people">
-            <div ng-repeat="user in users">
+            <div ng-repeat="waiter in waiters">
                 <div class="auth_pos_people" ng-click="selectUser(user.id);">
-                    {{user.name}}
+                    {{waiter.FirstName + ' ' + waiter.LastName}}
                 </div>
             </div>
         </div>
