@@ -88,8 +88,14 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
       $scope.TABLE_TYPE = TABLE_TYPE;
 
       $scope.capture = function(id, e){
-         $scope.startX = e.clientX;
-         $scope.startY = e.clientY;
+         var offsetX = -$("#room_background").offset().left;
+         var offsetY = 0;//-$("#room_background").offset().top;
+         var nx = e.pageX + offsetX;
+         var ny = e.pageY + offsetY;
+         nx /= $scope.scale; ny /= $scope.scale;
+
+         $scope.startX = nx;
+         $scope.startY = ny;
          $scope.captured = id;
       };
 
@@ -102,8 +108,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
          if ($scope.rotating_table != null) {
             var x = $scope.rotating_table.x + $scope.rotating_table.width*0.5;
             var y = $scope.rotating_table.y + $scope.rotating_table.height*0.5;
-            x *= $scope.scale;
-            y *= $scope.scale;
+            x *= $scope.scale; y *= $scope.scale;
 
             var offsetX = -$("#room_background").offset().left;
             var offsetY = 0;//-$("#room_background").offset().top;
@@ -127,18 +132,24 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             var width = +$(style).first().css("width").replace("px", "");
             var height = +$(style).first().css("height").replace("px", "");
 
+            var offsetX = -$("#room_background").offset().left;
+            var offsetY = 0;//-$("#room_background").offset().top;
+            var nx = e.pageX + offsetX;
+            var ny = e.pageY + offsetY;
+            nx /= $scope.scale; ny /= $scope.scale;
+
             var maxx = $scope.scene.width - width;
             var maxy = $scope.scene.height - height;
 
-            x = Math.min(x + (e.clientX - $scope.startX) / $scope.scale, maxx);
-            y = Math.min(y + (e.clientY - $scope.startY) / $scope.scale, maxy);
+            x = Math.min(x + (nx - $scope.startX), maxx);
+            y = Math.min(y + (ny - $scope.startY), maxy);
             x = Math.max(x, 0); y = Math.max(y, 0);
 
             $scope.tables[$scope.captured - 1].x = x;
             $scope.tables[$scope.captured - 1].y = y;
 
-            $scope.startX = Math.min(maxx, Math.max(0, e.clientX));
-            $scope.startY = Math.min(maxy, Math.max(0, e.clientY));
+            $scope.startX = Math.min(maxx, Math.max(0, nx));
+            $scope.startY = Math.min(maxy, Math.max(0, ny));
          }
       };
 
