@@ -16,7 +16,7 @@ define(['app','angular_router', 'controller/auth','controller/rooms','controller
       $routeProvider.when('/admin', {
          templateUrl: 'app/view/admin.html'
       });
-      
+
       $routeProvider.when('/room/:id', {
          templateUrl: 'app/view/room.html'
       });

@@ -18,7 +18,7 @@
                     <td class="dishes__th">{{dish.Name}}</td>
                     <td class="dishes__th">{{dish.Cost}}</td>
                     <td class="dishes__th">{{dish.Category}}</td>
-                    <td class="dishes__th"><button ng-click="setAppendMode(true, dish.Id)"> ♥ </button> <button ng-click="delete(dish.Id)"> × </button></td>
+                    <td class="dishes__th"><button class="dishes__edit-button" ng-click="setAppendMode(true, dish.Id)"> ♥ </button> <button class="dishes__delete-button"  ng-click="delete(dish.Id)"> × </button></td>
                 </tr>
                 </tbody>
             </table>
