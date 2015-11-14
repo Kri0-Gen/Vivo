@@ -135,4 +135,29 @@ module.exports = function(app){
          });
       });
    });
+
+   app.post('/order/changeStatus', function(req, res){
+      var order = db.model('orders', orderSchem);
+      var orderId = parseInt(req.body.OrderId, 10);
+      order.findOne({'Id': orderId}, function(err, ord){
+         ord.Status = req.body.Status;
+         ord.save();
+         res.send('OK');
+      });
+   });
+
+   app.post('/order/changeDishStatus', function(req, res){
+      var order = db.model('orders', orderSchem);
+      var orderId = parseInt(req.body.OrderId, 10);
+      order.findOne({'Id': orderId}, function(err, ord){
+         for( var i = 0; i < ord.Order.length; i++){
+            if (ord.Order[i].DishOrderId == parseInt(req.body.DishOrderId, 10)){
+               ord.Order[i].Status = parseInt(req.body.Status, 10);
+            }
+         }
+         ord.markModified('Order');
+         ord.save(function(err){console.log(err)});
+         res.send('OK');
+      });
+   });
 };
