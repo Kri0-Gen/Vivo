@@ -66,16 +66,16 @@ body{
 
 /*-------------admin---------------*/
 
-.adminPanel a{
+/*.adminPanel a{
     text-align: center;
     color: white;
     font-size: 23px;
     padding: 41px;
-}
+}*/
 
-.adminPanel__container {
+/*.adminPanel__container {
     margin: 64px 8px;
-}
+}*/
 
 /*---------------Dishes-----------*/
 
