@@ -30,7 +30,7 @@ var dishSchem=mongoose.Schema({
     } //свзяь
 });
 var bind = function(app){
-    app.post('/dishes', function(req, res) {
+    app.post('/dishes/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);
             var dishId = req.body.Id;
             var dish = db.model('dishes', dishSchem);
@@ -62,6 +62,22 @@ var bind = function(app){
                 res.json(data);
             });
 
-        });
+        }).get('/dishes/list', function(req, res){
+          db.collection('dishes').find().toArray().then(function(dishes){
+             res.json(dishes);
+        }).get('/dishes/listByCat', function(req, res){
+          db.collection('dishes').find().toArray().then(function(dishes){
+             db.collection('dish_cats').find().toArray().then(function(dish_cats){
+                var result = {};
+                for (var i =0; i < dish_cats.length; i++){
+                   result[dish_cats[i]['Id']] = dishes.filter(function(item){
+                      return item.Category == dish_cats[i].Id;
+                   });
+                }
+                res.json(result);
+             });
+          });
+
+       });
 };
 module.exports = bind;

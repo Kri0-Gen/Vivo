@@ -40,10 +40,8 @@ var bind = function(app){
             }
 
         })
-        .get('/dishes', function(req, res){
-            var dishId = req.query['id'];
-            db.collection('dishes').find({Id:parseInt(dishId, 10)}).toArray().then(function(data){
-
+        .get('/dish_cats/list', function(req, res){
+            db.collection('dish_cats').find().toArray().then(function(data){
                 res.json(data);
             });
 
