@@ -60,8 +60,9 @@ var bind = function(app){
             });
 
         }).get('/dishes/list', function(req, res){
-          db.collection('dishes').find().toArray().then(function(dishes){
-             res.json(dishes);
+             db.collection('dishes').find().toArray().then(function(dishes){
+                res.json(dishes);
+             })
         }).get('/dishes/listByCat', function(req, res){
           db.collection('dishes').find().toArray().then(function(dishes){
              db.collection('dish_cats').find().toArray().then(function(dish_cats){

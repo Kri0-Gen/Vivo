@@ -37,7 +37,7 @@ module.exports = function(){
          ordePostedElem.save();
       };
       db.getNextSequence('roomid', function(id){
-         create(id, )
+         //create(id, )
       });
       res.send('OK');
    });
