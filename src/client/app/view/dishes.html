@@ -3,43 +3,48 @@
         Список блюд
     </header>
     <div class="dishes_container">
-        <table class="dishes__table">
-            <thead class="dishes__table-head">
-            <tr>
-                <th class="dishes__th">Название</th>
-                <th class="dishes__th">Цена</th>
-                <th class="dishes__th">Категория</th>
-                <th class="dishes__th">Правка </th>
-            </tr>
-            </thead>
-            <tbody class="dishes__table-body">
-            <tr ng-repeat="dish in dishes | orderBy:sortField">
-                <td class="dishes__th">{{dish.Name}}</td>
-                <td class="dishes__th">{{dish.Cost}}</td>
-                <td class="dishes__th">{{dish.Category}}</td>
-                <td class="dishes__th"><button ng-click="setAppendMode(true, dish.Id)"> ♥ </button> <button ng-click="delete(dish.Id)"> × </button></td>
-            </tr>
-            </tbody>
-        </table>
-        <form name="dishForm" class="dishes__form" ng-hide="!appendMode">
-            <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
-                <label class="dishes__label">Название</label>
-                <input type="text" class="form-control" name="name" ng-model="form.name" required>
-            </div>
-            <div class="form-Category" ng-class="{error: dishForm.Cost.$invalid}">
-                <label class="dishes__label">Цена</label>
-                <input type="number" class="form-control" name="Cost" ng-model="form.Cost" required>
-            </div>
-            <div class="form-Category" ng-class="{error: dishForm.Category.$invalid}">
-                <label class="dishes__label">Категория</label>
-                <input type="text" class="form-control" name="Category" ng-model="form.Category" required>
-            </div>
-            <button ng-click="setAppendMode(false)" class="btn btn-primary">Отмена</button>
-            <button ng-click="check()" ng-disabled="isClean() || dishForm.$invalid" class="btn btn-primary">Сохранить</button>
-        </form>
+        <div class="dishes_tableContainer">
+            <table class="dishes__table">
+                <thead class="dishes__table-head">
+                <tr>
+                    <th class="dishes__th">Название</th>
+                    <th class="dishes__th">Цена</th>
+                    <th class="dishes__th">Категория</th>
+                    <th class="dishes__th">Правка </th>
+                </tr>
+                </thead>
+                <tbody class="dishes__table-body">
+                <tr ng-repeat="dish in dishes | orderBy:sortField">
+                    <td class="dishes__th">{{dish.Name}}</td>
+                    <td class="dishes__th">{{dish.Cost}}</td>
+                    <td class="dishes__th">{{dish.Category}}</td>
+                    <td class="dishes__th"><button class="dishes__edit-button" ng-click="setAppendMode(true, dish.Id)"> ♥ </button> <button class="dishes__delete-button"  ng-click="delete(dish.Id)"> × </button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button ng-click="setAppendMode(true)" ng-hide="appendMode" class="btn done">Добавить</button>
+        </div>
 
-        <button ng-click="setAppendMode(true)" ng-hide="appendMode" class="btn btn-primary">Добавить</button>
-
+        <div class="wrapper_edit_table" ng-hide="!appendMode">
+            <div class="form">
+                <form name="dishForm" class="dishes__form" >
+                    <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
+                        <label class="dishes__label">Название</label>
+                        <input type="text" name="name" ng-model="form.name" required>
+                    </div>
+                    <div class="form-Category" ng-class="{error: dishForm.Cost.$invalid}">
+                        <label class="dishes__label">Цена</label>
+                        <input type="number" name="Cost" ng-model="form.Cost" required>
+                    </div>
+                    <div class="form-Category" ng-class="{error: dishForm.Category.$invalid}">
+                        <label class="dishes__label">Категория</label>
+                        <input type="text" name="Category" ng-model="form.Category" required>
+                    </div>
+                    <button ng-click="check()" ng-disabled="isClean() || dishForm.$invalid" class="btn done">Сохранить</button>
+                    <button ng-click="setAppendMode(false)" class="btn close">Отмена</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
