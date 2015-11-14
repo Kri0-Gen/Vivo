@@ -1,11 +1,12 @@
+<div ng-controller="order">
     <div class="header">
         <div class="wrapper_header">
             <h3 class="title_header">Зал 1 - Столик 1</h3>
-            <div class="id_people">ФИО Сотрудника</div>
+            <div class="id_people">Администратор</div>
         </div>
     </div>
     <div class="content-order">
-        <div ng-controller="order">
+        <div>
    <div class=" order-dishes">
       <div ng-repeat="category in categories" class="order-categoryBlock order-categoryName order-category{{category.Id}}" ng-click="selectCategory(category.Id);">
          {{category.Name}}

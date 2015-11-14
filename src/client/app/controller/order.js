@@ -5,6 +5,8 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
    // контроллер для блюд в заказе
    controllers.controller('order', ['$scope', '$routeParams', orderProvider, function ($scope, $routeParams, orderSrv) {
       var orderId = $routeParams.id;
+       $scope.userFirstName = window.localStorage['userFirstName'];
+       $scope.userLastName = window.localStorage['userLastName'];
 
       // список блюд по категориям для добавления в заказ
       $scope.categories = orderSrv.getCategories();
