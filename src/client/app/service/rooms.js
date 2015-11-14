@@ -4,7 +4,7 @@ define('service/rooms',['service/main'], function(services){
       return $resource('rooms/:method', {}, {
          query: {method:'GET', params:{method:'list'}, isArray:true},
          store: {method: 'POST', params:{method:'store'}},
-         delete: {method: 'POST', params:{method:'delete'}}
+         deleted: {method: 'POST', params:{method:'delete'}}
       });
    }]);     
    return providerName;
