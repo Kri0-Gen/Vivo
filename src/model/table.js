@@ -66,8 +66,7 @@ var bind = function(app){
 
         })
         .get('/tables/list', function(req, res){
-            var tableId = req.query['id'];
-            db.collection('tables').find({Id:parseInt(tableId, 10)}).toArray().then(function(data){
+            db.collection('tables').find().toArray().then(function(data){
 
                 res.json(data);
             });
