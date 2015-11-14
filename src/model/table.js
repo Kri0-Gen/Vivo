@@ -82,7 +82,15 @@ var bind = function (app) {
       .get('/tables/list', function (req, res) {
          var roomId = req.query['id'];
          db.collection('tables').find({RoomId: parseInt(roomId, 10)}).toArray().then(function (data) {
-            res.json(data);
+            db.collection('orders').find({Status: 'Open'}).toArray().then(function (data) {
+               var map = {};
+               for (var i = 0; i < data.length; i++){
+                  map[data[i].Table] = data[i];
+               }
+               res.json(data.map(function(item){
+                  item.OrderId = map[item.Id] ? map[item.Id].Id : -1;
+               }));
+            });
          });
 
       });
