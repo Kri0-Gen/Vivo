@@ -14,7 +14,7 @@
    </div>
    <div class="order-orderDishes">
        <div class="order-orderDishesScroll">
-       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder" ng-click="SelectDishInOrder($index);">
+       <div ng-repeat="dish in orderDishes" class="order-DishesInOrder order-category{{dish.Category}}" ng-click="SelectDishInOrder($index);">
            <div class="order-dishState">
                 <div class="order-DishStateInOrder">{{dish.State}} </div>
            </div>
@@ -29,10 +29,13 @@
        <div class="SummCost">
            Итого: {{SummCost}}
        </div>
+       <div>
        <input type="button" class="toKitchen" ng-click="toKitchen();" value="На кухню">
        </input>
+       </div>
+       <div>
        <input type="button" class="toPay" ng-click="toPay();" value="Оплатить">
        </input>
-
+        </div>
    </div>
 </div>

@@ -20,26 +20,30 @@ var dish_catSchem=mongoose.Schema({
 var bind = function(app){
    // fill categories
    db.collection('dish_cats').drop();
-   db.collection('dish_cats').insertOne({
-      'Id': 1,
-      'Name': 'Супы'
-   });
-   db.collection('dish_cats').insertOne({
-      'Id': 2,
-      'Name': 'Салаты'
-   });
-   db.collection('dish_cats').insertOne({
-      'Id': 3,
-      'Name': 'Горячее'
-   });
-   db.collection('dish_cats').insertOne({
-      'Id': 4,
-      'Name': 'Закуски'
-   });
-    db.collection('dish_cats').insertOne({
-      'Id': 5,
-      'Name': 'Напитки'
-   });
+    var catArray = [{
+        'Id': 1,
+        'Name': 'Супы'
+    },{
+        'Id': 2,
+        'Name': 'Салаты'
+    },{
+        'Id': 3,
+        'Name': 'Горячее'
+    },{
+        'Id': 4,
+        'Name': 'Закуски'
+    },{
+        'Id': 5,
+        'Name': 'Напитки'
+    }];
+   function addCategory(index) {
+       db.collection('dish_cats').insertOne(catArray[index], function () {
+           if (index < catArray.length - 1) {
+               addCategory(index + 1);
+           }
+       });
+   }
+   addCategory(0);
 
     app.post('/dish_cats/store', function(req, res) {
             req.body.Id = parseInt(req.body.Id || '0', 10);

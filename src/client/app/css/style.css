@@ -351,19 +351,29 @@ body{
    text-align: right;
 }
 .order-category1 {/*супы*/
-   background-color: #0ce3ac;
+    background: linear-gradient(to top, #0ce3ac, #ffffff);
+    border: 2px solid #00a379;
+   /*background-color: #0ce3ac;*/
 }
 .order-category2 {/*салаты*/
-   background-color: #aaffff;
+    background: linear-gradient(to top, #2f6fad, #ffffff);
+    border: 2px solid #2f6fad;
+   /*background-color: #aaffff;*/
 }
 .order-category3 {/*горячее*/
-   background-color: #985f0d;
+    background: linear-gradient(to top, #985f0d, #ffffff);
+    border: 2px solid #8a6343;
+   /*background-color: #985f0d;*/
 }
 .order-category4 {/*гарниры*/
-   background-color: #ac2925;
+    background: linear-gradient(to top, #ac2925, #ffffff);
+    border: 2px solid #b94a48;
+   /*background-color: #ac2925;*/
 }
 .order-category5 {/*напитки*/
-   background-color: #c7254e;
+    background: linear-gradient(to top, #c7254e, #ffffff);
+    border: 2px solid #e43725;
+   /*background-color: #c7254e;*/
 }
 .order-orderDishes{
     float:right;
@@ -372,11 +382,11 @@ body{
     right: 0;
     top: 40px;
     bottom: 0;
-    width: 120px;
+    width: 140px;
 }
 .order-DishesInOrder {
-    background-color: darkgreen;
-    width: 100px;
+    /*background-color: darkgreen;*/
+    width: 110px;
     height: 53px;
     margin-bottom: 5px;
 }
@@ -409,7 +419,7 @@ body{
 .order-orderDishCost{
     float:left;
     height: 100%;
-    width: 40px;
+    width: 50px;
 }
 .order-DishCostInOrder {
     font-size: 9pt;

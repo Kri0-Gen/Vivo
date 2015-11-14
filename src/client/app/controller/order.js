@@ -8,13 +8,16 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
       $scope.currentCat = 1;
       $scope.dishes = orderSrv.getDishes();
       var dishHashMap={};
-       for (var catId in $scope.dishes){
-           if ($scope.dishes.hasOwnProperty(catId)){
-               for (var i = 0; i < $scope.dishes[catId].length; i++){
-                   dishHashMap[$scope.dishes[catId][i].Id] = $scope.dishes[catId][i];
+       $scope.dishes.$promise.then(function(data){
+           for (var catId in data){
+               if (data.hasOwnProperty(catId)){
+                   for (var i = 0; i < data[catId].length; i++){
+                       dishHashMap[data[catId][i].Id] = data[catId][i];
+                   }
                }
            }
-       }
+       });
+
        $scope.SummCost=0;
       // список блюд в заказе с их состояниями (На кухне / Готово)
      // $scope.orderDishes = [{dishId:1, Name:'Борщ', State:'', Cost:100}, {dishId:1, Name:'Борщ', State:'На кухне', Cost:100}];
@@ -24,7 +27,7 @@ define('controller/order', ['controller/main', 'service/order'], function(contro
       };
        //добавление блюда в заказ
        $scope.selectDish = function(id){
-           $scope.orderDishes.push({dishId: id, Name: dishHashMap[id].Name, State: '', Cost: dishHashMap[id].Cost});
+           $scope.orderDishes.push({dishId: id, Name: dishHashMap[id].Name, State: '', Cost: dishHashMap[id].Cost, Category:dishHashMap[id].Category});
            $scope.SummCost+=dishHashMap[id].Cost;
        };
         $scope.SelectDishInOrder =function(ind){
