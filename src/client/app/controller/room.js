@@ -14,7 +14,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
             {scale_width: 1.0, scale_height: 0.5, x: -8, y: -3, transform: "rotate(90deg)"}
          ]},
-         {class: "room__table room__table_square", width: 49, height: 49, chairs: [
+         {class: "room__table room__table_square", width: 49, height: 49, chairs: [ 
             {scale_width: 0.0, scale_height: 0.0, x: 13, y: -6},
             {scale_width: 0.0, scale_height: 1.0, x: 13, y: 0, transform: "rotate(180deg)"},
             {scale_width: 0.0, scale_height: 0.5, x: -16, y: -3, transform: "rotate(-90deg)"},
