@@ -92,14 +92,23 @@ module.exports = function(app){
       var order = db.model('orders', orderSchem);
       var orderId = parseInt(req.body.OrderId, 10);
       order.findOne({'Id': orderId}, function(err, ord){
-         for (var i = 0; i < req.body.dishes.length; i++){
-            ord.Order.push({
-               Dish: parseInt(req.body.dishes[i], 10),
-               Status: 1
-            })
-         }
-         ord.save();
-         res.send('OK');
+         var f = function(i){
+            if (i<req.body.dishes.length){
+               db.getNextSequence('dishorderid', function(id){
+                  ord.Order.push({
+                     DishOrderId: id,
+                     Dish: parseInt(req.body.dishes[i], 10),
+                     Status: 1
+                  });
+                  f(i + 1);
+               })
+            }
+            else {
+               ord.save();
+               res.send('OK');
+            }
+         };
+         f(0);
       });
    });
 
