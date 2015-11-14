@@ -67,7 +67,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             set_table_width_height_by_id(tables[i], tables[i].type);
       }
 
-      function add_remove_attribute(object, attr, fBool) {
+      function add_or_remove_attribute(object, attr, fBool) {
          if (!fBool)
             object.removeAttr(attr); else
             object.attr(attr, "true");
@@ -76,27 +76,30 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
       set_tables_width_height(PARAMS);
       set_chairs(PARAMS);
       set_class_type(PARAMS);
+
+      $scope.table_counter = PARAMS.length;
       $scope.tables = PARAMS;
 
       $scope.scene = {height: SCENE_HEIGHT, width: SCENE_WIDTH};
       $scope.scale = 1.0;
-      $scope.captured = -1;
+
       $scope.startX = 0;
       $scope.startY = 0;
 
+      $scope.captured = -1;
       $scope.rotating_table = null;
       $scope.TABLE_TYPE = TABLE_TYPE;
 
       $scope.capture = function(id, e){
          var offsetX = -$("#room_background").offset().left;
-         var offsetY = 0;//-$("#room_background").offset().top;
-         var nx = e.pageX + offsetX;
-         var ny = e.pageY + offsetY;
+         var offsetY = -$("#room_background").offset().top;
+         var nx = e.pageX + offsetX, ny = e.pageY + offsetY;
          nx /= $scope.scale; ny /= $scope.scale;
+         $scope.startX = nx; $scope.startY = ny;
 
-         $scope.startX = nx;
-         $scope.startY = ny;
-         $scope.captured = id;
+         for (var i = 0; i < $scope.tables.length; i++)
+            if ($scope.tables[i].id == id)
+               $scope.captured = i;
       };
 
       $scope.release = function(){
@@ -111,7 +114,7 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             x *= $scope.scale; y *= $scope.scale;
 
             var offsetX = -$("#room_background").offset().left;
-            var offsetY = 0;//-$("#room_background").offset().top;
+            var offsetY = -$("#room_background").offset().top;
             var nx = e.pageX + offsetX;
             var ny = e.pageY + offsetY;
 
@@ -124,16 +127,16 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
 
          if ($scope.captured != -1){
             // (!important) id == index, todo search
-            var x = $scope.tables[$scope.captured - 1].x;
-            var y = $scope.tables[$scope.captured - 1].y;
+            var x = $scope.tables[$scope.captured].x;
+            var y = $scope.tables[$scope.captured].y;
 
-            var style = $scope.tables[$scope.captured - 1].type;
+            var style = $scope.tables[$scope.captured].type;
             style = "." + style.replace(" ", ".");
             var width = +$(style).first().css("width").replace("px", "");
             var height = +$(style).first().css("height").replace("px", "");
 
             var offsetX = -$("#room_background").offset().left;
-            var offsetY = 0;//-$("#room_background").offset().top;
+            var offsetY = -$("#room_background").offset().top;
             var nx = e.pageX + offsetX;
             var ny = e.pageY + offsetY;
             nx /= $scope.scale; ny /= $scope.scale;
@@ -145,23 +148,23 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             y = Math.min(y + (ny - $scope.startY), maxy);
             x = Math.max(x, 0); y = Math.max(y, 0);
 
-            $scope.tables[$scope.captured - 1].x = x;
-            $scope.tables[$scope.captured - 1].y = y;
+            $scope.tables[$scope.captured].x = x;
+            $scope.tables[$scope.captured].y = y;
 
             $scope.startX = Math.min(maxx, Math.max(0, nx));
             $scope.startY = Math.min(maxy, Math.max(0, ny));
          }
       };
 
-      $scope.zoom_plus = function(e) {
+      $scope.zoom_plus = function() {
          $scope.scale = Math.min($scope.scale+ZOOM_STEP, ZOOM_MAX);
       };
 
-      $scope.zoom_minus = function(e) {
+      $scope.zoom_minus = function() {
          $scope.scale = Math.max($scope.scale-ZOOM_STEP, ZOOM_MIN);
       }
 
-      $scope.new_table_prev_button = function(e) {
+      $scope.new_table_prev_button = function() {
          $scope.new_table.id = ($scope.new_table.id + 1) % TABLE_TYPE.length;
          set_table_width_height_by_id($scope.new_table, $scope.new_table.id);
          $scope.new_table.type = TABLE_TYPE[$scope.new_table.id].class;
@@ -170,7 +173,6 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
       }
 
       $scope.new_table_next_button = function(e) {
-         $scope.ChairsSelector=1;
          $scope.new_table.id = ($scope.new_table.id - 1 + TABLE_TYPE.length) % TABLE_TYPE.length;
          set_table_width_height_by_id($scope.new_table, $scope.new_table.id);
          $scope.new_table.type = TABLE_TYPE[$scope.new_table.id].class;
@@ -203,17 +205,17 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
          }
 
          $(".new_table_div").first().css("visibility", "visible");
-         add_remove_attribute($("#create_table_button"), "disabled", !fCreate);
-         add_remove_attribute($("#update_table_button"), "disabled", !fUpdate);
-         add_remove_attribute($("#remove_table_button"), "disabled", !fRemove);
+         add_or_remove_attribute($("#create_table_button"), "disabled", !fCreate);
+         add_or_remove_attribute($("#update_table_button"), "disabled", !fUpdate);
+         add_or_remove_attribute($("#remove_table_button"), "disabled", !fRemove);
       }
 
       $scope.create_new_table = function() {
-         $scope.new_table.id = $scope.tables.length+1;
+         $scope.new_table.id = ++$scope.table_counter;
 
          $scope.tables.push($scope.new_table);
          $scope.new_table = null;
-         $(".new_table_div").first().css("visibility", "hidden");
+         $scope.close_table();
       }
 
       $scope.update_table = function() {
@@ -222,14 +224,11 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
       }
 
       $scope.remove_table = function() {
-         for (var i = 0; i < $scope.tables.length; i++) {
-            if ($scope.tables[i] != $scope.new_table) continue;
-            $scope.tables.splice(i, 1); break;
-         }
-         $(".new_table_div").first().css("visibility", "hidden");
+         $scope.tables.splice($scope.new_table.item_id, 1);
+         $scope.close_table();
       }
 
-      $scope.update_chairs_selector = function(e) {
+      $scope.update_chairs_selector = function() {
          $scope.new_table.chairs = $scope.ChairsSelector;
          set_table_chairs_by_id($scope.new_table, $scope.new_table.id);
       }

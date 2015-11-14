@@ -205,7 +205,10 @@ body{
 }
 
 .room_background {
-   background: gray;
+    background: gray;
+    position: relative;
+    left: 50%; top: 50%;
+    transform: translate(-50%);
 }
 
 .new_table_div {
