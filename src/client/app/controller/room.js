@@ -1,11 +1,11 @@
-define('controller/room', ['controller/main'], function(controllers){
-   controllers.controller('room', ['$scope', '$routeParams', function ($scope, $routeParams) {
+define('controller/room', ['controller/main', 'service/room'], function(controllers, roomProvider){
+   controllers.controller('room', ['$scope', '$routeParams', roomProvider, function ($scope, $routeParams, roomSrv) {
       var ZOOM_STEP = 0.5;
       var ZOOM_MAX = 2.0, ZOOM_MIN = 0.5;
       var SCENE_HEIGHT = 750, SCENE_WIDTH = 1000;
 
-      // here pass params into controller
-      console.log($routeParams.id);
+      roomSrv.query({roomId: $routeParams.id});
+      roomSrv.save({roomId: $routeParams.id, lala: 'test'});
 
       var TABLE_TYPE = [
          {class: "room__table room__table_circle", chairs: [
