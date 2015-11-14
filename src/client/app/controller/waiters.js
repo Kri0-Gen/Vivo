@@ -2,6 +2,8 @@ define('controller/waiters', ['controller/main', 'service/waiters'], function(co
    controllers.controller('waiters', ['$scope',provider, function ($scope, waitersSrv) {
       $scope.waiters = waitersSrv.query();
       $scope.formHidden = true;
+      $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+      $scope.isAdmin=window.localStorage['userID']=='0';
       $scope.addNew = function(){
          $scope.formHidden = false;
           $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];

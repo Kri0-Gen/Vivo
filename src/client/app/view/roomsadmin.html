@@ -3,100 +3,50 @@
     <div class="header">
         <div class="wrapper_header">
             <h3 class="title_header">Спиcок залов</h3>
+            <div id="buttonAddRooms" ng-click="addNew()" style="padding-top: 5px">
+                <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
+                <button class="btn done">
+                    Добавить
+                </button>
+            </div>
             <div class="id_people">{{fio}}</div>
             <a href="#/admin" class="btn_edit" style="display:{{isAdmin?'':'none'}};">Админ панель</a>
         </div>
     </div>
-   <style>
-      #prompt-form-container {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 9999;
-         display: none;
-         width: 100%;
-         height: 100%;
-         text-align: center;
-      }
-      #prompt-form {
-         display: inline-block;
-         padding: 5px 5px 5px 10px;
-         width: 200px;
-         border: 1px solid black;
-         background: white;
-         vertical-align: middle;
-      }
-      #prompt-form-container:before {
-         display: inline-block;
-         height: 100%;
-         content: '';
-         vertical-align: middle;
-      }
+    <div class="rooms">
+        <div class="pos_room" ng-repeat="room in roomsadmin" ng-click="onClick(room)">
+            <div class="content_rooms" style="position: relative">
+                <h3>{{room.Name}}</h3>
+                <div class="dishes__edit-button" style="right: 43px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="amendRoomsadmin(room)"> ✏ </div>
+                <div class="dishes__delete-button" style="right: 3px; top: 3px; position: absolute; text-align: center;border-radius: 5px"  ng-click="delRoomsadmin(room.Id)"> ✘ </div>
+                <p class="places">
+                    {{room.totalPlace}} мест
+                </p>
+                <p><font>Столы:</font>{{room.freeTables}}/{{room.totalTables}}</p>
+                <p><font>Сумма:</font>{{room.totalOpenOrder}} руб.</p>
+            </div>
 
-      #prompt-form input[name="text"] {
-         display: block;
-         margin: 5px;
-         width: 180px;
-      }
-      .delBut {
-         background-color: transparent;
-         border: none;
-         position: absolute;
-         left: 300px;
-         top: 3px;
-         color: yellow;
-      }
-      .roomsadmin__roomsadminBlock {
-         position: relative;
-         width: 290px;
-      }
-   </style>
+            <!--<div class="logo_room"><img src="C:/images/{{rooms.photo}}"></div>-->
+        </div>
+    </div>
 
-   <div style="margin-top: 80px; float: left; width: 99%;">
+        <div id="wrapper_edit_table" style="position: absolute;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.7);display:{{formHidden?'none':'block'}};top: 0px">
+            <div class="form" style="height: 180px; border-radius: 10px;">
+                <form novalidate class="dishes__form" ng-submit="onSubmit($event)">
+                    <input name="text" type="hidden" ng-model="Id">
+                    <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
+                        <label class="dishes__label">Название</label>
+                        <input name="text" type="text" ng-model="Name" required style="border:{{LastName?'':'1px solid red'}}">
+                    </div>
+                    <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
+                        <label class="dishes__label">Фото</label>
+                        <input name="text" type="file" ng-model="Photo" required>
+                    </div>
+                    <input type="submit" value="Ок" class="btn done">
+                    <input type="button" name="cancel" value="Отмена" ng-click="onCancel()" class="btn close">
+                </form>
+            </div>
 
-       <div class="dishes_tableContainer" style="width: 100%; left;">
-           <table class="dishes__table" style="width: 100%; float: left;">
-               <thead class="dishes__table-head">
-               <tr>
-                   <th class="dishes__th">Название зала</th>
-                   <th class="dishes__th">Редактирование</th>
-               </tr>
-               </thead>
-               <tbody class="dishes__table-body">
-               <tr ng-repeat="roomsadm in roomsadmin">
-                   <td class="dishes__th">{{roomsadm.Name}}</td>
-                   <td class="dishes__th" style="width:80px; margin:0 auto; height: 20px; text-align:center;">
-                       <font style="">
-                       <div class="dishes__edit-button" style="margin-left: 20px;"  ng-click="amendRoomsadmin(roomsadm)"> ✏ </div>
-                       <div class="dishes__delete-button"  ng-click="delRoomsadmin(roomsadm.Id)"> ✘ </div>
-                           </font>
-                   </td>
-               </tr>
-               </tbody>
-           </table>
-       </div>
-      <div id="buttonAddRooms" ng-click="addNew()" >
-         <!--http://plnkr.co/edit/gIVdgTQ5MXKy8a19XKvz?p=preview-->
-         <button class="btn done">
-            Добавить
-         </button>
-      </div>
-      <div id="wrapper_edit_table" style="position: absolute;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.7);display:{{formHidden?'none':'block'}}">
-         <div class="form">
-         <form novalidate class="dishes__form" ng-submit="onSubmit($event)">
-            <input name="text" type="hidden" ng-model="Id">
-            <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
-               <label class="dishes__label">Название</label>
-               <input name="text" type="text" ng-model="Name" required style="border:{{LastName?'':'1px solid red'}}">
-               </div>
-            <div class="form-Category" ng-class="{error: dishForm.name.$invalid}">
-               <label class="dishes__label">Фото</label>
-               <input name="text" type="file" ng-model="Photo" required>
-               </div>
-            <input type="submit" value="Ок" class="btn done">
-            <input type="button" name="cancel" value="Отмена" ng-click="onCancel()" class="btn close">
-         </form>
-         </div>
-      </div>
-   </div>
+        </div>
+
 </div>

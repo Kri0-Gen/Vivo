@@ -1,9 +1,16 @@
 <div class="main reports" ng-controller="reports">
-   <div class="reports__filter">
-      <input type="date" ng-model="firstData"/>
-      <input type="date" ng-model="lastData"/>
-      <div ng-click="playReport()" class="reports__button"><span>Построить отчет</span></div>
+   <div class="header">
+      <div class="wrapper_header">
+         <h3 class="title_header">Отчеты</h3>
+         <div class="reports__filter" style="padding-top: 3px">
+            <input type="date" ng-model="firstData"/>
+            <input type="date" ng-model="lastData"/>
+            <div ng-click="playReport()" class="reports__button"><span>Построить отчет</span></div>
+         </div>
+         <div class="id_people">{{fio}}</div>
+         <a href="#/admin" class="btn_edit" style="display:{{isAdmin?'':'none'}};">Админ панель</a>
+      </div>
    </div>
 
-   <div id="container" style="min-width: 310px; height: 800px; margin: 48px auto"></div>
+   <div id="container" style="min-width: 310px; height: 800px; margin: 48px auto;padding-top: 13px"></div>
 </div>

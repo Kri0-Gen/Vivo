@@ -30,12 +30,12 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
          $scope.Photo = '';
       };
       $scope.delRoomsadmin = function (id){
-
          var promise;
-         promise = roomsadminSrv.deleted({Id:id});
-         promise.$promise.then(function(){
+         roomsadminSrv.deleted({Id:id}).$promise.then(function(){
             $scope.roomsadmin = roomsadminSrv.query();
          });
+
+
       };
    }]);
 });
