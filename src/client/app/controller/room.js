@@ -106,11 +106,11 @@ define('controller/room', ['controller/main', 'service/room'], function(controll
             y *= $scope.scale;
 
             var offsetX = -$("#room_background").offset().left;
-            var offsetY = -$("#room_background").offset().top;
+            var offsetY = 0;//-$("#room_background").offset().top;
             var nx = e.pageX + offsetX;
             var ny = e.pageY + offsetY;
 
-            var add_angle = -Math.atan2($scope.rotating_table.width*$scope, $scope.rotating_table.height);
+            var add_angle = -Math.atan2($scope.rotating_table.width, $scope.rotating_table.height);
             var angle = add_angle + Math.atan2(nx-x, ny-y);
             angle = angle / Math.PI * 180;
             $scope.rotating_table.angle = -angle;
