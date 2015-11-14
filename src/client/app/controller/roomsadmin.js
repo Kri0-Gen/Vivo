@@ -10,8 +10,8 @@ define('controller/roomsadmin', ['controller/main', 'service/rooms'], function(c
          $scope.photo = '';
       };
       $scope.onSubmit = function(){
-         if ( $scope.name != '' && $scope.capacity != '' && $scope.photo != '' )
-            roomsadminSrv.store({Id:$scope.Id, name: $scope.name, capacity:$scope.capacity,photo:$scope.photo});
+         if ( $scope.name != '' )
+            roomsadminSrv.store({Id:$scope.Id, Name: $scope.name});
          $scope.formHidden = true;
       };
       $scope.amendRoomsadmin = function(roomsadmin) {
