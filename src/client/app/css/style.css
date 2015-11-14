@@ -64,14 +64,56 @@ body{
 	background: red;	
 }
 
-/*---------------Dishes-----------*/
+/*-------------admin---------------*/
 
-.dishes__dish {
-   color: #fff;
-   padding: 2px;
-   border: 1px solid #fff;
+.adminPanel a{
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    padding: 41px;
 }
 
+.adminPanel__container {
+    margin: 64px 8px;
+}
+
+/*---------------Dishes-----------*/
+
+.dishes_container {
+    margin: 4px;
+}
+.dishes__table {
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.dishes__table-head {
+    background: #AFCDE7;
+}
+
+.dishes__table-body {
+    background: #AADDDD;
+}
+
+.dishes__th {
+    padding: 10px 20px;
+}
+
+.dishes__th, .dishes__td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+.dishes__form label {
+    color: #fff;
+}
+.dishes__form {
+    width: 297px;
+}
 
 
 /* Orders */
