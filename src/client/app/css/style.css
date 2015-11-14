@@ -298,16 +298,18 @@ body{
     font-size: 14px;
     border-collapse: collapse;
     text-align: center;
-    color: white;
+    color:#009ACD;
     margin-bottom: 8px;
 }
 
 .dishes__table-head {
-    background: #AFCDE7;
+    background: #EED8AE;
+    opacity: 0.8;
 }
 
 .dishes__table-body {
-    background: #AADDDD;
+    background: #FFE7BA;
+    opacity: 1;
 }
 
 .dishes__th {
@@ -317,7 +319,7 @@ body{
 .dishes__th, .dishes__td {
     border-style: solid;
     border-width: 0 1px 1px 0;
-    border-color: white;
+    border-color: #ffffff;
 }
 
 .dishes__form label {
@@ -325,6 +327,21 @@ body{
 }
 .dishes__form {
     width: 297px;
+   
+}
+
+.dishes__table-body button {
+    width: 24px;
+}
+
+.dishes__edit-button {
+    background: #00CD00;
+    color :#363636;
+}
+
+.dishes__delete-button {
+    background: #EE6363;
+    color :#363636;
 }
 
 
