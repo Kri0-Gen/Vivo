@@ -2,8 +2,10 @@ define('controller/admin', ['controller/main'], function(controllers){
     controllers.controller('admin', ['$scope', function ($scope) {
         $scope.onClick = function(){
         };
+        $scope.fio = window.localStorage['userFirstName'] + ' ' + window.localStorage['userLastName'];
+        $scope.isAdmin=window.localStorage['userID']=='0';
 
-        // ToDo: сейчас у админа нет ФИО
+        // ToDo: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
         //$scope.userFirstName = window.localStorage['userFirstName'];
         //$scope.userLastName = window.localStorage['userLastName'];
     }]);
